@@ -5,9 +5,13 @@ Commun :
 - [Planning](https://reseaueseo-my.sharepoint.com/:x:/g/personal/morgan_leroux_reseau_eseo_fr/EdhmUGsiH4JKp43w77pmdBwB86PAxmwWFjXhSsJCPYVsag?e=v93kcJ)
 - [US et besoins](https://reseaueseo-my.sharepoint.com/:x:/g/personal/morgan_leroux_reseau_eseo_fr/EVosvylqDkBHhK19-jUdR7sB723QMk-ZBMoqNMfOpTIDRw?e=7JHxYa)
 
+--------
+
 EOC :
 - [Draw.io](https://app.diagrams.net/#G1043w-ReVlp8RX4udpgBM5xO3jmGDzmA3)
 - [Veille techno](https://reseaueseo-my.sharepoint.com/:w:/r/personal/julien_janvier_reseau_eseo_fr/_layouts/15/Doc.aspx?sourcedoc=%7B168702F3-D2B1-41BD-B6B3-61408A435F24%7D&file=Veille%20techno%20NRF52.docx&action=default&mobileredirect=true)
+
+--------
 
 LD :
 
