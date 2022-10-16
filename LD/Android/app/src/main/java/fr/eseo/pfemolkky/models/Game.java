@@ -4,15 +4,22 @@ import java.util.ArrayList;
 
 public class Game {
     private ArrayList<Player> players = new ArrayList<>();
+    private ArrayList<Pin> pins = new ArrayList<>();
     private TypeOfGame typeOfGame;
     private int scoreToWin;
-    private enum TypeOfGame {tournament, classic, fast, pastis}
+    public enum TypeOfGame {tournament, classic, fast, pastis}
 
     public ArrayList<Player> getPlayers() {
         return players;
     }
     public void addPlayer(Player player) {
         this.players.add(player);
+    }
+
+    public Game(){
+        for(int i=1;i<=12;i++){
+            Pin pin = new Pin(i);
+        }
     }
 
     public void setPlayers(ArrayList<Player> players) {

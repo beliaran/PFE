@@ -2,9 +2,14 @@ package fr.eseo.pfemolkky.models;
 
 public class Pin {
     private int number;
-    private boolean connected;
-    private boolean fallen;
-    private Battery battery;
+    private boolean connected = false;
+    private boolean fallen = false;
+    private Battery battery = Battery.dead;
+
+    public Pin(int i) {
+        number=i;
+    }
+
     public enum Battery {dead, low, medium, excellent, full};
 
     public boolean isConnected() {

@@ -15,4 +15,9 @@
         android:name="fr.eseo.pfemolkky.ui.addplayers.AddPlayersFragment"
         android:label="@string/fragment_add_players"
         tools:layout="@layout/fragment_add_players" />
+    <fragment
+        android:id="@+id/nav_choose_type"
+        android:name="fr.eseo.pfemolkky.ui.chooseGame.chooseTypeGame"
+        android:label="@string/fragment_choose_type"
+        tools:layout="@layout/fragment_choose_type_game" />
 </navigation>

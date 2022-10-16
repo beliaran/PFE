@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.provider.Settings;
 import android.util.TypedValue;
@@ -33,6 +35,7 @@ public class AddPlayersFragment extends Fragment {
     HashMap<EditText,String> playerName = new HashMap<>();
     int count = 1;
     private View root;
+    private NavController navController;
 
     public AddPlayersFragment() {
         // Required empty public constructor
@@ -53,8 +56,19 @@ public class AddPlayersFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_add_players, container, false);
-        EditText editTextAdd = new EditText(getContext());
-        players.add(editTextAdd);
+        navController = NavHostFragment.findNavController(this);
+        players = new ArrayList<>();
+        playerName = new HashMap<>();
+        if(!((MainActivity)getActivity()).getGame().getPlayers().isEmpty()){
+            for(Player player : ((MainActivity)getActivity()).getGame().getPlayers()){
+                EditText editTextAdd = new EditText(getContext());
+                playerName.put(editTextAdd,player.getName());
+                players.add(editTextAdd);
+            }
+        }
+        else{
+            EditText editTextAdd = new EditText(getContext());
+            players.add(editTextAdd);}
         update();
         FloatingActionButton addPlayerButton = (FloatingActionButton) root.findViewById(R.id.addPlayerButton);
         addPlayerButton.setOnClickListener(new View.OnClickListener() {
@@ -70,9 +84,9 @@ public class AddPlayersFragment extends Fragment {
         launchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ((MainActivity)getActivity()).getGame().getPlayers().removeAll(((MainActivity)getActivity()).getGame().getPlayers());
                 int i = 1;
                 playerName= new HashMap<>();
-                System.out.println(players);
                 for(EditText playerEditText : players){
                     if(!String.valueOf(playerEditText.getText()).matches("")){
                         playerName.put(playerEditText,String.valueOf(playerEditText.getText()));
@@ -88,6 +102,7 @@ public class AddPlayersFragment extends Fragment {
                     i++;
                 }
                 System.out.println(((MainActivity)getActivity()).getGame().getPlayers());
+                navController.navigate(R.id.nav_choose_type);
             }
         });
         return root;
@@ -101,7 +116,6 @@ public class AddPlayersFragment extends Fragment {
                 ConstraintLayout.LayoutParams.MATCH_PARENT,
                 (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics()));
         clspace.setLayoutParams(layoutParams);
-        System.out.println(players);
         layoutPlayers.addView(clspace);
         for(int i=1;i<=count;i++){
             EditText editTextInstance = players.get(i-1);
@@ -137,7 +151,6 @@ public class AddPlayersFragment extends Fragment {
                     public void onClick(View view) {
                         count-=1;
                         players.remove(editTextInstance);
-                        System.out.println(players);
                         playerName= new HashMap<>();
                         for(EditText player : players){
                             playerName.put(player,String.valueOf(player.getText()));

@@ -9,4 +9,14 @@
     <string name="askName">Player</string>
     <string name="fragment_add_players">Add Players</string>
     <string name="validate">Validate</string>
+    <string name="tournament">Tournament</string>
+    <string name="pastis">Pastis</string>
+    <string name="speedGame">Quick Game</string>
+    <string name="classical">Classic</string>
+    <string name="quickGame">Quick Game</string>
+    <string name="fragment_choose_type">Choose Type Of Game</string>
+    <string name="tournament_rules">3 miss in a row elliminate the player</string>
+    <string name="classical_rules">Classic rules of a Mölkky match</string>
+    <string name="quickGame_rules">Be the first to score 30 points</string>
+    <string name="pastis_rules">Be the first to score 51 points</string>
 </resources>
