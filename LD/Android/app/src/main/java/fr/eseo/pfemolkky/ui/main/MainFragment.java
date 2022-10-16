@@ -16,8 +16,10 @@ import android.widget.Button;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import fr.eseo.pfemolkky.MainActivity;
 import fr.eseo.pfemolkky.R;
 import fr.eseo.pfemolkky.databinding.FragmentMainBinding;
+import fr.eseo.pfemolkky.models.Game;
 
 public class MainFragment extends Fragment {
 
@@ -48,7 +50,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 navController.navigate(R.id.nav_start_game);
-                System.out.println("button_Clicked");
+                ((MainActivity)getActivity()).setGame(new Game());
             }
         });
         return inputFragmentView;

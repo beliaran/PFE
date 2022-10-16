@@ -10,8 +10,19 @@ import android.os.Bundle;
 
 import com.google.android.material.navigation.NavigationView;
 
+import fr.eseo.pfemolkky.models.Game;
+
 
 public class MainActivity extends AppCompatActivity {
+    Game game;
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
-        System.out.println("1");
         if (savedInstanceState == null) {
 //            getSupportFragmentManager().beginTransaction()
 //                    .replace(R.id.container, MainFragment.newInstance())

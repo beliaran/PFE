@@ -8,4 +8,5 @@
     <string name="connectMolkky">Connect to Mölkky</string>
     <string name="askName">Player</string>
     <string name="fragment_add_players">Add Players</string>
+    <string name="validate">Validate</string>
 </resources>
