@@ -8,6 +8,9 @@ android {
     buildFeatures{
         viewBinding true
     }
+    sourceSets {
+        main.res.srcDirs += ['src/main/mollky_disconnected', 'src/main/mollky_connected', 'src/main/mollky_fallen']
+    }
     defaultConfig {
         applicationId "fr.eseo.pfemolkky"
         minSdk 28
