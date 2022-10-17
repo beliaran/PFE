@@ -16,9 +16,18 @@ public class Game {
         this.players.add(player);
     }
 
+    public void setPins(ArrayList<Pin> pins) {
+        this.pins = pins;
+    }
+
+    public ArrayList<Pin> getPins() {
+        return pins;
+    }
+
     public Game(){
         for(int i=1;i<=12;i++){
             Pin pin = new Pin(i);
+            pins.add(pin);
         }
     }
 

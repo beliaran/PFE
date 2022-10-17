@@ -46,11 +46,13 @@ public class MainFragment extends Fragment {
         binding = FragmentMainBinding.inflate(inflater);
         inputFragmentView = inflater.inflate(R.layout.fragment_main, container, false);
         Button button = inputFragmentView.findViewById(R.id.buttonStartGame);
+        ((MainActivity)getActivity()).setAllowBack(false);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 navController.navigate(R.id.nav_start_game);
                 ((MainActivity)getActivity()).setGame(new Game());
+                ((MainActivity)getActivity()).setAllowBack(true);
             }
         });
         return inputFragmentView;

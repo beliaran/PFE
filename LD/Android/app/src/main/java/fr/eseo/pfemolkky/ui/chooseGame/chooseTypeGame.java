@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +27,7 @@ public class chooseTypeGame extends Fragment {
 
 
     private View root;
+    private NavController navController;
 
     public chooseTypeGame() {
         // Required empty public constructor
@@ -48,11 +51,15 @@ public class chooseTypeGame extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_choose_type_game, container, false);
+        navController = NavHostFragment.findNavController(this);
         ConstraintLayout tournamentButton = (ConstraintLayout) root.findViewById(R.id.tournamentButton);
+        Bundle bundle = new Bundle();
+        bundle.putInt("player",0);
         tournamentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ((MainActivity)getActivity()).getGame().setTypeOfGame(TypeOfGame.tournament);
+                navController.navigate(R.id.nav_game,bundle);
             }
         });
         ConstraintLayout classicButton = (ConstraintLayout) root.findViewById(R.id.classicButton);
@@ -60,6 +67,7 @@ public class chooseTypeGame extends Fragment {
             @Override
             public void onClick(View view) {
                 ((MainActivity)getActivity()).getGame().setTypeOfGame(TypeOfGame.classic);
+                navController.navigate(R.id.nav_game,bundle);
             }
         });
         ConstraintLayout quickGameButton = (ConstraintLayout) root.findViewById(R.id.quickGameButton);
@@ -67,6 +75,7 @@ public class chooseTypeGame extends Fragment {
             @Override
             public void onClick(View view) {
                 ((MainActivity)getActivity()).getGame().setTypeOfGame(Game.TypeOfGame.fast);
+                navController.navigate(R.id.nav_game,bundle);
             }
         });
         ConstraintLayout pastisButton = (ConstraintLayout) root.findViewById(R.id.pastisButton);
@@ -74,6 +83,7 @@ public class chooseTypeGame extends Fragment {
             @Override
             public void onClick(View view) {
                 ((MainActivity)getActivity()).getGame().setTypeOfGame(Game.TypeOfGame.pastis);
+                navController.navigate(R.id.nav_game,bundle);
             }
         });
         return root;

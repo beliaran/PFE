@@ -5,6 +5,22 @@ public class Player {
     private int missed = 0;
     private int score = 0;
 
+    public int getMissed() {
+        return missed;
+    }
+
+    public void setMissed(int missed) {
+        this.missed = missed;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
     public String getName() {
         return name;
     }

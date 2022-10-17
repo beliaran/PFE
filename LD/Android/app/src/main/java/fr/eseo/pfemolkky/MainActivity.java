@@ -16,6 +16,16 @@ import fr.eseo.pfemolkky.models.Game;
 public class MainActivity extends AppCompatActivity {
     Game game;
 
+    public boolean isAllowBack() {
+        return allowBack;
+    }
+
+    public void setAllowBack(boolean allowBack) {
+        this.allowBack = allowBack;
+    }
+
+    private boolean allowBack =true;
+
     public Game getGame() {
         return game;
     }
@@ -40,6 +50,14 @@ public class MainActivity extends AppCompatActivity {
 //                    .replace(R.id.container, MainFragment.newInstance())
 //                    .commitNow();
             navController.navigate(R.id.nav_main);
+        }
+    }
+    @Override
+    public void onBackPressed() {
+        if (isAllowBack()) {
+            super.onBackPressed();
+        } else {
+            //do nothing
         }
     }
 }

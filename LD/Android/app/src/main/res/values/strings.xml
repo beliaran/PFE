@@ -19,4 +19,10 @@
     <string name="classical_rules">Classic rules of a Mölkky match</string>
     <string name="quickGame_rules">Be the first to score 30 points</string>
     <string name="pastis_rules">Be the first to score 51 points</string>
+    <string name="validateRound">Validate Round</string>
+    <string name="round">Round</string>
+    <string name="scorePlayer">Score :</string>
+    <string name="winnerIs">The Winner is :</string>
+    <string name="winner">End of Game</string>
+    <string name="returnToMenu">Return to Menu</string>
 </resources>
