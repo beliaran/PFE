@@ -127,6 +127,7 @@ public class GameFragment extends Fragment {
                         }
                         else{
                             game.getPlayers().remove(player);
+                            playerNumber=playerNumber-1;
                         }
                     }
                 }else{
