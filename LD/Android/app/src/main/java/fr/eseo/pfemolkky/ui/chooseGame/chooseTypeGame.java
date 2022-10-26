@@ -58,6 +58,7 @@ public class chooseTypeGame extends Fragment {
         tournamentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                tournamentButton.setBackground(getResources().getDrawable(R.drawable.selectedtypeofgameroundedcorner));
                 ((MainActivity)getActivity()).getGame().setTypeOfGame(TypeOfGame.tournament);
                 navController.navigate(R.id.nav_game,bundle);
             }
@@ -66,6 +67,7 @@ public class chooseTypeGame extends Fragment {
         classicButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                classicButton.setBackground(getResources().getDrawable(R.drawable.selectedtypeofgameroundedcorner));
                 ((MainActivity)getActivity()).getGame().setTypeOfGame(TypeOfGame.classic);
                 navController.navigate(R.id.nav_game,bundle);
             }
@@ -74,6 +76,7 @@ public class chooseTypeGame extends Fragment {
         quickGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                quickGameButton.setBackground(getResources().getDrawable(R.drawable.selectedtypeofgameroundedcorner));
                 ((MainActivity)getActivity()).getGame().setTypeOfGame(Game.TypeOfGame.fast);
                 navController.navigate(R.id.nav_game,bundle);
             }
@@ -82,6 +85,7 @@ public class chooseTypeGame extends Fragment {
         pastisButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                pastisButton.setBackground(getResources().getDrawable(R.drawable.selectedtypeofgameroundedcorner));
                 ((MainActivity)getActivity()).getGame().setTypeOfGame(Game.TypeOfGame.pastis);
                 navController.navigate(R.id.nav_game,bundle);
             }
