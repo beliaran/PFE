@@ -1,7 +1,5 @@
 package fr.eseo.pfemolkky.ui.main;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,8 +16,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 import fr.eseo.pfemolkky.MainActivity;
 import fr.eseo.pfemolkky.R;
@@ -31,26 +27,19 @@ public class GameFragment extends Fragment {
 
     private int playerNumber;
     private ArrayList<Pin> pins = new ArrayList<>();
-    private ArrayList<ImageView> imageViewPins = new ArrayList<>();
-    private ImageView imageViewPin1;
-    private ImageView imageViewPin2;
-    private ImageView imageViewPin3;
-    private ImageView imageViewPin4;
-    private ImageView imageViewPin5;
-    private ImageView imageViewPin6;
-    private ImageView imageViewPin7;
-    private ImageView imageViewPin8;
-    private ImageView imageViewPin9;
-    private ImageView imageViewPin10;
-    private ImageView imageViewPin11;
-    private ImageView imageViewPin12;
-    private int[] listDrawableDisconnected = {R.drawable.molkky_disconnected_1,R.drawable.molkky_disconnected_2,R.drawable.molkky_disconnected_3,R.drawable.molkky_disconnected_4,R.drawable.molkky_disconnected_5,R.drawable.molkky_disconnected_6,
-            R.drawable.molkky_disconnected_7, R.drawable.molkky_disconnected_8,R.drawable.molkky_disconnected_9,R.drawable.molkky_disconnected_10,R.drawable.molkky_disconnected_11,R.drawable.molkky_disconnected_12};
-    private int[] listDrawableFallen = {R.drawable.molkky_fallen_1,R.drawable.molkky_fallen_2,R.drawable.molkky_fallen_3,R.drawable.molkky_fallen_4,R.drawable.molkky_fallen_5,R.drawable.molkky_fallen_6,
-            R.drawable.molkky_fallen_7, R.drawable.molkky_fallen_8,R.drawable.molkky_fallen_9,R.drawable.molkky_fallen_10,R.drawable.molkky_fallen_11,R.drawable.molkky_fallen_12};
-    private int[] listDrawableConnected = {R.drawable.molkky_1,R.drawable.molkky_2,R.drawable.molkky_3,R.drawable.molkky_4,R.drawable.molkky_5,R.drawable.molkky_6,
-            R.drawable.molkky_7, R.drawable.molkky_8,R.drawable.molkky_9,R.drawable.molkky_10,R.drawable.molkky_11,R.drawable.molkky_12};
-    private ArrayList<ImageView> listImageView= new ArrayList<>();
+    private Button imageViewPin1;
+    private Button imageViewPin2;
+    private Button imageViewPin3;
+    private Button imageViewPin4;
+    private Button imageViewPin5;
+    private Button imageViewPin6;
+    private Button imageViewPin7;
+    private Button imageViewPin8;
+    private Button imageViewPin9;
+    private Button imageViewPin10;
+    private Button imageViewPin11;
+    private Button imageViewPin12;
+    private ArrayList<Button> listImageView= new ArrayList<Button>();
 
     private Player player;
     private NavController navController;
@@ -75,18 +64,18 @@ public class GameFragment extends Fragment {
         TextView textViewScore = root.findViewById(R.id.scorePlayer);
         textViewScore.setText(getResources().getString(R.string.scorePlayer)+" "+String.valueOf(player.getScore()));
         pins = ((MainActivity)getActivity()).getGame().getPins();
-        imageViewPin1 = (ImageView) root.findViewById(R.id.pin1);
-        imageViewPin2 = (ImageView) root.findViewById(R.id.pin2);
-        imageViewPin3 = (ImageView) root.findViewById(R.id.pin3);
-        imageViewPin4 = (ImageView) root.findViewById(R.id.pin4);
-        imageViewPin5 = (ImageView) root.findViewById(R.id.pin5);
-        imageViewPin6 = (ImageView) root.findViewById(R.id.pin6);
-        imageViewPin7 = (ImageView) root.findViewById(R.id.pin7);
-        imageViewPin8 = (ImageView) root.findViewById(R.id.pin8);
-        imageViewPin9 = (ImageView) root.findViewById(R.id.pin9);
-        imageViewPin10 = (ImageView) root.findViewById(R.id.pin10);
-        imageViewPin11 = (ImageView) root.findViewById(R.id.pin11);
-        imageViewPin12 = (ImageView) root.findViewById(R.id.pin12);
+        imageViewPin1 = (Button) root.findViewById(R.id.pin1);
+        imageViewPin2 = (Button) root.findViewById(R.id.pin2);
+        imageViewPin3 = (Button) root.findViewById(R.id.pin3);
+        imageViewPin4 = (Button) root.findViewById(R.id.pin4);
+        imageViewPin5 = (Button) root.findViewById(R.id.pin5);
+        imageViewPin6 = (Button) root.findViewById(R.id.pin6);
+        imageViewPin7 = (Button) root.findViewById(R.id.pin7);
+        imageViewPin8 = (Button) root.findViewById(R.id.pin8);
+        imageViewPin9 = (Button) root.findViewById(R.id.pin9);
+        imageViewPin10 = (Button) root.findViewById(R.id.pin10);
+        imageViewPin11 = (Button) root.findViewById(R.id.pin11);
+        imageViewPin12 = (Button) root.findViewById(R.id.pin12);
         listImageView.add(imageViewPin1);
         listImageView.add(imageViewPin2);
         listImageView.add(imageViewPin3);
@@ -105,7 +94,7 @@ public class GameFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 navController.navigate(R.id.nav_scoreboard);
-                listImageView= new ArrayList<>();
+                listImageView= new ArrayList<Button>();
             }
         });
         Button buttonValidate= (Button) root.findViewById(R.id.buttonValidateRound);
@@ -175,13 +164,13 @@ public class GameFragment extends Fragment {
     private void updateInterface() {
         for(int i=0;i<12;i++){
             if(!pins.get(i).isConnected()){
-                listImageView.get(i).setImageDrawable(getResources().getDrawable(listDrawableDisconnected[i]));
+                System.out.println(listImageView.get(i)+ " not connected");
+                listImageView.get(i).setBackgroundResource(R.drawable.circlepinbuttondisconnected);
             }else{
-                listImageView.get(i).setImageDrawable(getResources().getDrawable(listDrawableConnected[i]));
+                listImageView.get(i).setBackground(getResources().getDrawable(R.drawable.circlepinbutton));
             }
             if(pins.get(i).hasFallen()){
-                System.out.println("pin "+ (i+1) +" fallen updating "+ listImageView.get(i) +" with "+listDrawableFallen[i]);
-                listImageView.get(i).setImageDrawable(getResources().getDrawable(listDrawableFallen[i]));
+                listImageView.get(i).setBackground(getResources().getDrawable(R.drawable.circlepinbuttonfallen));
             }
             int g = i;
             listImageView.get(i).setOnClickListener(new View.OnClickListener() {

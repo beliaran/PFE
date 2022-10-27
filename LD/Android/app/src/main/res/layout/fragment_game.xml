@@ -35,200 +35,191 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.498">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
+            <Button
+                android:id="@+id/pin2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:backgroundTint="@null"
+                android:background="@drawable/circlepinbutton"
+                android:text="2"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.664"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="1dp">
+                app:layout_constraintVertical_bias="0.878"
+                app:rippleColor="@color/orange" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+            <Button
+                android:id="@+id/pin12"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="204dp"
+                app:backgroundTint="@null"
+                android:background="@drawable/circlepinbutton"
+                android:text="12"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.357"
+                app:rippleColor="@color/orange" />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/pin11"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                app:backgroundTint="@null"
+                android:background="@drawable/circlepinbutton"
+                android:text="11"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/pin12"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/pin5"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.357"
+                app:rippleColor="@color/orange" />
 
-                        <ImageView
-                            android:id="@+id/pin7"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/molkky_7"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/pin9"
-                            app:layout_constraintHorizontal_bias="1.0"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/pin5"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:backgroundTint="@null"
+                android:background="@drawable/circlepinbutton"
+                android:text="5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.009"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.357"
+                app:rippleColor="@color/orange" />
 
-                        <ImageView
-                            android:id="@+id/pin9"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/molkky_9"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.498"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/pin7"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="1dp"
+                app:backgroundTint="@null"
+                android:background="@drawable/circlepinbutton"
+                android:text="7"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/pin9"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.097"
+                app:rippleColor="@color/orange" />
 
-                        <ImageView
-                            android:id="@+id/pin8"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_marginEnd="56dp"
-                            android:src="@drawable/molkky_8"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/pin9"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0" />
+            <Button
+                android:id="@+id/pin9"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:backgroundTint="@null"
+                android:background="@drawable/circlepinbutton"
+                android:text="9"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.097"
+                app:rippleColor="@color/orange" />
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </LinearLayout>
+            <Button
+                android:id="@+id/pin8"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="8dp"
+                app:backgroundTint="@null"
+                android:background="@drawable/circlepinbutton"
+                android:text="8"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.041"
+                app:layout_constraintStart_toEndOf="@+id/pin9"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.097"
+                app:rippleColor="@color/orange" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+            <Button
+                android:id="@+id/pin3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:backgroundTint="@null"
+                android:background="@drawable/circlepinbutton"
+                android:text="3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.175"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.618"
+                app:rippleColor="@color/orange" />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/pin10"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:backgroundTint="@null"
+                android:background="@drawable/circlepinbutton"
+                android:text="10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.492"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.618"
+                app:rippleColor="@color/orange" />
 
-                        <ImageView
-                            android:id="@+id/pin5"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/molkky_5"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/pin11"
-                            app:layout_constraintHorizontal_bias="1.0"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0" />
+            <Button
+                android:id="@+id/pin4"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:backgroundTint="@null"
+                android:background="@drawable/circlepinbutton"
+                android:text="4"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.817"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.618"
+                app:rippleColor="@color/orange" />
 
-                        <ImageView
-                            android:id="@+id/pin11"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_marginStart="105dp"
-                            android:src="@drawable/molkky_11"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/pin12"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0" />
+            <Button
+                android:id="@+id/pin1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:backgroundTint="@null"
+                android:background="@drawable/circlepinbutton"
+                android:text="1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.338"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.878"
+                app:rippleColor="@color/orange" />
 
-                        <ImageView
-                            android:id="@+id/pin12"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_marginEnd="108dp"
-                            android:src="@drawable/molkky_12"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/pin11"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0" />
+            <Button
+                android:id="@+id/pin6"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="1dp"
+                app:backgroundTint="@null"
+                android:background="@drawable/circlepinbutton"
+                android:text="6"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.25"
+                app:layout_constraintStart_toEndOf="@+id/pin12"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.357"
+                app:rippleColor="@color/orange" />
 
-                        <ImageView
-                            android:id="@+id/pin6"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_marginEnd="8dp"
-                            android:src="@drawable/molkky_6"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="1.0"
-                            app:layout_constraintStart_toEndOf="@+id/pin12"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:id="@+id/pin3"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_marginStart="54dp"
-                            android:src="@drawable/molkky_3"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/pin10"
-                            app:layout_constraintHorizontal_bias="1.0"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0" />
-
-                        <ImageView
-                            android:id="@+id/pin10"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/molkky_10"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/pin4"
-                            app:layout_constraintStart_toEndOf="@+id/pin3"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ImageView
-                            android:id="@+id/pin4"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_marginEnd="54dp"
-                            android:src="@drawable/molkky_4"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:id="@+id/pin1"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_marginStart="105dp"
-                            android:layout_marginEnd="1dp"
-                            android:src="@drawable/molkky_1"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/pin2"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ImageView
-                            android:id="@+id/pin2"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_marginEnd="105dp"
-                            android:src="@drawable/molkky_2"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/pin1"
-                            app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </LinearLayout>
-
-            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
