@@ -112,7 +112,7 @@ public class AddPlayersFragment extends Fragment {
         LinearLayout layoutPlayers = root.findViewById(R.id.layoutPlayers);
         layoutPlayers.removeAllViews();
         ConstraintLayout clspace= new ConstraintLayout(getContext());
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
+        ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(
                 ConstraintLayout.LayoutParams.MATCH_PARENT,
                 (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics()));
         clspace.setLayoutParams(layoutParams);

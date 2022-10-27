@@ -25,4 +25,7 @@
     <string name="winnerIs">The Winner is :</string>
     <string name="winner">End of Game</string>
     <string name="returnToMenu">Return to Menu</string>
+    <string name="player_name">Player Name</string>
+    <string name="player_score">Score</string>
+    <string name="scoreboard">Scoreboard</string>
 </resources>

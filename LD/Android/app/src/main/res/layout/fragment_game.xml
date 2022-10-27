@@ -11,6 +11,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/imageCup"
+            android:layout_width="92dp"
+            android:layout_height="96dp"
+            android:src="@drawable/cup"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.025" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="413dp"
@@ -69,6 +81,7 @@
                             app:layout_constraintStart_toEndOf="@+id/pin9"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
 
@@ -217,21 +230,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
-            android:fontFamily="@font/fjallaoneregular"
+            android:fontFamily="sans-serif-medium"
             android:text="@string/validateRound"
             android:textColor="@color/black"
-            android:textSize="34sp"
+            android:textSize="28sp"
+            app:cornerRadius="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.935" />
+            app:layout_constraintVertical_bias="0.947" />
 
         <TextView
             android:id="@+id/idPlayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/fjallaoneregular"
+            android:fontFamily="sans-serif-medium"
             android:text="TextView"
             android:textColor="@color/white"
             android:textSize="34sp"
@@ -246,7 +261,7 @@
             android:id="@+id/scorePlayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/fjallaoneregular"
+            android:fontFamily="sans-serif-medium"
             android:text="TextView"
             android:textColor="@color/white"
             android:textSize="24sp"
@@ -256,5 +271,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.761" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -22,7 +22,8 @@
         app:layout_constraintHorizontal_bias="0.205"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.909" />
+        app:layout_constraintVertical_bias="0.909"
+        app:rippleColor="@color/orange" />
 
     <Button
         android:id="@+id/buttonConnectMolkky"
@@ -37,7 +38,8 @@
         app:layout_constraintHorizontal_bias="0.826"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.909" />
+        app:layout_constraintVertical_bias="0.909"
+        app:rippleColor="@color/orange" />
 
     <ImageView
         android:id="@+id/imageView2"

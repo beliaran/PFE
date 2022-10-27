@@ -100,6 +100,14 @@ public class GameFragment extends Fragment {
         listImageView.add(imageViewPin11);
         listImageView.add(imageViewPin12);
         updateInterface();
+        ImageView imageCup = (ImageView) root.findViewById(R.id.imageCup);
+        imageCup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.nav_scoreboard);
+                listImageView= new ArrayList<>();
+            }
+        });
         Button buttonValidate= (Button) root.findViewById(R.id.buttonValidateRound);
         buttonValidate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,7 +169,6 @@ public class GameFragment extends Fragment {
                 }
             }
         });
-
         return root;
     }
 
@@ -173,6 +180,7 @@ public class GameFragment extends Fragment {
                 listImageView.get(i).setImageDrawable(getResources().getDrawable(listDrawableConnected[i]));
             }
             if(pins.get(i).hasFallen()){
+                System.out.println("pin "+ (i+1) +" fallen updating "+ listImageView.get(i) +" with "+listDrawableFallen[i]);
                 listImageView.get(i).setImageDrawable(getResources().getDrawable(listDrawableFallen[i]));
             }
             int g = i;
