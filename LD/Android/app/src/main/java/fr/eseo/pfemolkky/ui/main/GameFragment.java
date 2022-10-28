@@ -164,7 +164,6 @@ public class GameFragment extends Fragment {
     private void updateInterface() {
         for(int i=0;i<12;i++){
             if(!pins.get(i).isConnected()){
-                System.out.println(listImageView.get(i)+ " not connected");
                 listImageView.get(i).setBackgroundResource(R.drawable.circlepinbuttondisconnected);
             }else{
                 listImageView.get(i).setBackground(getResources().getDrawable(R.drawable.circlepinbutton));
