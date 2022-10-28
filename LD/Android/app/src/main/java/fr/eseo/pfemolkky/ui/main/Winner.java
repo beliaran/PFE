@@ -10,7 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import fr.eseo.pfemolkky.MainActivity;
 import fr.eseo.pfemolkky.R;
@@ -26,6 +30,10 @@ public class Winner extends Fragment {
     private int winnerPlayerNumber;
     private Player player;
     private NavController navController;
+    private ArrayList<Player> players;
+    private int globalScore=0;
+    private float averageScore;
+    private float averageScorePerRound;
 
     public Winner() {
         // Required empty public constructor
@@ -52,8 +60,35 @@ public class Winner extends Fragment {
         navController = NavHostFragment.findNavController(this);
         winnerPlayerNumber = getArguments().getInt("winner");
         player = ((MainActivity)getActivity()).getGame().getPlayers().get(winnerPlayerNumber);
-        TextView textWinner = root.findViewById(R.id.textWinner);
-        textWinner.setText(player.getName());
+        players = ((MainActivity)getActivity()).getGame().getPlayers();
+        Player brute;
+        brute=players.get(0);
+        Player sniper;
+        sniper=players.get(0);
+        LinearLayout playerList = (LinearLayout) root.findViewById(R.id.playerList);
+        for(Player playerIteration : players){
+            globalScore+=playerIteration.getScore();
+            if(brute.getFallenPins()<playerIteration.getFallenPins()){
+                brute=playerIteration;
+            }
+            if(sniper.getUniquePin()<playerIteration.getUniquePin()){
+                sniper=playerIteration;
+            }
+            View fragment = inflater.inflate(R.layout.fragment_player_score_board, container, false);
+            TextView textName = fragment.findViewById(R.id.playerName);
+            textName.setText(playerIteration.getName());
+            TextView textScore = fragment.findViewById(R.id.playerScore);
+            textScore.setText(String.valueOf(playerIteration.getScore())+"/50");
+            playerList.addView(fragment);
+        }
+        averageScore=globalScore/players.size();
+        averageScorePerRound=averageScore/((MainActivity)getActivity()).getGame().getRound();
+        TextView textSniper= root.findViewById(R.id.playerSniper);
+        TextView textBrute= root.findViewById(R.id.playerBrute);
+        TextView textAverageScorePerRound= root.findViewById(R.id.averageScorePerRound);
+        textSniper.setText(sniper.getName());
+        textBrute.setText(brute.getName());
+        textAverageScorePerRound.setText(String.valueOf(averageScorePerRound));
         Button backToMenu = root.findViewById(R.id.buttonReturnToMenu);
         backToMenu.setOnClickListener(new View.OnClickListener() {
             @Override

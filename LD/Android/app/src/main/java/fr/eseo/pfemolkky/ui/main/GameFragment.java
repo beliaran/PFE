@@ -112,6 +112,8 @@ public class GameFragment extends Fragment {
                         if(pin.hasFallen()){
                             player.setMissed(0);
                             player.setScore(player.getScore()+ pin.getNumber());
+                            player.setUniquePin(player.getUniquePin()+1);
+                            player.setFallenPins(player.getFallenPins()+1);
                         }
                     }
                 }
@@ -130,6 +132,7 @@ public class GameFragment extends Fragment {
                 }else{
                     player.setMissed(0);
                     player.setScore(player.getScore()+ countFallen);
+                    player.setFallenPins(player.getFallenPins()+countFallen);
                 }
                 if((game.getTypeOfGame()== Game.TypeOfGame.tournament && game.getPlayers().size()==1)||player.getScore()==game.getScoreToWin()){
                     //To do when win
@@ -151,6 +154,7 @@ public class GameFragment extends Fragment {
                     Bundle bundle = new Bundle();
                     if(game.getPlayers().indexOf(player)==game.getPlayers().size()-1){
                         bundle.putInt("player",0);
+                        game.setRound(game.getRound()+1);
                     }else{
                         bundle.putInt("player",playerNumber+1);
                     }

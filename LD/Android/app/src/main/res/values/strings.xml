@@ -28,4 +28,9 @@
     <string name="player_name">Player Name</string>
     <string name="player_score">Score</string>
     <string name="scoreboard">Scoreboard</string>
+    <string name="endOfGame">Game Over</string>
+    <string name="keyMoments">Key Moments</string>
+    <string name="sniper">The Sniper</string>
+    <string name="brute">The Brute</string>
+    <string name="averageScore">Average Score per round</string>
 </resources>

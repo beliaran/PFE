@@ -7,6 +7,16 @@ public class Game {
     private ArrayList<Pin> pins = new ArrayList<>();
     private TypeOfGame typeOfGame;
     private int scoreToWin;
+
+    public int getRound() {
+        return round;
+    }
+
+    public void setRound(int round) {
+        this.round = round;
+    }
+
+    private int round = 1;
     public enum TypeOfGame {tournament, classic, fast, pastis}
 
     public ArrayList<Player> getPlayers() {

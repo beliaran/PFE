@@ -4,6 +4,24 @@ public class Player {
     private String name;
     private int missed = 0;
     private int score = 0;
+    private int uniquePin = 0;
+    private int fallenPins = 0;
+
+    public int getFallenPins() {
+        return fallenPins;
+    }
+
+    public void setFallenPins(int fallenPins) {
+        this.fallenPins = fallenPins;
+    }
+
+    public int getUniquePin() {
+        return uniquePin;
+    }
+
+    public void setUniquePin(int uniquePin) {
+        this.uniquePin = uniquePin;
+    }
 
     public int getMissed() {
         return missed;

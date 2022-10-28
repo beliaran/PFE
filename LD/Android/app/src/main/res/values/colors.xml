@@ -10,5 +10,7 @@
     <color name="orange">#eb9b2f</color>
     <color name="purple_molkky">#5c236a</color>
     <color name="purple_molkky_dark">#29123A</color>
+    <color name="purple_molkky_dark_grey">#372347</color>
+    <color name="purple_molkky_light_grey">#412f50</color>
     <color name="light_grey">#999999</color>
 </resources>
