@@ -1,0 +1,8 @@
+Added Component: Designator=uC(uC_NRF52840)
+Added Pin To Net: NetName=GND Pin=uC-5
+Added Pin To Net: NetName=GND Pin=uC-16
+Added Net: Name=GND
+Added Pin To Net: NetName=SWCLK Pin=uC-28
+Added Net: Name=SWCLK
+Added Pin To Net: NetName=SWD Pin=uC-27
+Added Net: Name=SWD

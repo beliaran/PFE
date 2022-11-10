@@ -1,0 +1,790 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD18\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">15/11/2019</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">11:10:34</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc" class="file"><acronym title="\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc">\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">150</td></tr>
+</table>
+</td>
+</table><a name="IDH3XA3RQI1JDGLW52GXZPNVNV5ED2M42YSXBSVJEZ2WGXTG1UHOCG"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID2WUQEBUSFSO0OCDLPJDDVF4CLCVV0RG42N50L3EVULQ13VQX2JLN">Clearance Constraint (Gap=0.1mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDORBYMN5KDYTPPLTZU3FNN24TWBHMQLRUXR2FHBE123L0PGFIILTL">Clearance Constraint (Gap=0.3mm) (InNamedPolygon('BottomLayer-GND')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUES4ZHCJBS1MLRUS5D40YH4KYMD0AWS4NJKGW4IXZG54LVZGK4DB">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">8</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDUBNANYMCYGN5IX15HAABCIMZWC3OIMWYWY4OSZFVOR5BRN4K2UTN">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDON1IGIOHX4B0HLAR1MT1QWNMTOWZAGARRJBGPLOJU1M4DJEAKGBF">Width Constraint (Min=0.1mm) (Max=0.4mm) (Preferred=0.254mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDDB2STSVN4GVWHXV0GWYUY4DGXGW0FEFLVLS2Q0PIBTO1LBNG1CWD">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDNFJKANA2J4U0CKTQCF31SJ024FFAAWU5QJK2FXNVH1QL1ADYRTX">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID50XMC5CQQXG05YGJVCA15UD0DOSF01JV2U1PKP3OBFZYY3RDS0N">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDYZ0RJ3ZRG2KSCYUTXZBFBBVFQLL3XHPMVZX3NC3KHPD1BKAND0G">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">42</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDDUUZUALRMCQBCWGDXZB40DQJWKFI3ZZH5K4PDRM3LAQ3VKKSNELM">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">90</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDRJRWV10BQOORGDQEROHDGXVXSJ2HMSOS2LMYTOLTD1XGRSUADARI">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">10</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDHVNY3GOWWNHSNWFS3MFBCCX052PI0W1PL2FPVNC4HVXPQPZYVLL">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID3BMAWJDRHAA3IA2G24K5CYG5VIGFRHNRBK30WJIDOKW2QP2TNZLB">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">150</td>
+</tr>
+</table><br><a name="IDUES4ZHCJBS1MLRUS5D40YH4KYMD0AWS4NJKGW4IXZG54LVZGK4DB"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Short-Circuit Constraint (Allowed=No) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad LINK-P1(7.466mm,6.069mm) on Multi-Layer And Region (0 hole(s)) Bottom Layer Location : [X = 0mm][Y = 0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad LINK-P1(7.466mm,6.069mm) on Multi-Layer And Region (0 hole(s)) Bottom Layer Location : [X = 0mm][Y = 0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad LINK-P2(12.316mm,6.069mm) on Multi-Layer And Region (0 hole(s)) Bottom Layer Location : [X = 0mm][Y = 0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad LINK-P2(12.316mm,6.069mm) on Multi-Layer And Region (0 hole(s)) Bottom Layer Location : [X = 0mm][Y = 0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4138.418mil|Location2.X=4226.6mil|Location1.Y=3361.106mil|Location2.Y=3449.288mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4138.418mil|Location2.X=4226.6mil|Location1.Y=3361.106mil|Location2.Y=3449.288mil|Absolute=True">Short-Circuit Constraint: Between Pad LINK-P3(5.791mm,9.149mm) on Multi-Layer And Region (0 hole(s)) Bottom Layer Location : [X = 106.236mm][Y = 86.492mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4159.89mil|Location2.X=4247.848mil|Location1.Y=3361.182mil|Location2.Y=3449.14mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4159.89mil|Location2.X=4247.848mil|Location1.Y=3361.182mil|Location2.Y=3449.14mil|Absolute=True">Short-Circuit Constraint: Between Pad LINK-P3(5.791mm,9.149mm) on Multi-Layer And Region (0 hole(s)) Bottom Layer Location : [X = 106.778mm][Y = 86.491mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4460.971mil|Location2.X=4548.929mil|Location1.Y=3361.182mil|Location2.Y=3449.14mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4460.971mil|Location2.X=4548.929mil|Location1.Y=3361.182mil|Location2.Y=3449.14mil|Absolute=True">Short-Circuit Constraint: Between Pad LINK-P6(13.991mm,9.149mm) on Multi-Layer And Region (0 hole(s)) Bottom Layer Location : [X = 114.426mm][Y = 86.491mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4482.218mil|Location2.X=4570.401mil|Location1.Y=3361.106mil|Location2.Y=3449.288mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4482.218mil|Location2.X=4570.401mil|Location1.Y=3361.106mil|Location2.Y=3449.288mil|Absolute=True">Short-Circuit Constraint: Between Pad LINK-P6(13.991mm,9.149mm) on Multi-Layer And Region (0 hole(s)) Bottom Layer Location : [X = 114.968mm][Y = 86.492mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDYZ0RJ3ZRG2KSCYUTXZBFBBVFQLL3XHPMVZX3NC3KHPD1BKAND0G"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3819.04mil|Location2.X=3830.29mil|Location1.Y=2637.763mil|Location2.Y=2650.761mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3819.04mil|Location2.X=3830.29mil|Location1.Y=2637.763mil|Location2.Y=2650.761mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.207mm &lt; 0.254mm) Between Pad C5-2(-2.87mm,-10.998mm) on Top Layer And Via (-4.318mm,-9.83mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.207mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3814.318mil|Location2.X=3825.568mil|Location1.Y=2673.622mil|Location2.Y=2684.949mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3814.318mil|Location2.X=3825.568mil|Location1.Y=2673.622mil|Location2.Y=2684.949mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.194mm &lt; 0.254mm) Between Pad C6-2(-3.009mm,-8.474mm) on Top Layer And Via (-4.318mm,-9.83mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.194mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4387.17mil|Location2.X=4398.42mil|Location1.Y=3247.926mil|Location2.Y=3259.176mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4387.17mil|Location2.X=4398.42mil|Location1.Y=3247.926mil|Location2.Y=3259.176mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.254mm) Between Pad LINK-1(11.191mm,6.274mm) on Bottom Layer And Pad LINK-2(10.541mm,6.274mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4415.796mil|Location2.X=4427.046mil|Location1.Y=3310.853mil|Location2.Y=3322.103mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4415.796mil|Location2.X=4427.046mil|Location1.Y=3310.853mil|Location2.Y=3322.103mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.201mm &lt; 0.254mm) Between Pad LINK-1(11.191mm,6.274mm) on Bottom Layer And Pad LINK-P2(12.316mm,6.069mm) on Multi-Layer [Bottom Solder] Mask Sliver [0.201mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4415.796mil|Location2.X=4427.046mil|Location1.Y=3310.853mil|Location2.Y=3322.103mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4415.796mil|Location2.X=4427.046mil|Location1.Y=3310.853mil|Location2.Y=3322.103mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.201mm &lt; 0.254mm) Between Pad LINK-1(11.191mm,6.274mm) on Bottom Layer And Region (0 hole(s)) Bottom Solder [Bottom Solder] Mask Sliver [0.201mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4361.579mil|Location2.X=4372.829mil|Location1.Y=3247.926mil|Location2.Y=3259.176mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4361.579mil|Location2.X=4372.829mil|Location1.Y=3247.926mil|Location2.Y=3259.176mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.254mm) Between Pad LINK-2(10.541mm,6.274mm) on Bottom Layer And Pad LINK-3(9.891mm,6.274mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4335.989mil|Location2.X=4347.239mil|Location1.Y=3247.926mil|Location2.Y=3259.176mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4335.989mil|Location2.X=4347.239mil|Location1.Y=3247.926mil|Location2.Y=3259.176mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.254mm) Between Pad LINK-3(9.891mm,6.274mm) on Bottom Layer And Pad LINK-4(9.241mm,6.274mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4310.398mil|Location2.X=4321.648mil|Location1.Y=3247.926mil|Location2.Y=3259.176mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4310.398mil|Location2.X=4321.648mil|Location1.Y=3247.926mil|Location2.Y=3259.176mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.254mm) Between Pad LINK-4(9.241mm,6.274mm) on Bottom Layer And Pad LINK-5(8.591mm,6.274mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4281.824mil|Location2.X=4293.074mil|Location1.Y=3310.861mil|Location2.Y=3322.111mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4281.824mil|Location2.X=4293.074mil|Location1.Y=3310.861mil|Location2.Y=3322.111mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.198mm &lt; 0.254mm) Between Pad LINK-5(8.591mm,6.274mm) on Bottom Layer And Pad LINK-P1(7.466mm,6.069mm) on Multi-Layer [Bottom Solder] Mask Sliver [0.198mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4281.824mil|Location2.X=4293.074mil|Location1.Y=3247.926mil|Location2.Y=3259.176mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4281.824mil|Location2.X=4293.074mil|Location1.Y=3247.926mil|Location2.Y=3259.176mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.198mm &lt; 0.254mm) Between Pad LINK-5(8.591mm,6.274mm) on Bottom Layer And Region (0 hole(s)) Bottom Solder [Bottom Solder] Mask Sliver [0.198mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4275.918mil|Location2.X=4287.168mil|Location1.Y=3354.225mil|Location2.Y=3365.475mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4275.918mil|Location2.X=4287.168mil|Location1.Y=3354.225mil|Location2.Y=3365.475mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.248mm &lt; 0.254mm) Between Pad LINK-P4(8.953mm,9.349mm) on Bottom Layer And Region (0 hole(s)) Bottom Solder [Bottom Solder] Mask Sliver [0.248mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4421.65mil|Location2.X=4432.9mil|Location1.Y=3382.241mil|Location2.Y=3393.491mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4421.65mil|Location2.X=4432.9mil|Location1.Y=3382.241mil|Location2.Y=3393.491mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.248mm &lt; 0.254mm) Between Pad LINK-P5(10.828mm,9.349mm) on Bottom Layer And Region (0 hole(s)) Bottom Solder [Bottom Solder] Mask Sliver [0.248mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3799.375mil|Location2.X=3810.625mil|Location1.Y=3256.875mil|Location2.Y=3268.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3799.375mil|Location2.X=3810.625mil|Location1.Y=3256.875mil|Location2.Y=3268.125mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.178mm &lt; 0.254mm) Between Pad MCP73831T-1(-3.327mm,5.055mm) on Bottom Layer And Pad MCP73831T-2(-3.327mm,5.994mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.178mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3799.375mil|Location2.X=3810.625mil|Location1.Y=3293.875mil|Location2.Y=3305.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3799.375mil|Location2.X=3810.625mil|Location1.Y=3293.875mil|Location2.Y=3305.125mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.178mm &lt; 0.254mm) Between Pad MCP73831T-2(-3.327mm,5.994mm) on Bottom Layer And Pad MCP73831T-3(-3.327mm,6.934mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.178mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3835.005mil|Location2.X=3846.255mil|Location1.Y=3105.383mil|Location2.Y=3116.633mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3835.005mil|Location2.X=3846.255mil|Location1.Y=3105.383mil|Location2.Y=3116.633mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.037mm &lt; 0.254mm) Between Pad MPU6050-1(-3.409mm,2.173mm) on Bottom Layer And Pad MPU6050-2(-2.909mm,2.173mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.037mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3932.383mil|Location2.X=3943.633mil|Location1.Y=3027.69mil|Location2.Y=3038.94mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3932.383mil|Location2.X=3943.633mil|Location1.Y=3027.69mil|Location2.Y=3038.94mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.037mm &lt; 0.254mm) Between Pad MPU6050-10(-0.189mm,-0.047mm) on Bottom Layer And Pad MPU6050-11(-0.189mm,-0.547mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.037mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3932.383mil|Location2.X=3943.633mil|Location1.Y=3047.375mil|Location2.Y=3058.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3932.383mil|Location2.X=3943.633mil|Location1.Y=3047.375mil|Location2.Y=3058.625mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.037mm &lt; 0.254mm) Between Pad MPU6050-10(-0.189mm,-0.047mm) on Bottom Layer And Pad MPU6050-9(-0.189mm,0.453mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.037mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3932.383mil|Location2.X=3943.633mil|Location1.Y=3008.005mil|Location2.Y=3019.255mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3932.383mil|Location2.X=3943.633mil|Location1.Y=3008.005mil|Location2.Y=3019.255mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.037mm &lt; 0.254mm) Between Pad MPU6050-11(-0.189mm,-0.547mm) on Bottom Layer And Pad MPU6050-12(-0.189mm,-1.047mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.037mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3913.745mil|Location2.X=3924.995mil|Location1.Y=2950.265mil|Location2.Y=2961.515mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3913.745mil|Location2.X=3924.995mil|Location1.Y=2950.265mil|Location2.Y=2961.515mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.037mm &lt; 0.254mm) Between Pad MPU6050-13(-0.909mm,-1.767mm) on Bottom Layer And Pad MPU6050-14(-1.409mm,-1.767mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.037mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3894.06mil|Location2.X=3905.31mil|Location1.Y=2950.265mil|Location2.Y=2961.515mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3894.06mil|Location2.X=3905.31mil|Location1.Y=2950.265mil|Location2.Y=2961.515mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.037mm &lt; 0.254mm) Between Pad MPU6050-14(-1.409mm,-1.767mm) on Bottom Layer And Pad MPU6050-15(-1.909mm,-1.767mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.037mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3874.375mil|Location2.X=3885.625mil|Location1.Y=2950.265mil|Location2.Y=2961.515mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3874.375mil|Location2.X=3885.625mil|Location1.Y=2950.265mil|Location2.Y=2961.515mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.037mm &lt; 0.254mm) Between Pad MPU6050-15(-1.909mm,-1.767mm) on Bottom Layer And Pad MPU6050-16(-2.409mm,-1.767mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.037mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3854.69mil|Location2.X=3865.94mil|Location1.Y=2950.265mil|Location2.Y=2961.515mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3854.69mil|Location2.X=3865.94mil|Location1.Y=2950.265mil|Location2.Y=2961.515mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.037mm &lt; 0.254mm) Between Pad MPU6050-16(-2.409mm,-1.767mm) on Bottom Layer And Pad MPU6050-17(-2.909mm,-1.767mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.037mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3835.005mil|Location2.X=3846.255mil|Location1.Y=2950.265mil|Location2.Y=2961.515mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3835.005mil|Location2.X=3846.255mil|Location1.Y=2950.265mil|Location2.Y=2961.515mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.037mm &lt; 0.254mm) Between Pad MPU6050-17(-2.909mm,-1.767mm) on Bottom Layer And Pad MPU6050-18(-3.409mm,-1.767mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.037mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3777.265mil|Location2.X=3788.515mil|Location1.Y=3008.005mil|Location2.Y=3019.255mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3777.265mil|Location2.X=3788.515mil|Location1.Y=3008.005mil|Location2.Y=3019.255mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.037mm &lt; 0.254mm) Between Pad MPU6050-19(-4.129mm,-1.047mm) on Bottom Layer And Pad MPU6050-20(-4.129mm,-0.547mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.037mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3854.69mil|Location2.X=3865.94mil|Location1.Y=3105.383mil|Location2.Y=3116.633mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3854.69mil|Location2.X=3865.94mil|Location1.Y=3105.383mil|Location2.Y=3116.633mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.037mm &lt; 0.254mm) Between Pad MPU6050-2(-2.909mm,2.173mm) on Bottom Layer And Pad MPU6050-3(-2.409mm,2.173mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.037mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3777.265mil|Location2.X=3788.515mil|Location1.Y=3027.69mil|Location2.Y=3038.94mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3777.265mil|Location2.X=3788.515mil|Location1.Y=3027.69mil|Location2.Y=3038.94mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.037mm &lt; 0.254mm) Between Pad MPU6050-20(-4.129mm,-0.547mm) on Bottom Layer And Pad MPU6050-21(-4.129mm,-0.047mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.037mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3777.265mil|Location2.X=3788.515mil|Location1.Y=3047.375mil|Location2.Y=3058.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3777.265mil|Location2.X=3788.515mil|Location1.Y=3047.375mil|Location2.Y=3058.625mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.037mm &lt; 0.254mm) Between Pad MPU6050-21(-4.129mm,-0.047mm) on Bottom Layer And Pad MPU6050-22(-4.129mm,0.453mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.037mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3777.265mil|Location2.X=3788.515mil|Location1.Y=3067.06mil|Location2.Y=3078.31mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3777.265mil|Location2.X=3788.515mil|Location1.Y=3067.06mil|Location2.Y=3078.31mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.037mm &lt; 0.254mm) Between Pad MPU6050-22(-4.129mm,0.453mm) on Bottom Layer And Pad MPU6050-23(-4.129mm,0.953mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.037mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3777.265mil|Location2.X=3788.515mil|Location1.Y=3086.745mil|Location2.Y=3097.995mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3777.265mil|Location2.X=3788.515mil|Location1.Y=3086.745mil|Location2.Y=3097.995mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.037mm &lt; 0.254mm) Between Pad MPU6050-23(-4.129mm,0.953mm) on Bottom Layer And Pad MPU6050-24(-4.129mm,1.453mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.037mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3874.375mil|Location2.X=3885.625mil|Location1.Y=3105.383mil|Location2.Y=3116.633mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3874.375mil|Location2.X=3885.625mil|Location1.Y=3105.383mil|Location2.Y=3116.633mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.037mm &lt; 0.254mm) Between Pad MPU6050-3(-2.409mm,2.173mm) on Bottom Layer And Pad MPU6050-4(-1.909mm,2.173mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.037mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3894.06mil|Location2.X=3905.31mil|Location1.Y=3105.383mil|Location2.Y=3116.633mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3894.06mil|Location2.X=3905.31mil|Location1.Y=3105.383mil|Location2.Y=3116.633mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.037mm &lt; 0.254mm) Between Pad MPU6050-4(-1.909mm,2.173mm) on Bottom Layer And Pad MPU6050-5(-1.409mm,2.173mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.037mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3913.745mil|Location2.X=3924.995mil|Location1.Y=3105.383mil|Location2.Y=3116.633mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3913.745mil|Location2.X=3924.995mil|Location1.Y=3105.383mil|Location2.Y=3116.633mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.037mm &lt; 0.254mm) Between Pad MPU6050-5(-1.409mm,2.173mm) on Bottom Layer And Pad MPU6050-6(-0.909mm,2.173mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.037mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3932.383mil|Location2.X=3943.633mil|Location1.Y=3086.745mil|Location2.Y=3097.995mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3932.383mil|Location2.X=3943.633mil|Location1.Y=3086.745mil|Location2.Y=3097.995mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.037mm &lt; 0.254mm) Between Pad MPU6050-7(-0.189mm,1.453mm) on Bottom Layer And Pad MPU6050-8(-0.189mm,0.953mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.037mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3932.383mil|Location2.X=3943.633mil|Location1.Y=3067.06mil|Location2.Y=3078.31mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3932.383mil|Location2.X=3943.633mil|Location1.Y=3067.06mil|Location2.Y=3078.31mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.037mm &lt; 0.254mm) Between Pad MPU6050-8(-0.189mm,0.953mm) on Bottom Layer And Pad MPU6050-9(-0.189mm,0.453mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.037mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3760.907mil|Location2.X=3772.157mil|Location1.Y=2634.199mil|Location2.Y=2646.722mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3760.907mil|Location2.X=3772.157mil|Location1.Y=2634.199mil|Location2.Y=2646.722mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.209mm &lt; 0.254mm) Between Pad R4-2(-5.867mm,-11.049mm) on Top Layer And Via (-4.318mm,-9.83mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.209mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3766.415mil|Location2.X=3777.665mil|Location1.Y=2674.417mil|Location2.Y=2685.667mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3766.415mil|Location2.X=3777.665mil|Location1.Y=2674.417mil|Location2.Y=2685.667mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.144mm &lt; 0.254mm) Between Pad R5-1(-5.69mm,-8.484mm) on Top Layer And Via (-4.318mm,-9.83mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.144mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3621.375mil|Location2.X=3632.625mil|Location1.Y=2714.375mil|Location2.Y=2725.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3621.375mil|Location2.X=3632.625mil|Location1.Y=2714.375mil|Location2.Y=2725.625mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.254mm) Between Pad R5-2(-7.823mm,-8.484mm) on Top Layer And Via (-9.347mm,-8.255mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4138.375mil|Location2.X=4149.625mil|Location1.Y=2623.875mil|Location2.Y=2635.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4138.375mil|Location2.X=4149.625mil|Location1.Y=2623.875mil|Location2.Y=2635.125mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.178mm &lt; 0.254mm) Between Pad U1-1(5.283mm,-11.024mm) on Top Layer And Pad U1-2(5.283mm,-10.084mm) on Top Layer [Top Solder] Mask Sliver [0.178mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4138.375mil|Location2.X=4149.625mil|Location1.Y=2660.875mil|Location2.Y=2672.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4138.375mil|Location2.X=4149.625mil|Location1.Y=2660.875mil|Location2.Y=2672.125mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.178mm &lt; 0.254mm) Between Pad U1-2(5.283mm,-10.084mm) on Top Layer And Pad U1-3(5.283mm,-9.144mm) on Top Layer [Top Solder] Mask Sliver [0.178mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4197.054mil|Location2.X=4208.304mil|Location1.Y=2698.562mil|Location2.Y=2709.812mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4197.054mil|Location2.X=4208.304mil|Location1.Y=2698.562mil|Location2.Y=2709.812mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.215mm &lt; 0.254mm) Between Pad U1-3(5.283mm,-9.144mm) on Top Layer And Via (6.172mm,-7.823mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.215mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4506.265mil|Location2.X=4517.515mil|Location1.Y=3311.901mil|Location2.Y=3323.151mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4506.265mil|Location2.X=4517.515mil|Location1.Y=3311.901mil|Location2.Y=3323.151mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.053mm &lt; 0.254mm) Between Region (0 hole(s)) Bottom Solder And Region (0 hole(s)) Bottom Solder [Bottom Solder] Mask Sliver [0.053mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4271.028mil|Location2.X=4282.278mil|Location1.Y=3311.905mil|Location2.Y=3323.155mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4271.028mil|Location2.X=4282.278mil|Location1.Y=3311.905mil|Location2.Y=3323.155mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.053mm &lt; 0.254mm) Between Region (0 hole(s)) Bottom Solder And Region (0 hole(s)) Bottom Solder [Bottom Solder] Mask Sliver [0.053mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDDUUZUALRMCQBCWGDXZB40DQJWKFI3ZZH5K4PDRM3LAQ3VKKSNELM"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3621.588mil|Location2.X=3632.838mil|Location1.Y=3120.635mil|Location2.Y=3131.885mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3621.588mil|Location2.X=3632.838mil|Location1.Y=3120.635mil|Location2.Y=3131.885mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C1-1(-9.08mm,2.784mm) on Bottom Layer And Track (-9.82mm,1.894mm)(-6.55mm,1.894mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3579.462mil|Location2.X=3590.712mil|Location1.Y=3174.572mil|Location2.Y=3185.822mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3579.462mil|Location2.X=3590.712mil|Location1.Y=3174.572mil|Location2.Y=3185.822mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C1-1(-9.08mm,2.784mm) on Bottom Layer And Track (-9.82mm,1.894mm)(-9.82mm,3.684mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3582.218mil|Location2.X=3593.468mil|Location1.Y=3177.525mil|Location2.Y=3188.775mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3582.218mil|Location2.X=3593.468mil|Location1.Y=3177.525mil|Location2.Y=3188.775mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C1-1(-9.08mm,2.784mm) on Bottom Layer And Track (-9.82mm,3.684mm)(-6.55mm,3.684mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3694.816mil|Location2.X=3706.066mil|Location1.Y=3123.785mil|Location2.Y=3135.035mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3694.816mil|Location2.X=3706.066mil|Location1.Y=3123.785mil|Location2.Y=3135.035mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C1-2(-7.29mm,2.794mm) on Bottom Layer And Track (-6.55mm,1.894mm)(-6.55mm,3.684mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3692.06mil|Location2.X=3703.31mil|Location1.Y=3120.832mil|Location2.Y=3132.082mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3692.06mil|Location2.X=3703.31mil|Location1.Y=3120.832mil|Location2.Y=3132.082mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C1-2(-7.29mm,2.794mm) on Bottom Layer And Track (-9.82mm,1.894mm)(-6.55mm,1.894mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3652.69mil|Location2.X=3663.94mil|Location1.Y=3177.721mil|Location2.Y=3188.971mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3652.69mil|Location2.X=3663.94mil|Location1.Y=3177.721mil|Location2.Y=3188.971mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C1-2(-7.29mm,2.794mm) on Bottom Layer And Track (-9.82mm,3.684mm)(-6.55mm,3.684mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3590.218mil|Location2.X=3601.468mil|Location1.Y=3433.525mil|Location2.Y=3444.775mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3590.218mil|Location2.X=3601.468mil|Location1.Y=3433.525mil|Location2.Y=3444.775mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C2-1(-8.877mm,9.286mm) on Bottom Layer And Track (-9.617mm,10.186mm)(-6.347mm,10.186mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.588mil|Location2.X=3640.838mil|Location1.Y=3376.635mil|Location2.Y=3387.885mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.588mil|Location2.X=3640.838mil|Location1.Y=3376.635mil|Location2.Y=3387.885mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C2-1(-8.877mm,9.286mm) on Bottom Layer And Track (-9.617mm,8.396mm)(-6.347mm,8.396mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3587.462mil|Location2.X=3598.712mil|Location1.Y=3430.572mil|Location2.Y=3441.822mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3587.462mil|Location2.X=3598.712mil|Location1.Y=3430.572mil|Location2.Y=3441.822mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C2-1(-8.877mm,9.286mm) on Bottom Layer And Track (-9.617mm,8.396mm)(-9.617mm,10.186mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3702.816mil|Location2.X=3714.066mil|Location1.Y=3379.785mil|Location2.Y=3391.035mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3702.816mil|Location2.X=3714.066mil|Location1.Y=3379.785mil|Location2.Y=3391.035mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C2-2(-7.087mm,9.296mm) on Bottom Layer And Track (-6.347mm,8.396mm)(-6.347mm,10.186mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3660.69mil|Location2.X=3671.94mil|Location1.Y=3433.721mil|Location2.Y=3444.971mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3660.69mil|Location2.X=3671.94mil|Location1.Y=3433.721mil|Location2.Y=3444.971mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C2-2(-7.087mm,9.296mm) on Bottom Layer And Track (-9.617mm,10.186mm)(-6.347mm,10.186mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3700.06mil|Location2.X=3711.31mil|Location1.Y=3376.832mil|Location2.Y=3388.082mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3700.06mil|Location2.X=3711.31mil|Location1.Y=3376.832mil|Location2.Y=3388.082mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C2-2(-7.087mm,9.296mm) on Bottom Layer And Track (-9.617mm,8.396mm)(-6.347mm,8.396mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4040.462mil|Location2.X=4051.712mil|Location1.Y=3171.572mil|Location2.Y=3182.822mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4040.462mil|Location2.X=4051.712mil|Location1.Y=3171.572mil|Location2.Y=3182.822mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C3-1(2.63mm,2.708mm) on Bottom Layer And Track (1.89mm,1.818mm)(1.89mm,3.608mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4082.588mil|Location2.X=4093.838mil|Location1.Y=3117.635mil|Location2.Y=3128.885mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4082.588mil|Location2.X=4093.838mil|Location1.Y=3117.635mil|Location2.Y=3128.885mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C3-1(2.63mm,2.708mm) on Bottom Layer And Track (1.89mm,1.818mm)(5.16mm,1.818mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4043.218mil|Location2.X=4054.468mil|Location1.Y=3174.525mil|Location2.Y=3185.775mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4043.218mil|Location2.X=4054.468mil|Location1.Y=3174.525mil|Location2.Y=3185.775mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C3-1(2.63mm,2.708mm) on Bottom Layer And Track (1.89mm,3.608mm)(5.16mm,3.608mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4153.06mil|Location2.X=4164.31mil|Location1.Y=3117.832mil|Location2.Y=3129.082mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4153.06mil|Location2.X=4164.31mil|Location1.Y=3117.832mil|Location2.Y=3129.082mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C3-2(4.42mm,2.718mm) on Bottom Layer And Track (1.89mm,1.818mm)(5.16mm,1.818mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4113.69mil|Location2.X=4124.94mil|Location1.Y=3174.721mil|Location2.Y=3185.971mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4113.69mil|Location2.X=4124.94mil|Location1.Y=3174.721mil|Location2.Y=3185.971mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C3-2(4.42mm,2.718mm) on Bottom Layer And Track (1.89mm,3.608mm)(5.16mm,3.608mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4155.816mil|Location2.X=4167.066mil|Location1.Y=3120.785mil|Location2.Y=3132.035mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4155.816mil|Location2.X=4167.066mil|Location1.Y=3120.785mil|Location2.Y=3132.035mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C3-2(4.42mm,2.718mm) on Bottom Layer And Track (5.16mm,1.818mm)(5.16mm,3.608mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4040.218mil|Location2.X=4051.468mil|Location1.Y=2967.525mil|Location2.Y=2978.775mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4040.218mil|Location2.X=4051.468mil|Location1.Y=2967.525mil|Location2.Y=2978.775mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C4-1(2.553mm,-2.55mm) on Bottom Layer And Track (1.813mm,-1.65mm)(5.083mm,-1.65mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4037.462mil|Location2.X=4048.712mil|Location1.Y=2964.572mil|Location2.Y=2975.822mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4037.462mil|Location2.X=4048.712mil|Location1.Y=2964.572mil|Location2.Y=2975.822mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C4-1(2.553mm,-2.55mm) on Bottom Layer And Track (1.813mm,-3.44mm)(1.813mm,-1.65mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4079.588mil|Location2.X=4090.838mil|Location1.Y=2910.635mil|Location2.Y=2921.885mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4079.588mil|Location2.X=4090.838mil|Location1.Y=2910.635mil|Location2.Y=2921.885mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C4-1(2.553mm,-2.55mm) on Bottom Layer And Track (1.813mm,-3.44mm)(5.083mm,-3.44mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4110.69mil|Location2.X=4121.94mil|Location1.Y=2967.721mil|Location2.Y=2978.971mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4110.69mil|Location2.X=4121.94mil|Location1.Y=2967.721mil|Location2.Y=2978.971mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C4-2(4.343mm,-2.54mm) on Bottom Layer And Track (1.813mm,-1.65mm)(5.083mm,-1.65mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4150.06mil|Location2.X=4161.31mil|Location1.Y=2910.832mil|Location2.Y=2922.082mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4150.06mil|Location2.X=4161.31mil|Location1.Y=2910.832mil|Location2.Y=2922.082mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C4-2(4.343mm,-2.54mm) on Bottom Layer And Track (1.813mm,-3.44mm)(5.083mm,-3.44mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4152.816mil|Location2.X=4164.066mil|Location1.Y=2913.785mil|Location2.Y=2925.035mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4152.816mil|Location2.X=4164.066mil|Location1.Y=2913.785mil|Location2.Y=2925.035mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C4-2(4.343mm,-2.54mm) on Bottom Layer And Track (5.083mm,-3.44mm)(5.083mm,-1.65mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3939.288mil|Location2.X=3950.538mil|Location1.Y=2580.391mil|Location2.Y=2591.641mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3939.288mil|Location2.X=3950.538mil|Location1.Y=2580.391mil|Location2.Y=2591.641mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C5-1(-1.08mm,-11.008mm) on Top Layer And Track (-0.34mm,-11.898mm)(-0.34mm,-10.108mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3897.162mil|Location2.X=3908.412mil|Location1.Y=2634.525mil|Location2.Y=2645.775mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3897.162mil|Location2.X=3908.412mil|Location1.Y=2634.525mil|Location2.Y=2645.775mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C5-1(-1.08mm,-11.008mm) on Top Layer And Track (-3.61mm,-10.108mm)(-0.34mm,-10.108mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3936.532mil|Location2.X=3947.782mil|Location1.Y=2577.635mil|Location2.Y=2588.885mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3936.532mil|Location2.X=3947.782mil|Location1.Y=2577.635mil|Location2.Y=2588.885mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C5-1(-1.08mm,-11.008mm) on Top Layer And Track (-3.61mm,-11.898mm)(-0.34mm,-11.898mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3826.69mil|Location2.X=3837.94mil|Location1.Y=2634.721mil|Location2.Y=2645.971mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3826.69mil|Location2.X=3837.94mil|Location1.Y=2634.721mil|Location2.Y=2645.971mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C5-2(-2.87mm,-10.998mm) on Top Layer And Track (-3.61mm,-10.108mm)(-0.34mm,-10.108mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3866.06mil|Location2.X=3877.31mil|Location1.Y=2577.832mil|Location2.Y=2589.082mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3866.06mil|Location2.X=3877.31mil|Location1.Y=2577.832mil|Location2.Y=2589.082mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C5-2(-2.87mm,-10.998mm) on Top Layer And Track (-3.61mm,-11.898mm)(-0.34mm,-11.898mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3823.934mil|Location2.X=3835.184mil|Location1.Y=2631.965mil|Location2.Y=2643.215mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3823.934mil|Location2.X=3835.184mil|Location1.Y=2631.965mil|Location2.Y=2643.215mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C5-2(-2.87mm,-10.998mm) on Top Layer And Track (-3.61mm,-11.898mm)(-3.61mm,-10.108mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3933.816mil|Location2.X=3945.066mil|Location1.Y=2679.785mil|Location2.Y=2691.035mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3933.816mil|Location2.X=3945.066mil|Location1.Y=2679.785mil|Location2.Y=2691.035mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C6-1(-1.219mm,-8.484mm) on Top Layer And Track (-0.479mm,-9.374mm)(-0.479mm,-7.584mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3891.69mil|Location2.X=3902.94mil|Location1.Y=2733.918mil|Location2.Y=2745.168mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3891.69mil|Location2.X=3902.94mil|Location1.Y=2733.918mil|Location2.Y=2745.168mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C6-1(-1.219mm,-8.484mm) on Top Layer And Track (-3.749mm,-7.584mm)(-0.479mm,-7.584mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3931.06mil|Location2.X=3942.31mil|Location1.Y=2677.028mil|Location2.Y=2688.278mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3931.06mil|Location2.X=3942.31mil|Location1.Y=2677.028mil|Location2.Y=2688.278mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C6-1(-1.219mm,-8.484mm) on Top Layer And Track (-3.749mm,-9.374mm)(-0.479mm,-9.374mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3821.218mil|Location2.X=3832.468mil|Location1.Y=2734.115mil|Location2.Y=2745.365mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3821.218mil|Location2.X=3832.468mil|Location1.Y=2734.115mil|Location2.Y=2745.365mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C6-2(-3.009mm,-8.474mm) on Top Layer And Track (-3.749mm,-7.584mm)(-0.479mm,-7.584mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3860.588mil|Location2.X=3871.838mil|Location1.Y=2677.225mil|Location2.Y=2688.475mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3860.588mil|Location2.X=3871.838mil|Location1.Y=2677.225mil|Location2.Y=2688.475mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C6-2(-3.009mm,-8.474mm) on Top Layer And Track (-3.749mm,-9.374mm)(-0.479mm,-9.374mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3818.462mil|Location2.X=3829.712mil|Location1.Y=2731.359mil|Location2.Y=2742.609mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3818.462mil|Location2.X=3829.712mil|Location1.Y=2731.359mil|Location2.Y=2742.609mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C6-2(-3.009mm,-8.474mm) on Top Layer And Track (-3.749mm,-9.374mm)(-3.749mm,-7.584mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4251.539mil|Location2.X=4262.789mil|Location1.Y=3126.375mil|Location2.Y=3137.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4251.539mil|Location2.X=4262.789mil|Location1.Y=3126.375mil|Location2.Y=3137.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.246mm &lt; 0.254mm) Between Pad C7-1(6.847mm,2.21mm) on Bottom Layer And Track (7.645mm,2.21mm)(7.849mm,2.21mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.246mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4275.943mil|Location2.X=4287.193mil|Location1.Y=3126.375mil|Location2.Y=3137.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4275.943mil|Location2.X=4287.193mil|Location1.Y=3126.375mil|Location2.Y=3137.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.181mm &lt; 0.254mm) Between Pad C7-2(8.647mm,2.21mm) on Bottom Layer And Track (7.645mm,2.21mm)(7.849mm,2.21mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.181mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4041.218mil|Location2.X=4052.468mil|Location1.Y=3067.525mil|Location2.Y=3078.775mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4041.218mil|Location2.X=4052.468mil|Location1.Y=3067.525mil|Location2.Y=3078.775mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C8-1(2.579mm,-0.01mm) on Bottom Layer And Track (1.839mm,0.89mm)(5.109mm,0.89mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4038.462mil|Location2.X=4049.712mil|Location1.Y=3064.572mil|Location2.Y=3075.822mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4038.462mil|Location2.X=4049.712mil|Location1.Y=3064.572mil|Location2.Y=3075.822mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C8-1(2.579mm,-0.01mm) on Bottom Layer And Track (1.839mm,-0.9mm)(1.839mm,0.89mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4080.588mil|Location2.X=4091.838mil|Location1.Y=3010.635mil|Location2.Y=3021.885mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4080.588mil|Location2.X=4091.838mil|Location1.Y=3010.635mil|Location2.Y=3021.885mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C8-1(2.579mm,-0.01mm) on Bottom Layer And Track (1.839mm,-0.9mm)(5.109mm,-0.9mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4111.69mil|Location2.X=4122.94mil|Location1.Y=3067.721mil|Location2.Y=3078.971mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4111.69mil|Location2.X=4122.94mil|Location1.Y=3067.721mil|Location2.Y=3078.971mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C8-2(4.369mm,0mm) on Bottom Layer And Track (1.839mm,0.89mm)(5.109mm,0.89mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4151.06mil|Location2.X=4162.31mil|Location1.Y=3010.832mil|Location2.Y=3022.082mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4151.06mil|Location2.X=4162.31mil|Location1.Y=3010.832mil|Location2.Y=3022.082mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C8-2(4.369mm,0mm) on Bottom Layer And Track (1.839mm,-0.9mm)(5.109mm,-0.9mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4153.816mil|Location2.X=4165.066mil|Location1.Y=3013.785mil|Location2.Y=3025.035mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4153.816mil|Location2.X=4165.066mil|Location1.Y=3013.785mil|Location2.Y=3025.035mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.14mm &lt; 0.254mm) Between Pad C8-2(4.369mm,0mm) on Bottom Layer And Track (5.109mm,-0.9mm)(5.109mm,0.89mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.14mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4448.131mil|Location2.X=4459.381mil|Location1.Y=2719.194mil|Location2.Y=2730.444mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4448.131mil|Location2.X=4459.381mil|Location1.Y=2719.194mil|Location2.Y=2730.444mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad LED-1(12.964mm,-8.583mm) on Top Layer And Track (12.214mm,-11.233mm)(12.214mm,-5.733mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4465.847mil|Location2.X=4477.097mil|Location1.Y=2804.824mil|Location2.Y=2816.074mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4465.847mil|Location2.X=4477.097mil|Location1.Y=2804.824mil|Location2.Y=2816.074mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad LED-1(13.614mm,-6.833mm) on Top Layer And Track (12.214mm,-5.733mm)(15.314mm,-5.733mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4524.903mil|Location2.X=4536.153mil|Location1.Y=2602.068mil|Location2.Y=2613.318mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4524.903mil|Location2.X=4536.153mil|Location1.Y=2602.068mil|Location2.Y=2613.318mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.05mm &lt; 0.254mm) Between Pad LED-2(13.614mm,-10.333mm) on Top Layer And Track (12.214mm,-11.233mm)(15.314mm,-11.233mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3801.329mil|Location2.X=3814.385mil|Location1.Y=3327.76mil|Location2.Y=3339.01mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3801.329mil|Location2.X=3814.385mil|Location1.Y=3327.76mil|Location2.Y=3339.01mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.246mm &lt; 0.254mm) Between Pad MCP73831T-3(-3.327mm,6.934mm) on Bottom Layer And Text "MCP73831T" (1.651mm,7.417mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.246mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3940.87mil|Location2.X=3952.12mil|Location1.Y=3327.375mil|Location2.Y=3338.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3940.87mil|Location2.X=3952.12mil|Location1.Y=3327.375mil|Location2.Y=3338.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.203mm &lt; 0.254mm) Between Pad MCP73831T-4(-0.737mm,6.934mm) on Bottom Layer And Text "MCP73831T" (1.651mm,7.417mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.203mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3819.183mil|Location2.X=3830.433mil|Location1.Y=3127.848mil|Location2.Y=3141.383mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3819.183mil|Location2.X=3830.433mil|Location1.Y=3127.848mil|Location2.Y=3141.383mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.206mm &lt; 0.254mm) Between Pad MPU6050-1(-3.409mm,2.173mm) on Bottom Layer And Track (-4.209mm,2.253mm)(-3.719mm,2.253mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.206mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3957.133mil|Location2.X=3970.699mil|Location1.Y=2992.183mil|Location2.Y=3003.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3957.133mil|Location2.X=3970.699mil|Location1.Y=2992.183mil|Location2.Y=3003.433mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.206mm &lt; 0.254mm) Between Pad MPU6050-12(-0.189mm,-1.047mm) on Bottom Layer And Track (-0.109mm,-1.847mm)(-0.109mm,-1.357mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.206mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3930.999mil|Location2.X=3942.249mil|Location1.Y=2966.666mil|Location2.Y=2977.916mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3930.999mil|Location2.X=3942.249mil|Location1.Y=2966.666mil|Location2.Y=2977.916mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.116mm &lt; 0.254mm) Between Pad MPU6050-13(-0.909mm,-1.767mm) on Bottom Layer And Track (-0.599mm,-1.847mm)(-0.109mm,-1.847mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.116mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3817.751mil|Location2.X=3829.001mil|Location1.Y=2966.666mil|Location2.Y=2977.916mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3817.751mil|Location2.X=3829.001mil|Location1.Y=2966.666mil|Location2.Y=2977.916mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.116mm &lt; 0.254mm) Between Pad MPU6050-18(-3.409mm,-1.767mm) on Bottom Layer And Track (-4.209mm,-1.847mm)(-3.719mm,-1.847mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.116mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3793.666mil|Location2.X=3804.916mil|Location1.Y=2990.751mil|Location2.Y=3002.001mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3793.666mil|Location2.X=3804.916mil|Location1.Y=2990.751mil|Location2.Y=3002.001mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.116mm &lt; 0.254mm) Between Pad MPU6050-19(-4.129mm,-1.047mm) on Bottom Layer And Track (-4.209mm,-1.847mm)(-4.209mm,-1.357mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.116mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3793.666mil|Location2.X=3804.916mil|Location1.Y=3103.999mil|Location2.Y=3115.249mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3793.666mil|Location2.X=3804.916mil|Location1.Y=3103.999mil|Location2.Y=3115.249mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.116mm &lt; 0.254mm) Between Pad MPU6050-24(-4.129mm,1.453mm) on Bottom Layer And Track (-4.209mm,1.763mm)(-4.209mm,2.253mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.116mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3930.999mil|Location2.X=3942.249mil|Location1.Y=3128.084mil|Location2.Y=3139.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3930.999mil|Location2.X=3942.249mil|Location1.Y=3128.084mil|Location2.Y=3139.334mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.116mm &lt; 0.254mm) Between Pad MPU6050-6(-0.909mm,2.173mm) on Bottom Layer And Track (-0.599mm,2.253mm)(-0.109mm,2.253mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.116mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3955.084mil|Location2.X=3966.334mil|Location1.Y=3103.999mil|Location2.Y=3115.249mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3955.084mil|Location2.X=3966.334mil|Location1.Y=3103.999mil|Location2.Y=3115.249mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.116mm &lt; 0.254mm) Between Pad MPU6050-7(-0.189mm,1.453mm) on Bottom Layer And Track (-0.109mm,1.763mm)(-0.109mm,2.253mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.116mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4038.804mil|Location2.X=4050.054mil|Location1.Y=2782.375mil|Location2.Y=2793.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4038.804mil|Location2.X=4050.054mil|Location1.Y=2782.375mil|Location2.Y=2793.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.185mm &lt; 0.254mm) Between Pad NRF52840-10(1.6mm,-6.198mm) on Top Layer And Track (2.21mm,-6.528mm)(4.322mm,-6.528mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.185mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4470.94mil|Location2.X=4482.19mil|Location1.Y=3234.824mil|Location2.Y=3247.266mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4470.94mil|Location2.X=4482.19mil|Location1.Y=3234.824mil|Location2.Y=3247.266mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.218mm &lt; 0.254mm) Between Pad Power-4(13.176mm,3.821mm) on Multi-Layer And Track (13.141mm,5.085mm)(14.045mm,5.085mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.218mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4469.95mil|Location2.X=4481.2mil|Location1.Y=2820.011mil|Location2.Y=2831.261mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4469.95mil|Location2.X=4481.2mil|Location1.Y=2820.011mil|Location2.Y=2831.261mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.122mm &lt; 0.254mm) Between Pad Power-5(13.176mm,-4.379mm) on Multi-Layer And Track (12.214mm,-5.733mm)(15.314mm,-5.733mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4202.375mil|Location2.X=4213.625mil|Location1.Y=2967.123mil|Location2.Y=2978.373mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4202.375mil|Location2.X=4213.625mil|Location1.Y=2967.123mil|Location2.Y=2978.373mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R1-1(6.807mm,-2.515mm) on Bottom Layer And Track (6.007mm,-1.715mm)(9.807mm,-1.715mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4200.627mil|Location2.X=4211.877mil|Location1.Y=2965.375mil|Location2.Y=2976.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4200.627mil|Location2.X=4211.877mil|Location1.Y=2965.375mil|Location2.Y=2976.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R1-1(6.807mm,-2.515mm) on Bottom Layer And Track (6.007mm,-3.315mm)(6.007mm,-1.715mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4252.375mil|Location2.X=4263.625mil|Location1.Y=2913.627mil|Location2.Y=2924.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4252.375mil|Location2.X=4263.625mil|Location1.Y=2913.627mil|Location2.Y=2924.877mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R1-1(6.807mm,-2.515mm) on Bottom Layer And Track (6.007mm,-3.315mm)(9.807mm,-3.315mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4286.375mil|Location2.X=4297.625mil|Location1.Y=2967.123mil|Location2.Y=2978.373mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4286.375mil|Location2.X=4297.625mil|Location1.Y=2967.123mil|Location2.Y=2978.373mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R1-2(8.941mm,-2.515mm) on Bottom Layer And Track (6.007mm,-1.715mm)(9.807mm,-1.715mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4336.375mil|Location2.X=4347.625mil|Location1.Y=2913.627mil|Location2.Y=2924.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4336.375mil|Location2.X=4347.625mil|Location1.Y=2913.627mil|Location2.Y=2924.877mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R1-2(8.941mm,-2.515mm) on Bottom Layer And Track (6.007mm,-3.315mm)(9.807mm,-3.315mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4339.43mil|Location2.X=4350.68mil|Location1.Y=2915.375mil|Location2.Y=2926.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4339.43mil|Location2.X=4350.68mil|Location1.Y=2915.375mil|Location2.Y=2926.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.155mm &lt; 0.254mm) Between Pad R1-2(8.941mm,-2.515mm) on Bottom Layer And Track (9.807mm,-3.315mm)(9.807mm,-1.715mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.155mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4201.375mil|Location2.X=4212.625mil|Location1.Y=3064.123mil|Location2.Y=3075.373mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4201.375mil|Location2.X=4212.625mil|Location1.Y=3064.123mil|Location2.Y=3075.373mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R2-1(6.782mm,-0.051mm) on Bottom Layer And Track (5.982mm,0.749mm)(9.782mm,0.749mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4199.627mil|Location2.X=4210.877mil|Location1.Y=3062.375mil|Location2.Y=3073.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4199.627mil|Location2.X=4210.877mil|Location1.Y=3062.375mil|Location2.Y=3073.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R2-1(6.782mm,-0.051mm) on Bottom Layer And Track (5.982mm,-0.851mm)(5.982mm,0.749mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4251.375mil|Location2.X=4262.625mil|Location1.Y=3010.627mil|Location2.Y=3021.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4251.375mil|Location2.X=4262.625mil|Location1.Y=3010.627mil|Location2.Y=3021.877mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R2-1(6.782mm,-0.051mm) on Bottom Layer And Track (5.982mm,-0.851mm)(9.782mm,-0.851mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4285.375mil|Location2.X=4296.625mil|Location1.Y=3064.123mil|Location2.Y=3075.373mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4285.375mil|Location2.X=4296.625mil|Location1.Y=3064.123mil|Location2.Y=3075.373mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R2-2(8.915mm,-0.051mm) on Bottom Layer And Track (5.982mm,0.749mm)(9.782mm,0.749mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4335.375mil|Location2.X=4346.625mil|Location1.Y=3010.627mil|Location2.Y=3021.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4335.375mil|Location2.X=4346.625mil|Location1.Y=3010.627mil|Location2.Y=3021.877mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R2-2(8.915mm,-0.051mm) on Bottom Layer And Track (5.982mm,-0.851mm)(9.782mm,-0.851mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4338.43mil|Location2.X=4349.68mil|Location1.Y=3012.375mil|Location2.Y=3023.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4338.43mil|Location2.X=4349.68mil|Location1.Y=3012.375mil|Location2.Y=3023.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.155mm &lt; 0.254mm) Between Pad R2-2(8.915mm,-0.051mm) on Bottom Layer And Track (9.782mm,-0.851mm)(9.782mm,0.749mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.155mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3560.627mil|Location2.X=3571.877mil|Location1.Y=3070.375mil|Location2.Y=3081.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3560.627mil|Location2.X=3571.877mil|Location1.Y=3070.375mil|Location2.Y=3081.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R3-1(-9.449mm,0.152mm) on Bottom Layer And Track (-10.249mm,-0.648mm)(-10.249mm,0.952mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3612.375mil|Location2.X=3623.625mil|Location1.Y=3018.627mil|Location2.Y=3029.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3612.375mil|Location2.X=3623.625mil|Location1.Y=3018.627mil|Location2.Y=3029.877mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R3-1(-9.449mm,0.152mm) on Bottom Layer And Track (-10.249mm,-0.648mm)(-6.449mm,-0.648mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3562.375mil|Location2.X=3573.625mil|Location1.Y=3072.123mil|Location2.Y=3083.373mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3562.375mil|Location2.X=3573.625mil|Location1.Y=3072.123mil|Location2.Y=3083.373mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R3-1(-9.449mm,0.152mm) on Bottom Layer And Track (-10.249mm,0.952mm)(-6.449mm,0.952mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3696.375mil|Location2.X=3707.625mil|Location1.Y=3018.627mil|Location2.Y=3029.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3696.375mil|Location2.X=3707.625mil|Location1.Y=3018.627mil|Location2.Y=3029.877mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R3-2(-7.315mm,0.152mm) on Bottom Layer And Track (-10.249mm,-0.648mm)(-6.449mm,-0.648mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3646.375mil|Location2.X=3657.625mil|Location1.Y=3072.123mil|Location2.Y=3083.373mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3646.375mil|Location2.X=3657.625mil|Location1.Y=3072.123mil|Location2.Y=3083.373mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R3-2(-7.315mm,0.152mm) on Bottom Layer And Track (-10.249mm,0.952mm)(-6.449mm,0.952mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3699.43mil|Location2.X=3710.68mil|Location1.Y=3020.375mil|Location2.Y=3031.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3699.43mil|Location2.X=3710.68mil|Location1.Y=3020.375mil|Location2.Y=3031.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.155mm &lt; 0.254mm) Between Pad R3-2(-7.315mm,0.152mm) on Bottom Layer And Track (-6.449mm,-0.648mm)(-6.449mm,0.952mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.155mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3619.375mil|Location2.X=3630.625mil|Location1.Y=2631.123mil|Location2.Y=2642.373mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3619.375mil|Location2.X=3630.625mil|Location1.Y=2631.123mil|Location2.Y=2642.373mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R4-1(-8.001mm,-11.049mm) on Top Layer And Track (-8.801mm,-10.249mm)(-5.001mm,-10.249mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3669.375mil|Location2.X=3680.625mil|Location1.Y=2577.627mil|Location2.Y=2588.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3669.375mil|Location2.X=3680.625mil|Location1.Y=2577.627mil|Location2.Y=2588.877mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R4-1(-8.001mm,-11.049mm) on Top Layer And Track (-8.801mm,-11.849mm)(-5.001mm,-11.849mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3617.627mil|Location2.X=3628.877mil|Location1.Y=2629.375mil|Location2.Y=2640.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3617.627mil|Location2.X=3628.877mil|Location1.Y=2629.375mil|Location2.Y=2640.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R4-1(-8.001mm,-11.049mm) on Top Layer And Track (-8.801mm,-11.849mm)(-8.801mm,-10.249mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3756.43mil|Location2.X=3767.68mil|Location1.Y=2579.375mil|Location2.Y=2590.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3756.43mil|Location2.X=3767.68mil|Location1.Y=2579.375mil|Location2.Y=2590.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.155mm &lt; 0.254mm) Between Pad R4-2(-5.867mm,-11.049mm) on Top Layer And Track (-5.001mm,-11.849mm)(-5.001mm,-10.249mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.155mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3703.375mil|Location2.X=3714.625mil|Location1.Y=2631.123mil|Location2.Y=2642.373mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3703.375mil|Location2.X=3714.625mil|Location1.Y=2631.123mil|Location2.Y=2642.373mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R4-2(-5.867mm,-11.049mm) on Top Layer And Track (-8.801mm,-10.249mm)(-5.001mm,-10.249mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3753.375mil|Location2.X=3764.625mil|Location1.Y=2577.627mil|Location2.Y=2588.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3753.375mil|Location2.X=3764.625mil|Location1.Y=2577.627mil|Location2.Y=2588.877mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R4-2(-5.867mm,-11.049mm) on Top Layer And Track (-8.801mm,-11.849mm)(-5.001mm,-11.849mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3762.123mil|Location2.X=3773.373mil|Location1.Y=2680.375mil|Location2.Y=2691.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3762.123mil|Location2.X=3773.373mil|Location1.Y=2680.375mil|Location2.Y=2691.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R5-1(-5.69mm,-8.484mm) on Top Layer And Track (-4.89mm,-9.284mm)(-4.89mm,-7.684mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3710.375mil|Location2.X=3721.625mil|Location1.Y=2732.123mil|Location2.Y=2743.373mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3710.375mil|Location2.X=3721.625mil|Location1.Y=2732.123mil|Location2.Y=2743.373mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R5-1(-5.69mm,-8.484mm) on Top Layer And Track (-8.69mm,-7.684mm)(-4.89mm,-7.684mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3760.375mil|Location2.X=3771.625mil|Location1.Y=2678.627mil|Location2.Y=2689.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3760.375mil|Location2.X=3771.625mil|Location1.Y=2678.627mil|Location2.Y=2689.877mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R5-1(-5.69mm,-8.484mm) on Top Layer And Track (-8.69mm,-9.284mm)(-4.89mm,-9.284mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3626.375mil|Location2.X=3637.625mil|Location1.Y=2732.123mil|Location2.Y=2743.373mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3626.375mil|Location2.X=3637.625mil|Location1.Y=2732.123mil|Location2.Y=2743.373mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R5-2(-7.823mm,-8.484mm) on Top Layer And Track (-8.69mm,-7.684mm)(-4.89mm,-7.684mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3676.375mil|Location2.X=3687.625mil|Location1.Y=2678.627mil|Location2.Y=2689.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3676.375mil|Location2.X=3687.625mil|Location1.Y=2678.627mil|Location2.Y=2689.877mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.089mm &lt; 0.254mm) Between Pad R5-2(-7.823mm,-8.484mm) on Top Layer And Track (-8.69mm,-9.284mm)(-4.89mm,-9.284mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.089mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3623.32mil|Location2.X=3634.57mil|Location1.Y=2730.375mil|Location2.Y=2741.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3623.32mil|Location2.X=3634.57mil|Location1.Y=2730.375mil|Location2.Y=2741.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.155mm &lt; 0.254mm) Between Pad R5-2(-7.823mm,-8.484mm) on Top Layer And Track (-8.69mm,-9.284mm)(-8.69mm,-7.684mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.155mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDRJRWV10BQOORGDQEROHDGXVXSJ2HMSOS2LMYTOLTD1XGRSUADARI"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4318.647mil|Location2.X=4330.01mil|Location1.Y=2555.602mil|Location2.Y=2566.852mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4318.647mil|Location2.X=4330.01mil|Location1.Y=2555.602mil|Location2.Y=2566.852mil|Absolute=True">Silk To Silk Clearance Constraint: (0.201mm &lt; 0.254mm) Between Arc (9.322mm,-12.06mm) on Bottom Overlay And Text "Batterie" (10.49mm,-13.005mm) on Bottom Overlay Silk Text to Silk Clearance [0.201mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3640.727mil|Location2.X=3651.977mil|Location1.Y=3448.863mil|Location2.Y=3460.113mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3640.727mil|Location2.X=3651.977mil|Location1.Y=3448.863mil|Location2.Y=3460.113mil|Absolute=True">Silk To Silk Clearance Constraint: (0.229mm &lt; 0.254mm) Between Text "C2" (-7.137mm,10.516mm) on Bottom Overlay And Track (-9.617mm,10.186mm)(-6.347mm,10.186mm) on Bottom Overlay Silk Text to Silk Clearance [0.229mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3957.382mil|Location2.X=3969.994mil|Location1.Y=3132.012mil|Location2.Y=3143.262mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3957.382mil|Location2.X=3969.994mil|Location1.Y=3132.012mil|Location2.Y=3143.262mil|Absolute=True">Silk To Silk Clearance Constraint: (0.104mm &lt; 0.254mm) Between Text "C3" (1.575mm,2.184mm) on Bottom Overlay And Track (-0.109mm,1.763mm)(-0.109mm,2.253mm) on Bottom Overlay Silk Text to Silk Clearance [0.104mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3957.382mil|Location2.X=3969.994mil|Location1.Y=3132.012mil|Location2.Y=3143.262mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3957.382mil|Location2.X=3969.994mil|Location1.Y=3132.012mil|Location2.Y=3143.262mil|Absolute=True">Silk To Silk Clearance Constraint: (0.104mm &lt; 0.254mm) Between Text "C3" (1.575mm,2.184mm) on Bottom Overlay And Track (-0.599mm,2.253mm)(-0.109mm,2.253mm) on Bottom Overlay Silk Text to Silk Clearance [0.104mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4024.834mil|Location2.X=4036.084mil|Location1.Y=3153.561mil|Location2.Y=3164.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4024.834mil|Location2.X=4036.084mil|Location1.Y=3153.561mil|Location2.Y=3164.811mil|Absolute=True">Silk To Silk Clearance Constraint: (0.254mm &lt; 0.254mm) Between Text "C3" (1.575mm,2.184mm) on Bottom Overlay And Track (1.89mm,1.818mm)(1.89mm,3.608mm) on Bottom Overlay Silk Text to Silk Clearance [0.254mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3956.586mil|Location2.X=3970.14mil|Location1.Y=2962.012mil|Location2.Y=2973.262mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3956.586mil|Location2.X=3970.14mil|Location1.Y=2962.012mil|Location2.Y=2973.262mil|Absolute=True">Silk To Silk Clearance Constraint: (0.121mm &lt; 0.254mm) Between Text "C4" (1.422mm,-2.997mm) on Bottom Overlay And Track (-0.109mm,-1.847mm)(-0.109mm,-1.357mm) on Bottom Overlay Silk Text to Silk Clearance [0.121mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3956.586mil|Location2.X=3970.14mil|Location1.Y=2962.012mil|Location2.Y=2973.262mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3956.586mil|Location2.X=3970.14mil|Location1.Y=2962.012mil|Location2.Y=2973.262mil|Absolute=True">Silk To Silk Clearance Constraint: (0.121mm &lt; 0.254mm) Between Text "C4" (1.422mm,-2.997mm) on Bottom Overlay And Track (-0.599mm,-1.847mm)(-0.109mm,-1.847mm) on Bottom Overlay Silk Text to Silk Clearance [0.121mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4023.842mil|Location2.X=4035.092mil|Location1.Y=3032.797mil|Location2.Y=3044.047mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4023.842mil|Location2.X=4035.092mil|Location1.Y=3032.797mil|Location2.Y=3044.047mil|Absolute=True">Silk To Silk Clearance Constraint: (0.203mm &lt; 0.254mm) Between Text "C8" (0.584mm,-0.813mm) on Bottom Overlay And Track (1.839mm,-0.9mm)(1.839mm,0.89mm) on Bottom Overlay Silk Text to Silk Clearance [0.203mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4351.819mil|Location2.X=4363.069mil|Location1.Y=3054.632mil|Location2.Y=3065.882mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4351.819mil|Location2.X=4363.069mil|Location1.Y=3054.632mil|Location2.Y=3065.882mil|Absolute=True">Silk To Silk Clearance Constraint: (0.22mm &lt; 0.254mm) Between Text "R2" (11.582mm,-0.483mm) on Bottom Overlay And Track (9.782mm,-0.851mm)(9.782mm,0.749mm) on Bottom Overlay Silk Text to Silk Clearance [0.22mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3904.307mil|Location2.X=3915.557mil|Location1.Y=3379.907mil|Location2.Y=3391.157mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\Mac\Home\Documents\MolkkyV2\PCB_MolkkyV2.pcbdoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3904.307mil|Location2.X=3915.557mil|Location1.Y=3379.907mil|Location2.Y=3391.157mil|Absolute=True">Silk To Silk Clearance Constraint: (0.23mm &lt; 0.254mm) Between Text "Socle" (1.092mm,8.534mm) on Top Overlay And Track (-3.2mm,8.865mm)(1.88mm,8.865mm) on Top Overlay Silk Text to Silk Clearance [0.23mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

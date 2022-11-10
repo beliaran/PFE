@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=VCC33 Pin=C4-1
+Removed Pin From Net: NetName=VCC33 Pin=MPU-6050-13
+Added Pin To Net: NetName=VCCGYRO Pin=C4-1
+Added Pin To Net: NetName=VCCGYRO Pin=MPU-6050-13
+Added Pin To Net: NetName=VCCGYRO Pin=NRF52840-8
+Added Net: Name=VCCGYRO
+Added Member To Class: ClassName=Molkky Member=Component C6 CMS_0805
+Added Member To Class: ClassName=Molkky Member=Component U1 TPS76333DBVT

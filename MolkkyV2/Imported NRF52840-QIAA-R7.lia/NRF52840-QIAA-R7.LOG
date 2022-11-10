@@ -1,0 +1,36 @@
+PCAD Importer Log
+Project : NRF52840-QIAA-R7.LibPkg
+
+Section : Z:\Documents\OC\PFE\Hardware\NRF52840-QIAA-R7.lia
+    Section : PCB Library - NRF52840-QIAA-R7.PcbLib
+        Section : Load Messages
+            Warning - 1 : Skipping Token NRF52840-QIAA-R7_SECTION1 On Line 215
+            Warning - 1 : Skipping Token NRF52840-QIAA-R7_SECTION2 On Line 690
+            Warning - 1 : Skipping Token NRF52840-QIAA-R7_SRCTION3 On Line 877
+            Warning - 1 : Skipping Token attachedSymbol On Line 1014
+            Warning - 1 : Skipping Token attachedSymbol On Line 1015
+            Warning - 1 : Skipping Token attachedSymbol On Line 1016
+        EndSection
+
+        Section : Import Messages
+            Warning - 0 : PCAD Pattern Graphics [*NORDIC_NRF52840-QIAA-R7][Primary] associated with PCAD Component [NRF52840-QIAA-R7] has been renamed to PCB FootPrint [*NORDIC_NRF52840-QIAA-R7_NRF52840-QIAA-R7(Primary)].
+        EndSection
+    EndSection
+
+    Section : SCH Library - NRF52840-QIAA-R7.SchLib
+        Section : Parsing Messages
+            Warning - 1 : Skipping Token padStyleDef On Line 9
+            Warning - 1 : Skipping Token padStyleDef On Line 21
+            Warning - 1 : Skipping Token multiLayer On Line 96
+            Warning - 1 : Skipping Token layerContents On Line 172
+            Warning - 1 : Skipping Token layerContents On Line 178
+            Warning - 1 : Skipping Token layerContents On Line 189
+            Warning - 1 : Skipping Token layerContents On Line 197
+            Warning - 1 : Skipping Token layerContents On Line 205
+        EndSection
+
+        Section : Generating SCH Library - NRF52840-QIAA-R7.SchLib
+            Warning - 0 : PCAD Pattern Graphics [*NORDIC_NRF52840-QIAA-R7][Primary] associated with PCAD Component [NRF52840-QIAA-R7] has been renamed to PCB FootPrint [*NORDIC_NRF52840-QIAA-R7_NRF52840-QIAA-R7(Primary)].
+        EndSection
+    EndSection
+EndSection

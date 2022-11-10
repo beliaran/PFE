@@ -1,0 +1,20 @@
+Removed Pin From Net: NetName=Vbat_Ext Pin=Interrupteur glissière-1
+Removed Pin From Net: NetName=Vbat_Out Pin=Interrupteur glissière-2
+Removed Pin From Net: NetName=Vbat_In Pin=Interrupteur glissière-3
+Removed Member From Class: ClassName=Fusion Member=Interrupteur glissière
+Added Component: Designator=Interrupteur glissière?(OS102011MA1QN1)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = "OS102011MA1QN1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/os102011ma1qn1/ck?region=europe"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "http://www.ckswitches.com/media/1428/os.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "C & K COMPONENTS"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "OS102011MA1QN1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "611-OS102011MA1QN1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/CK/OS102011MA1QN1?qs=WtljUlYws5R6MUgHcLkz4w%3D%3D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Testing Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Testing Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=Vbat_In Pin=Interrupteur glissière?-1
+Added Pin To Net: NetName=Vbat_Out Pin=Interrupteur glissière?-2
+Added Pin To Net: NetName=Vbat_Ext Pin=Interrupteur glissière?-3
+Added Member To Class: ClassName=Fusion Member=Component Interrupteur glissière? OS102011MA1QN1
+Added Member To Class: ClassName=Fusion Member=Component L1 1234659
+Added Room: Name=Fusion
