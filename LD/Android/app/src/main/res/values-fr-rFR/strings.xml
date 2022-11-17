@@ -32,4 +32,11 @@
     <string name="tournament_rules">3 échecs à la suite éliminent le joueur</string>
     <string name="classical_rules">Règles classiques d\'une partie de Mölkky</string>
     <string name="quickGame_rules">Le premier à 30 points gagne</string>
+    <string name="titleLeave">Fin de Partie</string>
+    <string name="textLeave">Voulez-vous vraiment quitter la partie ?</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+    <string name="returnToGame">Revenir au Jeu</string>
+    <string name="validateValidate">Valider</string>
+    <string name="validatePoints">Points</string>
 </resources>

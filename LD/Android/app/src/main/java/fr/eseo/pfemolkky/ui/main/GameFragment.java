@@ -1,18 +1,25 @@
 package fr.eseo.pfemolkky.ui.main;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -44,6 +51,7 @@ public class GameFragment extends Fragment {
     private Player player;
     private NavController navController;
     private Game game;
+    private Button buttonValidate;
 
     public static GameFragment newInstance() {
         return new GameFragment();
@@ -58,7 +66,6 @@ public class GameFragment extends Fragment {
         playerNumber = getArguments().getInt("player");
         game = ((MainActivity)getActivity()).getGame();
         player = ((MainActivity)getActivity()).getGame().getPlayers().get(playerNumber);
-        ((MainActivity)getActivity()).setAllowBack(false);
         TextView textViewPlayer = root.findViewById(R.id.idPlayer);
         textViewPlayer.setText(player.getName());
         TextView textViewScore = root.findViewById(R.id.scorePlayer);
@@ -88,7 +95,18 @@ public class GameFragment extends Fragment {
         listImageView.add(imageViewPin10);
         listImageView.add(imageViewPin11);
         listImageView.add(imageViewPin12);
+        for(int i=0;i<player.getMissed();i++){
+            ImageView iv = new ImageView(getContext());
+            iv.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_delete));
+            int pxWidth = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50,getResources().getDisplayMetrics()));
+            int pxHeight = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50,getResources().getDisplayMetrics()));
+            iv.setLayoutParams(new ViewGroup.LayoutParams(pxWidth,pxHeight));
+            ((LinearLayout)root.findViewById(R.id.croix)).addView(iv);
+        }
+
         updateInterface();
+        buttonValidate= (Button) root.findViewById(R.id.buttonValidateRound);
+        updateButton();
         ImageView imageCup = (ImageView) root.findViewById(R.id.imageCup);
         imageCup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +115,7 @@ public class GameFragment extends Fragment {
                 listImageView= new ArrayList<Button>();
             }
         });
-        Button buttonValidate= (Button) root.findViewById(R.id.buttonValidateRound);
+        
         buttonValidate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -162,7 +180,66 @@ public class GameFragment extends Fragment {
                 }
             }
         });
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                LinearLayout view = new LinearLayout(getContext());
+                ImageView iv = new ImageView(getContext());
+                iv.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_dialog_alert));
+                iv.setColorFilter(getResources().getColor(R.color.orange));
+                iv.setPadding(20,0,20,0);
+                TextView tv = new TextView(getContext());
+                tv.setText(getResources().getText(R.string.returnToMenu));
+                tv.setTextColor(getResources().getColor(R.color.orange));
+                tv.setTextSize(20);
+
+                view.setPadding(0,60,0,10);
+                view.addView(iv);
+                view.addView(tv);
+                view.setGravity(Gravity.CENTER);
+                AlertDialog dialog = new AlertDialog.Builder(getContext())
+                        .setCustomTitle(view)
+                        .setMessage(getResources().getText(R.string.textLeave))
+                        .setPositiveButton(getResources().getText(R.string.yes), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                navController.navigate(R.id.nav_main);
+                            }
+
+                        })
+                        .setNegativeButton(getResources().getText(R.string.no), null).create();
+                dialog.setOnShowListener( new DialogInterface.OnShowListener() {
+                    @Override
+                    public void onShow(DialogInterface arg0){
+                        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.white));
+                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.white));
+                    }
+                });
+                dialog.show();
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
         return root;
+    }
+
+    private void updateButton() {
+        int countFallen = 0;
+        int scoreButton=0;
+        for(Pin pin : pins){
+            if(pin.hasFallen()){
+                countFallen+=1;
+            }
+        }
+        if(countFallen==1){
+            for(Pin pin : pins){
+                if(pin.hasFallen()){
+                    scoreButton=pin.getNumber();
+                }
+            }
+        }else{
+            scoreButton=countFallen;
+        }
+        buttonValidate.setText(getResources().getText(R.string.validateValidate)+ " "+scoreButton+" "+getResources().getText(R.string.validatePoints));
     }
 
     private void updateInterface() {
@@ -181,9 +258,11 @@ public class GameFragment extends Fragment {
                 public void onClick(View view) {
                     pins.get(g).setFallen(!pins.get(g).hasFallen());
                     updateInterface();
+                    updateButton();
                 }
             });
         }
     }
+
 
 }

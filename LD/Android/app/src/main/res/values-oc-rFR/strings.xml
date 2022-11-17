@@ -32,4 +32,11 @@
     <string name="sniper">Le Sniper</string>
     <string name="brute">La Brute</string>
     <string name="averageScore">Score Moyen par tour</string>
+    <string name="titleLeave">Fin de Partie</string>
+    <string name="textLeave">Voulez-vous vraiment quitter la partie ?</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+    <string name="returnToGame">Revenir au Jeu</string>
+    <string name="validateValidate">Valider</string>
+    <string name="validatePoints">Points</string>
 </resources>

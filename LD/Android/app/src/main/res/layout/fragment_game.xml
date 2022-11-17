@@ -26,14 +26,14 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
-            android:layout_width="413dp"
-            android:layout_height="438dp"
+            android:layout_width="match_parent"
+            android:layout_height="481dp"
             android:background="@color/purple_molkky_dark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.498">
+            app:layout_constraintTop_toTopOf="parent">
 
             <Button
                 android:id="@+id/pin2"
@@ -45,43 +45,42 @@
                 app:backgroundTint="@null"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.664"
+                app:layout_constraintHorizontal_bias="0.649"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.878"
+                app:layout_constraintVertical_bias="0.958"
                 app:rippleColor="@color/orange" />
 
             <Button
-                android:id="@+id/pin12"
+                android:id="@+id/pin10"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginStart="204dp"
                 android:background="@drawable/circlepinbutton"
-                android:text="12"
+                android:text="10"
                 android:textSize="34sp"
                 app:backgroundTint="@null"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.488"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.357"
+                app:layout_constraintVertical_bias="0.713"
                 app:rippleColor="@color/orange" />
 
             <Button
-                android:id="@+id/pin11"
+                android:id="@+id/pin3"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginStart="1dp"
-                android:layout_marginEnd="1dp"
                 android:background="@drawable/circlepinbutton"
-                android:text="11"
+                android:text="3"
                 android:textSize="34sp"
                 app:backgroundTint="@null"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/pin12"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/pin5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.163"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.357"
+                app:layout_constraintVertical_bias="0.713"
                 app:rippleColor="@color/orange" />
 
             <Button
@@ -90,15 +89,15 @@
                 android:layout_height="100dp"
                 android:background="@drawable/circlepinbutton"
                 android:text="5"
+                android:textSize="34sp"
                 app:backgroundTint="@null"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.009"
+                app:layout_constraintHorizontal_bias="0.003"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.357"
-                app:rippleColor="@color/orange"
-                android:textSize="34sp" />
+                app:layout_constraintVertical_bias="0.477"
+                app:rippleColor="@color/orange" />
 
             <Button
                 android:id="@+id/pin7"
@@ -114,7 +113,7 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.097"
+                app:layout_constraintVertical_bias="0.241"
                 app:rippleColor="@color/orange" />
 
             <Button
@@ -127,10 +126,10 @@
                 app:backgroundTint="@null"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintHorizontal_bias="0.488"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.097"
+                app:layout_constraintVertical_bias="0.241"
                 app:rippleColor="@color/orange" />
 
             <Button
@@ -145,74 +144,10 @@
                 app:backgroundTint="@null"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.041"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/pin9"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.097"
-                app:rippleColor="@color/orange" />
-
-            <Button
-                android:id="@+id/pin3"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:background="@drawable/circlepinbutton"
-                android:text="3"
-                android:textSize="34sp"
-                app:backgroundTint="@null"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.175"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.618"
-                app:rippleColor="@color/orange" />
-
-            <Button
-                android:id="@+id/pin10"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:background="@drawable/circlepinbutton"
-                android:text="10"
-                android:textSize="34sp"
-                app:backgroundTint="@null"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.492"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.618"
-                app:rippleColor="@color/orange" />
-
-            <Button
-                android:id="@+id/pin4"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:background="@drawable/circlepinbutton"
-                android:text="4"
-                android:textSize="34sp"
-                app:backgroundTint="@null"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.817"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.618"
-                app:rippleColor="@color/orange" />
-
-            <Button
-                android:id="@+id/pin1"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:background="@drawable/circlepinbutton"
-                android:text="1"
-                android:textSize="34sp"
-                app:backgroundTint="@null"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.338"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.878"
+                app:layout_constraintVertical_bias="0.241"
                 app:rippleColor="@color/orange" />
 
             <Button
@@ -226,11 +161,91 @@
                 app:backgroundTint="@null"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.25"
+                app:layout_constraintHorizontal_bias="0.8"
                 app:layout_constraintStart_toEndOf="@+id/pin12"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.357"
+                app:layout_constraintVertical_bias="0.477"
                 app:rippleColor="@color/orange" />
+
+            <Button
+                android:id="@+id/pin12"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/circlepinbutton"
+                android:text="12"
+                android:textSize="34sp"
+                app:backgroundTint="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.659"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.477"
+                app:rippleColor="@color/orange" />
+
+            <Button
+                android:id="@+id/pin11"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:background="@drawable/circlepinbutton"
+                android:text="11"
+                android:textSize="34sp"
+                app:backgroundTint="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/pin12"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/pin5"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.477"
+                app:rippleColor="@color/orange" />
+
+            <Button
+                android:id="@+id/pin4"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/circlepinbutton"
+                android:text="4"
+                android:textSize="34sp"
+                app:backgroundTint="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.81"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.713"
+                app:rippleColor="@color/orange" />
+
+            <Button
+                android:id="@+id/pin1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/circlepinbutton"
+                android:text="1"
+                android:textSize="34sp"
+                app:backgroundTint="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.327"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.958"
+                app:rippleColor="@color/orange" />
+
+            <LinearLayout
+                android:id="@+id/croix"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/pin9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

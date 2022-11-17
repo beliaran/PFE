@@ -60,7 +60,6 @@ public class ScoreBoard extends Fragment {
             TextView textScore = fragment.findViewById(R.id.playerScore);
             textScore.setText(String.valueOf(playerIteration.getScore()));
             playerList.addView(fragment);
-
         }
 
         Button backToGame = root.findViewById(R.id.buttonValidateRound);

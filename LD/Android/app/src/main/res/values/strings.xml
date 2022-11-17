@@ -34,4 +34,10 @@
     <string name="sniper">The Sniper</string>
     <string name="brute">The Brute</string>
     <string name="averageScore">Average Score per round</string>
+    <string name="titleLeave">End Of Game</string>
+    <string name="textLeave">Do you really want to leave the game?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="validateValidate">Validate</string>
+    <string name="validatePoints">Points</string>
 </resources>
