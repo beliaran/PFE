@@ -11,6 +11,7 @@
         android:layout_height="120dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutScoreBoard"
             android:layout_width="380dp"
             android:layout_height="100dp"
             android:background="@drawable/playerroundedcornerpurple"
