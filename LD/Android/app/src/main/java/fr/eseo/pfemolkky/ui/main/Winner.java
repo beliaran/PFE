@@ -14,6 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 import fr.eseo.pfemolkky.MainActivity;
@@ -66,6 +68,13 @@ public class Winner extends Fragment {
         Player sniper;
         sniper=players.get(0);
         LinearLayout playerList = (LinearLayout) root.findViewById(R.id.playerList);
+        Collections.sort(players, new Comparator<Player>() {
+            @Override
+            public int compare(Player t1, Player t2) {
+                return t1.getScore()-t2.getScore();
+            }
+        });
+        Collections.reverse(players);
         for(Player playerIteration : players){
             globalScore+=playerIteration.getScore();
             if(brute.getFallenPins()<playerIteration.getFallenPins()){

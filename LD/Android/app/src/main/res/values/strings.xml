@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Mölkky</string>
+    <string name="app_name" translatable="false">Mölkky</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="fragment_add_player">Add Player</string>
-    <string name="fragment_main">main</string>
+    <string name="fragment_main" translatable="false">main</string>
     <string name="startGame">Start a new game</string>
     <string name="connectMolkky">Connect to Mölkky</string>
     <string name="askName">Player</string>
@@ -15,7 +15,7 @@
     <string name="classical">Classic</string>
     <string name="quickGame">Quick Game</string>
     <string name="fragment_choose_type">Choose Type Of Game</string>
-    <string name="tournament_rules">3 miss in a row elliminate the player</string>
+    <string name="tournament_rules">3 miss in a row eliminate the player</string>
     <string name="classical_rules">Classic rules of a Mölkky match</string>
     <string name="quickGame_rules">Be the first to score 30 points</string>
     <string name="pastis_rules">Be the first to score 51 points</string>
