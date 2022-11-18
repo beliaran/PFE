@@ -22,10 +22,6 @@ import fr.eseo.pfemolkky.models.Player;
 
 public class ScoreBoard extends Fragment {
 
-    private View root;
-    private ArrayList<Player> players;
-    private LinearLayout linearLayoutPlayerScore;
-
     public ScoreBoard() {
         // Required empty public constructor
     }
@@ -46,10 +42,10 @@ public class ScoreBoard extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        root = inflater.inflate(R.layout.fragment_score_board, container, false);
-        linearLayoutPlayerScore = root.findViewById(R.id.layout_showPlayerScore);
+        View root = inflater.inflate(R.layout.fragment_score_board, container, false);
+        LinearLayout linearLayoutPlayerScore = root.findViewById(R.id.layout_showPlayerScore);
 
-        players = ((MainActivity)getActivity()).getGame().getPlayers();
+        ArrayList<Player> players = ((MainActivity) getActivity()).getGame().getPlayers();
         LinearLayout playerList = (LinearLayout) root.findViewById((R.id.layout_showPlayerScore));
         ((MainActivity)getActivity()).setAllowBack(true);
         for(Player playerIteration : players){

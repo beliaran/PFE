@@ -23,10 +23,7 @@ import fr.eseo.pfemolkky.models.Game;
 
 public class MainFragment extends Fragment {
 
-    private FragmentMainBinding binding;
-    private MainFragment instance;
     private NavController navController;
-    private View inputFragmentView;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -41,10 +38,10 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        instance= this;
+        MainFragment instance = this;
         navController = NavHostFragment.findNavController(this);
-        binding = FragmentMainBinding.inflate(inflater);
-        inputFragmentView = inflater.inflate(R.layout.fragment_main, container, false);
+        fr.eseo.pfemolkky.databinding.FragmentMainBinding binding = FragmentMainBinding.inflate(inflater);
+        View inputFragmentView = inflater.inflate(R.layout.fragment_main, container, false);
         Button button = inputFragmentView.findViewById(R.id.buttonStartGame);
         ((MainActivity)getActivity()).setAllowBack(false);
         button.setOnClickListener(new View.OnClickListener() {

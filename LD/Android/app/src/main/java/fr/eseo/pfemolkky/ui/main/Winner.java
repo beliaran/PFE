@@ -29,14 +29,8 @@ import fr.eseo.pfemolkky.models.Player;
  * create an instance of this fragment.
  */
 public class Winner extends Fragment {
-    private View root;
-    private int winnerPlayerNumber;
-    private Player player;
     private NavController navController;
-    private ArrayList<Player> players;
     private int globalScore=0;
-    private float averageScore;
-    private float averageScorePerRound;
 
     public Winner() {
         // Required empty public constructor
@@ -59,16 +53,16 @@ public class Winner extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        root = inflater.inflate(R.layout.fragment_winner, container, false);
+        View root = inflater.inflate(R.layout.fragment_winner, container, false);
         navController = NavHostFragment.findNavController(this);
-        winnerPlayerNumber = getArguments().getInt("winner");
+        int winnerPlayerNumber = getArguments().getInt("winner");
         Game game = ((MainActivity) getActivity()).getGame();
-        player = ((MainActivity)getActivity()).getGame().getPlayers().get(winnerPlayerNumber);
-        players = ((MainActivity)getActivity()).getGame().getPlayersList();
+        Player player = ((MainActivity) getActivity()).getGame().getPlayers().get(winnerPlayerNumber);
+        ArrayList<Player> players = ((MainActivity) getActivity()).getGame().getPlayersList();
         Player brute;
-        brute=players.get(0);
+        brute= players.get(0);
         Player sniper;
-        sniper=players.get(0);
+        sniper= players.get(0);
         LinearLayout playerList = (LinearLayout) root.findViewById(R.id.playerList);
         Collections.sort(players, new Comparator<Player>() {
             @Override
@@ -92,8 +86,8 @@ public class Winner extends Fragment {
             textScore.setText(String.valueOf(playerIteration.getScore())+"/"+String.valueOf(game.getScoreToWin()));
             playerList.addView(fragment);
         }
-        averageScore=globalScore/players.size();
-        averageScorePerRound=averageScore/((MainActivity)getActivity()).getGame().getRound();
+        float averageScore = globalScore / players.size();
+        float averageScorePerRound = averageScore / ((MainActivity) getActivity()).getGame().getRound();
         TextView textSniper= root.findViewById(R.id.playerSniper);
         TextView textBrute= root.findViewById(R.id.playerBrute);
         TextView textAverageScorePerRound= root.findViewById(R.id.averageScorePerRound);

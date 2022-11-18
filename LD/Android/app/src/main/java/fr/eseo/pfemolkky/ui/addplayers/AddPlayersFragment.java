@@ -37,15 +37,13 @@ public class AddPlayersFragment extends Fragment {
     int count = 1;
     private View root;
     private NavController navController;
-    private ViewGroup container;
 
     public AddPlayersFragment() {
         // Required empty public constructor
     }
 
     public static AddPlayersFragment newInstance(String param1, String param2) {
-        AddPlayersFragment fragment = new AddPlayersFragment();
-        return fragment;
+        return new AddPlayersFragment();
     }
 
     @Override
@@ -62,7 +60,6 @@ public class AddPlayersFragment extends Fragment {
         playersFragment = new ArrayList<>();
         root = inflater.inflate(R.layout.fragment_add_players, container, false);
         navController = NavHostFragment.findNavController(this);
-        this.container=container;
         players = new ArrayList<>();
         playerName = new HashMap<>();
         if(!((MainActivity)getActivity()).getGame().getPlayers().isEmpty()){
