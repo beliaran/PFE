@@ -69,7 +69,7 @@ public class GameFragment extends Fragment {
         TextView textViewPlayer = root.findViewById(R.id.idPlayer);
         textViewPlayer.setText(player.getName());
         TextView textViewScore = root.findViewById(R.id.scorePlayer);
-        textViewScore.setText(getResources().getString(R.string.scorePlayer)+" "+String.valueOf(player.getScore()));
+        textViewScore.setText(getResources().getString(R.string.scorePlayer)+" "+ player.getScore());
         pins = ((MainActivity)getActivity()).getGame().getPins();
         imageViewPin1 = (Button) root.findViewById(R.id.pin1);
         imageViewPin2 = (Button) root.findViewById(R.id.pin2);
