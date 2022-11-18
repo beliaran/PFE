@@ -20,6 +20,7 @@ import java.util.HashMap;
 
 import fr.eseo.pfemolkky.MainActivity;
 import fr.eseo.pfemolkky.R;
+import fr.eseo.pfemolkky.models.Game;
 import fr.eseo.pfemolkky.models.Player;
 
 /**
@@ -61,8 +62,9 @@ public class Winner extends Fragment {
         root = inflater.inflate(R.layout.fragment_winner, container, false);
         navController = NavHostFragment.findNavController(this);
         winnerPlayerNumber = getArguments().getInt("winner");
+        Game game = ((MainActivity) getActivity()).getGame();
         player = ((MainActivity)getActivity()).getGame().getPlayers().get(winnerPlayerNumber);
-        players = ((MainActivity)getActivity()).getGame().getPlayers();
+        players = ((MainActivity)getActivity()).getGame().getPlayersList();
         Player brute;
         brute=players.get(0);
         Player sniper;
@@ -87,7 +89,7 @@ public class Winner extends Fragment {
             TextView textName = fragment.findViewById(R.id.playerName);
             textName.setText(playerIteration.getName());
             TextView textScore = fragment.findViewById(R.id.playerScore);
-            textScore.setText(String.valueOf(playerIteration.getScore())+"/50");
+            textScore.setText(String.valueOf(playerIteration.getScore())+"/"+String.valueOf(game.getScoreToWin()));
             playerList.addView(fragment);
         }
         averageScore=globalScore/players.size();

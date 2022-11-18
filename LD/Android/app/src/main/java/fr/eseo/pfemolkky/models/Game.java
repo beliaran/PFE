@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Game {
     private ArrayList<Player> players = new ArrayList<>();
+    private ArrayList<Player> playersList = new ArrayList<>();
     private ArrayList<Pin> pins = new ArrayList<>();
     private TypeOfGame typeOfGame;
     private int scoreToWin;
@@ -22,8 +23,12 @@ public class Game {
     public ArrayList<Player> getPlayers() {
         return players;
     }
+    public ArrayList<Player> getPlayersList() {
+        return playersList;
+    }
     public void addPlayer(Player player) {
         this.players.add(player);
+        this.playersList.add(player);
     }
 
     public void setPins(ArrayList<Pin> pins) {
