@@ -5,6 +5,7 @@ Commun :
 - [Planning](https://reseaueseo-my.sharepoint.com/:x:/g/personal/morgan_leroux_reseau_eseo_fr/EdhmUGsiH4JKp43w77pmdBwB86PAxmwWFjXhSsJCPYVsag?e=v93kcJ)
 - [US et besoins](https://reseaueseo-my.sharepoint.com/:x:/g/personal/morgan_leroux_reseau_eseo_fr/EVosvylqDkBHhK19-jUdR7sB723QMk-ZBMoqNMfOpTIDRw?e=7JHxYa)
 - [Présentation lancement](https://reseaueseo-my.sharepoint.com/:p:/g/personal/morgan_leroux_reseau_eseo_fr/Ee0h6hcSygFFqbmP-LD3LMoBin_RXobdlb0-MgEiyT4bGQ?e=IwRz55)
+- [Présentation mi-avancement](https://reseaueseo-my.sharepoint.com/:p:/g/personal/morgan_leroux_reseau_eseo_fr/EUA46ACU86xOo7TcxHZPvp4BYnj-VggvgS08w5wfXFZdPw?e=8jCu3m)
 
 --------
 
