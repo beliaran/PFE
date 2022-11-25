@@ -44,7 +44,7 @@ public class Winner extends Fragment {
             brute= players.get(0);
             Player sniper;
             sniper= players.get(0);
-            LinearLayout playerList = (LinearLayout) root.findViewById(R.id.playerList);
+            LinearLayout playerList = root.findViewById(R.id.playerList);
             players.sort(Comparator.comparingInt(Player::getScore));
             Collections.reverse(players);
             for(Player playerIteration : players){

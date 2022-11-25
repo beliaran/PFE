@@ -65,8 +65,6 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (isAllowBack()) {
             super.onBackPressed();
-        } else {
-            //do nothing
         }
     }
 }
