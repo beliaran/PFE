@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Mölkky</string>
-    <string name="fragment_add_player">Ajouter Joueur</string>
-    <string name="fragment_main">main</string>
     <string name="startGame">Commencer Une Partie</string>
     <string name="connectMolkky">Se Connecter au Mölkky</string>
-    <string name="askName">Joueur</string>
+    <string name="askName">Joueur %1$s</string>
     <string name="fragment_add_players">Ajouter Des Joueurs</string>
     <string name="validate">Valider</string>
     <string name="tournament">Tournois</string>
     <string name="pastis">Pastis</string>
-    <string name="speedGame">Partie Rapide</string>
     <string name="classical">Classique</string>
     <string name="quickGame">Partie Rapide</string>
     <string name="fragment_choose_type">Choisir Le Type de Jeu</string>
@@ -18,25 +14,20 @@
     <string name="classical_rules">Règles classiques d\'une partie de Mölkky</string>
     <string name="quickGame_rules">Le premier à 30 points gagne</string>
     <string name="pastis_rules">Le premier à 51 points gagne</string>
-    <string name="validateRound">Valider Tour</string>
     <string name="round">Tour</string>
-    <string name="scorePlayer">Score :</string>
-    <string name="winnerIs">Le Gagnant est :</string>
+    <string name="scorePlayer">Score :  %1$s</string>
     <string name="winner">Fin de Partie</string>
     <string name="returnToMenu">Revenir au Menu</string>
     <string name="player_name">Nom du Joueur</string>
-    <string name="player_score">Score</string>
     <string name="scoreboard">Tableau des Scores</string>
     <string name="endOfGame">Fin de Partie</string>
     <string name="keyMoments">Moments Forts</string>
     <string name="sniper">Le Sniper</string>
     <string name="brute">La Brute</string>
     <string name="averageScore">Score Moyen par tour</string>
-    <string name="titleLeave">Fin de Partie</string>
     <string name="textLeave">Voulez-vous vraiment quitter la partie ?</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
     <string name="returnToGame">Revenir au Jeu</string>
-    <string name="validateValidate">Valider</string>
-    <string name="validatePoints">Points</string>
+    <string name="validatePoints">Valider %1$s Points</string>
 </resources>

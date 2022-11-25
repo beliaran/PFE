@@ -3,8 +3,8 @@ package fr.eseo.pfemolkky.models;
 import java.util.ArrayList;
 
 public class Game {
-    private final ArrayList<Player> players = new ArrayList<>();
-    private final ArrayList<Player> playersList = new ArrayList<>();
+    private ArrayList<Player> players = new ArrayList<>();
+    private ArrayList<Player> playersList = new ArrayList<>();
     private ArrayList<Pin> pins = new ArrayList<>();
     private TypeOfGame typeOfGame;
     private int scoreToWin;
@@ -39,6 +39,7 @@ public class Game {
         return pins;
     }
 
+    @SuppressWarnings("unused")
     public Game(){
         for(int i=1;i<=12;i++){
             Pin pin = new Pin(i);
@@ -47,7 +48,8 @@ public class Game {
     }
 
     public void setPlayers(ArrayList<Player> players) {
-        players = players;
+        this.players = players;
+        this.playersList = players;
     }
 
     public TypeOfGame getTypeOfGame() {
