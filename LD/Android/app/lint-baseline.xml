@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="5" by="lint Dolphin | 2021.3.1">
+
+    <issue
+        id="FragmentTagUsage"
+        message="Replace the &lt;fragment> tag with FragmentContainerView.">
+        <location
+            file="src\main\res\layout\activity_main.xml"
+            line="17"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 31">
+        <location
+            file="src\main\AndroidManifest.xml"
+            line="18"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="This folder configuration (`v24`) is unnecessary; `minSdkVersion` is 28. Merge all the resources in this folder into `drawable`.">
+        <location
+            file="src\main\res\drawable-v24"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="This folder configuration (`v26`) is unnecessary; `minSdkVersion` is 28. Merge all the resources in this folder into `mipmap-anydpi`.">
+        <location
+            file="src\debug\res\mipmap-anydpi-v26"/>
+    </issue>
+
+    <issue
+        id="MergeRootFrame"
+        message="This `&lt;FrameLayout>` can be replaced with a `&lt;merge>` tag">
+        <location
+            file="src\main\res\layout\activity_main.xml"
+            line="2"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.layout.app_bar_main` appears to be unused">
+        <location
+            file="src\main\res\layout\app_bar_main.xml"
+            line="2"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.battery_25` appears to be unused">
+        <location
+            file="src\main\res\drawable\battery_25.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.battery_50` appears to be unused">
+        <location
+            file="src\main\res\drawable\battery_50.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.battery_75` appears to be unused">
+        <location
+            file="src\main\res\drawable\battery_75.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.battery_disconnected` appears to be unused">
+        <location
+            file="src\main\res\drawable\battery_disconnected.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.battery_full` appears to be unused">
+        <location
+            file="src\main\res\drawable\battery_full.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.battery_low` appears to be unused">
+        <location
+            file="src\main\res\drawable\battery_low.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.layout.content_main` appears to be unused">
+        <location
+            file="src\main\res\layout\content_main.xml"
+            line="2"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.logo_square` appears to be unused">
+        <location
+            file="src\main\res\drawable\logo_square.jpg"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.rounded_corner_grey_button` appears to be unused">
+        <location
+            file="src\main\res\drawable\rounded_corner_grey_button.xml"
+            line="2"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.validateRound` appears to be unused">
+        <location
+            file="src\main\res\values\strings.xml"
+            line="18"/>
+        <location
+            file="src\main\res\values-fr-rFR\strings.xml"
+            line="21"/>
+        <location
+            file="src\main\res\values-oc-rFR\strings.xml"
+            line="17"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.points` appears to be unused">
+        <location
+            file="src\main\res\values\strings.xml"
+            line="52"/>
+        <location
+            file="src\main\res\values-fr-rFR\strings.xml"
+            line="34"/>
+        <location
+            file="src\main\res\values-oc-rFR\strings.xml"
+            line="34"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/battery_25.png` in densityless folder">
+        <location
+            file="src\main\res\drawable\battery_25.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/battery_50.png` in densityless folder">
+        <location
+            file="src\main\res\drawable\battery_50.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/battery_75.png` in densityless folder">
+        <location
+            file="src\main\res\drawable\battery_75.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/battery_disconnected.png` in densityless folder">
+        <location
+            file="src\main\res\drawable\battery_disconnected.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/battery_full.png` in densityless folder">
+        <location
+            file="src\main\res\drawable\battery_full.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/battery_low.png` in densityless folder">
+        <location
+            file="src\main\res\drawable\battery_low.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/cup.png` in densityless folder">
+        <location
+            file="src\main\res\drawable\cup.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/logo.png` in densityless folder">
+        <location
+            file="src\main\res\drawable\logo.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/logo_square.jpg` in densityless folder">
+        <location
+            file="src\main\res\drawable\logo_square.jpg"/>
+    </issue>
+
+</issues>

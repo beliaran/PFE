@@ -1,5 +1,7 @@
 package fr.eseo.pfemolkky.models;
 
+import androidx.annotation.NonNull;
+
 public class Player {
     private String name;
     private int missed = 0;
@@ -48,9 +50,10 @@ public class Player {
     }
 
     public Player(String name) {
-        this.name = name;
+        this.setName(name);
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Player{" +

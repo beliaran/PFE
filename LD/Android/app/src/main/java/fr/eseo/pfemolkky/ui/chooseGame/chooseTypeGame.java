@@ -14,31 +14,12 @@ import android.view.ViewGroup;
 
 import fr.eseo.pfemolkky.MainActivity;
 import fr.eseo.pfemolkky.R;
-import fr.eseo.pfemolkky.models.Game;
 import fr.eseo.pfemolkky.models.Game.TypeOfGame;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link chooseTypeGame#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class chooseTypeGame extends Fragment {
 
-
     private NavController navController;
-
-    public chooseTypeGame() {
-        // Required empty public constructor
-    }
-
-    // TODO: Rename and change types and number of parameters
-    public static chooseTypeGame newInstance(String param1, String param2) {
-        chooseTypeGame fragment = new chooseTypeGame();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,38 +35,34 @@ public class chooseTypeGame extends Fragment {
         ConstraintLayout tournamentButton = (ConstraintLayout) root.findViewById(R.id.tournamentButton);
         Bundle bundle = new Bundle();
         bundle.putInt("player",0);
-        tournamentButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        tournamentButton.setOnClickListener(view -> {
+            if(getActivity()!=null){
                 tournamentButton.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.selectedtypeofgameroundedcorner));
                 ((MainActivity)getActivity()).getGame().setTypeOfGame(TypeOfGame.tournament);
                 navController.navigate(R.id.nav_game,bundle);
             }
         });
         ConstraintLayout classicButton = (ConstraintLayout) root.findViewById(R.id.classicButton);
-        classicButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        classicButton.setOnClickListener(view -> {
+            if(getActivity()!=null){
                 classicButton.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.selectedtypeofgameroundedcorner));
                 ((MainActivity)getActivity()).getGame().setTypeOfGame(TypeOfGame.classic);
                 navController.navigate(R.id.nav_game,bundle);
             }
         });
         ConstraintLayout quickGameButton = (ConstraintLayout) root.findViewById(R.id.quickGameButton);
-        quickGameButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                quickGameButton.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.selectedtypeofgameroundedcorner));
-                ((MainActivity)getActivity()).getGame().setTypeOfGame(Game.TypeOfGame.fast);
-                navController.navigate(R.id.nav_game,bundle);
+        quickGameButton.setOnClickListener(view -> {
+            if(getActivity()!=null) {
+                quickGameButton.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.selectedtypeofgameroundedcorner));
+                ((MainActivity) getActivity()).getGame().setTypeOfGame(TypeOfGame.fast);
+                navController.navigate(R.id.nav_game, bundle);
             }
         });
         ConstraintLayout pastisButton = (ConstraintLayout) root.findViewById(R.id.pastisButton);
-        pastisButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        pastisButton.setOnClickListener(view -> {
+            if(getActivity()!=null){
                 pastisButton.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.selectedtypeofgameroundedcorner));
-                ((MainActivity)getActivity()).getGame().setTypeOfGame(Game.TypeOfGame.pastis);
+                ((MainActivity)getActivity()).getGame().setTypeOfGame(TypeOfGame.pastis);
                 navController.navigate(R.id.nav_game,bundle);
             }
         });

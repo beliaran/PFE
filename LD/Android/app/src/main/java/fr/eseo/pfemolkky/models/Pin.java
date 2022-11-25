@@ -7,10 +7,10 @@ public class Pin {
     private Battery battery = Battery.dead;
 
     public Pin(int i) {
-        number=i;
+        setNumber(i);
     }
 
-    public enum Battery {dead, low, medium, excellent, full};
+    public enum Battery {dead, low, medium, excellent, full}
 
     public boolean isConnected() {
         return connected;
