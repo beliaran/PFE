@@ -32,7 +32,7 @@ public class chooseTypeGame extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_choose_type_game, container, false);
         navController = NavHostFragment.findNavController(this);
-        ConstraintLayout tournamentButton = (ConstraintLayout) root.findViewById(R.id.tournamentButton);
+        ConstraintLayout tournamentButton = root.findViewById(R.id.tournamentButton);
         Bundle bundle = new Bundle();
         bundle.putInt("player",0);
         tournamentButton.setOnClickListener(view -> {
@@ -42,7 +42,7 @@ public class chooseTypeGame extends Fragment {
                 navController.navigate(R.id.nav_game,bundle);
             }
         });
-        ConstraintLayout classicButton = (ConstraintLayout) root.findViewById(R.id.classicButton);
+        ConstraintLayout classicButton = root.findViewById(R.id.classicButton);
         classicButton.setOnClickListener(view -> {
             if(getActivity()!=null){
                 classicButton.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.selectedtypeofgameroundedcorner));
@@ -50,7 +50,7 @@ public class chooseTypeGame extends Fragment {
                 navController.navigate(R.id.nav_game,bundle);
             }
         });
-        ConstraintLayout quickGameButton = (ConstraintLayout) root.findViewById(R.id.quickGameButton);
+        ConstraintLayout quickGameButton = root.findViewById(R.id.quickGameButton);
         quickGameButton.setOnClickListener(view -> {
             if(getActivity()!=null) {
                 quickGameButton.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.selectedtypeofgameroundedcorner));
@@ -58,7 +58,7 @@ public class chooseTypeGame extends Fragment {
                 navController.navigate(R.id.nav_game, bundle);
             }
         });
-        ConstraintLayout pastisButton = (ConstraintLayout) root.findViewById(R.id.pastisButton);
+        ConstraintLayout pastisButton = root.findViewById(R.id.pastisButton);
         pastisButton.setOnClickListener(view -> {
             if(getActivity()!=null){
                 pastisButton.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.selectedtypeofgameroundedcorner));

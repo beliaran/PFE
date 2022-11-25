@@ -16,7 +16,7 @@
     <string name="quickGame_rules">Be the first to score 30 points</string>
     <string name="pastis_rules">Be the first to score 51 points</string>
     <string name="round">Round</string>
-    <string name="scorePlayer">Score : %1$s</string>
+    <string name="scorePlayer">Score : %1$s/%2$s</string>
     <string name="winner">End of Game</string>
     <string name="returnToMenu">Return to Menu</string>
     <string name="returnToGame">Return to Game</string>
@@ -31,6 +31,8 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="validatePoints">Validate %1$s Points</string>
+    <string name="validate0Point">Validate %1$s Point</string>
+    <string name="disqualifyPlayer">Disqualify %1$s</string>
     <string name="pin2" translatable="false">2</string>
     <string name="pin1" translatable="false">1</string>
     <string name="pin4" translatable="false">4</string>

@@ -52,20 +52,20 @@ public class GameFragment extends Fragment {
             TextView textViewPlayer = root.findViewById(R.id.idPlayer);
             textViewPlayer.setText(player.getName());
             TextView textViewScore = root.findViewById(R.id.scorePlayer);
-            textViewScore.setText(getResources().getString(R.string.scorePlayer, String.valueOf(player.getScore())));
+            textViewScore.setText(getResources().getString(R.string.scorePlayer, String.valueOf(player.getScore()),String.valueOf(game.getScoreToWin())));
             pins = ((MainActivity)getActivity()).getGame().getPins();
-            Button imageViewPin1 = (Button) root.findViewById(R.id.pin1);
-            Button imageViewPin2 = (Button) root.findViewById(R.id.pin2);
-            Button imageViewPin3 = (Button) root.findViewById(R.id.pin3);
-            Button imageViewPin4 = (Button) root.findViewById(R.id.pin4);
-            Button imageViewPin5 = (Button) root.findViewById(R.id.pin5);
-            Button imageViewPin6 = (Button) root.findViewById(R.id.pin6);
-            Button imageViewPin7 = (Button) root.findViewById(R.id.pin7);
-            Button imageViewPin8 = (Button) root.findViewById(R.id.pin8);
-            Button imageViewPin9 = (Button) root.findViewById(R.id.pin9);
-            Button imageViewPin10 = (Button) root.findViewById(R.id.pin10);
-            Button imageViewPin11 = (Button) root.findViewById(R.id.pin11);
-            Button imageViewPin12 = (Button) root.findViewById(R.id.pin12);
+            Button imageViewPin1 = root.findViewById(R.id.pin1);
+            Button imageViewPin2 = root.findViewById(R.id.pin2);
+            Button imageViewPin3 = root.findViewById(R.id.pin3);
+            Button imageViewPin4 = root.findViewById(R.id.pin4);
+            Button imageViewPin5 = root.findViewById(R.id.pin5);
+            Button imageViewPin6 = root.findViewById(R.id.pin6);
+            Button imageViewPin7 = root.findViewById(R.id.pin7);
+            Button imageViewPin8 = root.findViewById(R.id.pin8);
+            Button imageViewPin9 = root.findViewById(R.id.pin9);
+            Button imageViewPin10 = root.findViewById(R.id.pin10);
+            Button imageViewPin11 = root.findViewById(R.id.pin11);
+            Button imageViewPin12 = root.findViewById(R.id.pin12);
             listImageView.add(imageViewPin1);
             listImageView.add(imageViewPin2);
             listImageView.add(imageViewPin3);
@@ -88,9 +88,9 @@ public class GameFragment extends Fragment {
             }
 
             updateInterface();
-            buttonValidate= (Button) root.findViewById(R.id.buttonValidateRound);
+            buttonValidate= root.findViewById(R.id.buttonValidateRound);
             updateButton();
-            ImageView imageCup = (ImageView) root.findViewById(R.id.imageCup);
+            ImageView imageCup = root.findViewById(R.id.imageCup);
             imageCup.setOnClickListener(view -> {
                 navController.navigate(R.id.nav_scoreboard);
                 listImageView= new ArrayList<>();
@@ -121,6 +121,7 @@ public class GameFragment extends Fragment {
                             player.setMissed(0);
                         }
                         else{
+                            player.setScore(0);
                             game.getPlayers().remove(player);
                             playerNumber=playerNumber-1;
                         }
@@ -142,7 +143,7 @@ public class GameFragment extends Fragment {
 
                 }else{
                     if(player.getScore()>game.getScoreToWin()){
-                        player.setScore((int)game.getScoreToWin()/2);
+                        player.setScore(game.getScoreToWin()/2);
                     }
                     for(Pin pin : pins){
                         pin.setFallen(false);
@@ -205,12 +206,19 @@ public class GameFragment extends Fragment {
             for(Pin pin : pins){
                 if(pin.hasFallen()){
                     scoreButton=pin.getNumber();
+                    buttonValidate.setText(getResources().getString(R.string.validatePoints, String.valueOf(scoreButton)));
                 }
+            }
+        }else if(countFallen==0){
+            buttonValidate.setText(getResources().getString(R.string.validate0Point, String.valueOf(scoreButton)));
+            if(game.getTypeOfGame()==Game.TypeOfGame.tournament && player.getMissed()==2) {
+                buttonValidate.setText(getResources().getString(R.string.disqualifyPlayer, String.valueOf(player.getName())));
             }
         }else{
             scoreButton=countFallen;
+            buttonValidate.setText(getResources().getString(R.string.validatePoints, String.valueOf(scoreButton)));
+
         }
-        buttonValidate.setText(getResources().getString(R.string.validatePoints, String.valueOf(scoreButton)));
     }
 
     private void updateInterface() {

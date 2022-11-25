@@ -16,7 +16,7 @@
     <string name="player_name">Nom du Joueur</string>
     <string name="returnToMenu">Revenir au Menu</string>
     <string name="winner">Fin de Partie</string>
-    <string name="scorePlayer">Score : %1$s</string>
+    <string name="scorePlayer">Score : %1$s/%2$s</string>
     <string name="round">Tour</string>
     <string name="pastis_rules">Le premier à 51 points gagne</string>
     <string name="classical">Classique</string>
@@ -30,4 +30,6 @@
     <string name="no">Non</string>
     <string name="returnToGame">Revenir au Jeu</string>
     <string name="validatePoints">Valider %1$s Points</string>
+    <string name="validate0Point">Valider %1$s Point</string>
+    <string name="disqualifyPlayer">Disqualifier %1$s</string>
 </resources>

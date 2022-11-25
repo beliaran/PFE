@@ -71,7 +71,7 @@ public class AddPlayersFragment extends Fragment {
             }
         }
         update();
-        FloatingActionButton addPlayerButton = (FloatingActionButton) root.findViewById(R.id.addPlayerButton);
+        FloatingActionButton addPlayerButton = root.findViewById(R.id.addPlayerButton);
         addPlayerButton.setOnClickListener(view -> {
             count+=1;
             playerName= new HashMap<>();
@@ -84,7 +84,7 @@ public class AddPlayersFragment extends Fragment {
             playersFragment.add(fragment);
             update();
         });
-        Button launchButton = (Button) root.findViewById(R.id.launchButton);
+        Button launchButton = root.findViewById(R.id.launchButton);
         launchButton.setOnClickListener(view -> {
             ((MainActivity)getActivity()).getGame().getPlayers().removeAll(((MainActivity)getActivity()).getGame().getPlayers());
             int i = 1;
