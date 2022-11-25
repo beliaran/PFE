@@ -1,6 +1,7 @@
 package fr.eseo.pfemolkky.ui.main;
 
 import android.app.AlertDialog;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -78,6 +80,17 @@ public class GameFragment extends Fragment {
             listImageView.add(imageViewPin10);
             listImageView.add(imageViewPin11);
             listImageView.add(imageViewPin12);
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            (getActivity()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+            for(Button imageViewPin : listImageView){
+                System.out.println(imageViewPin.getText());
+                System.out.println(displayMetrics.widthPixels/4);
+                System.out.println(imageViewPin.getLayoutParams());
+                ViewGroup.LayoutParams layoutParams = imageViewPin.getLayoutParams();
+                layoutParams.width = (displayMetrics.widthPixels-50)/4;
+                layoutParams.height = (displayMetrics.widthPixels-50)/4;
+                imageViewPin.setLayoutParams(layoutParams);
+            }
             for(int i=0;i<player.getMissed();i++){
                 ImageView iv = new ImageView(getContext());
                 iv.setImageDrawable(ContextCompat.getDrawable(getActivity(), android.R.drawable.ic_delete));
@@ -182,8 +195,12 @@ public class GameFragment extends Fragment {
                                 .setPositiveButton(getResources().getText(R.string.yes), (dialog1, which) -> navController.navigate(R.id.nav_main))
                                 .setNegativeButton(getResources().getText(R.string.no), null).create();
                         dialog.setOnShowListener(arg0 -> {
-                            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-                            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+                            TypedValue typedValue = new TypedValue();
+                            Resources.Theme theme = getActivity().getTheme();
+                            theme.resolveAttribute(com.google.android.material.R.attr.colorOnSecondary, typedValue, true);
+                            int color = typedValue.data;
+                            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(color);
+                            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(color);
                         });
                         dialog.show();
                     }
