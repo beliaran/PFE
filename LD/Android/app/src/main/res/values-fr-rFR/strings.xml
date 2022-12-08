@@ -32,4 +32,6 @@
     <string name="validatePoints">Valider %1$s Points</string>
     <string name="validate0Point">Valider %1$s Point</string>
     <string name="disqualifyPlayer">Disqualifier %1$s</string>
+    <string name="batteryDisconnected">Déconnecté</string>
+    <string name="pinName">Quille %1$s</string>
 </resources>

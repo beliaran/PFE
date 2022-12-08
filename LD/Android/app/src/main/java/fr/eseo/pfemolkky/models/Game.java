@@ -46,6 +46,9 @@ public class Game {
             pins.add(pin);
         }
     }
+    public Game(ArrayList<Pin> pins){
+        setPins(pins);
+    }
 
     public void setPlayers(ArrayList<Player> players) {
         this.players = players;

@@ -31,6 +31,11 @@
         android:label="@string/scoreboard"
         tools:layout="@layout/fragment_score_board" />
     <fragment
+        android:id="@+id/nav_battery"
+        android:name="fr.eseo.pfemolkky.ui.battery.BatteryListFragment"
+        android:label="@string/battery"
+        tools:layout="@layout/fragment_battery_list" />
+    <fragment
         android:id="@+id/nav_winner"
         android:name="fr.eseo.pfemolkky.ui.main.Winner"
         android:label="@string/winner"

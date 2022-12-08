@@ -108,6 +108,11 @@ public class GameFragment extends Fragment {
                 navController.navigate(R.id.nav_scoreboard);
                 listImageView= new ArrayList<>();
             });
+            ImageView imageBattery = root.findViewById(R.id.imageBattery);
+            imageBattery.setOnClickListener(view -> {
+                navController.navigate(R.id.nav_battery);
+                listImageView= new ArrayList<>();
+            });
 
             buttonValidate.setOnClickListener(view -> {
                 int countFallen = 0;

@@ -6,17 +6,22 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
+
 import fr.eseo.pfemolkky.models.Game;
+import fr.eseo.pfemolkky.models.Pin;
 
 
 public class MainActivity extends AppCompatActivity {
     Game game;
+    ArrayList<Pin> pins = new ArrayList<>();
 
     public boolean isAllowBack() {
         return allowBack;
@@ -27,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean allowBack =true;
-
+    public ArrayList<Pin> getPins(){ return pins; }
+    public void setPins(ArrayList<Pin> pins) { this.pins = pins; }
     public Game getGame() {
         return game;
     }
@@ -40,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
         NavigationView navView = findViewById(R.id.nav_view);
 
