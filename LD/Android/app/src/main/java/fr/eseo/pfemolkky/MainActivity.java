@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import fr.eseo.pfemolkky.models.Game;
 import fr.eseo.pfemolkky.models.Pin;
+import fr.eseo.pfemolkky.tests.TestBattery;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -45,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Test pour voir l'affichage des batteries
+        TestBattery test = new TestBattery();
+        setPins(test.getPins());
+
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
