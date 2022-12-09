@@ -34,4 +34,22 @@
     <string name="disqualifyPlayer">Disqualifier %1$s</string>
     <string name="batteryDisconnected">Déconnectée</string>
     <string name="pinName">Quille %1$s</string>
+    <string name="userConnection">Connexion Utilisateur</string>
+    <string name="password">Mot de Passe</string>
+    <string name="email">Email</string>
+    <string name="submit">Se Connecter</string>
+    <string name="connection">Connexion</string>
+    <string name="askSign">Pas encore enregistré ?</string>
+    <string name="register">S\'enregistrer</string>
+    <string name="connectUser">Se Connecter</string>
+    <string name="passwordVerification">Vérifier le Mot de Passe</string>
+    <string name="registerNow">S\'enregistrer</string>
+    <string name="firstName">Prénom</string>
+    <string name="lastName">Nom de Famille</string>
+    <string name="userRegister">Enregistrement Utilisateur</string>
+    <string name="userName">Pseudo</string>
+    <string name="save">Sauvegarder</string>
+    <string name="namePasswordNotNull">L\'Email et le Mot de Passe doivent être tous les deux renseignés</string>
+    <string name="anyFieldEmpty">Chaque champ doit être rempli</string>
+    <string name="passwordNotEgal">Les deux mots de passe doivent être égaux</string>
 </resources>

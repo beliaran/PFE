@@ -56,4 +56,22 @@
     <string name="batteryLevel" translatable="false">Battery Level</string>
     <string name="pinName">Pin %1$s</string>
     <string name="battery" translatable="false">Battery</string>
+    <string name="userConnection">User Connection</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="submit">Sign In</string>
+    <string name="connection">Connection</string>
+    <string name="askSign">Not already registered?</string>
+    <string name="register">Register</string>
+    <string name="connectUser">Sign In</string>
+    <string name="passwordVerification">Verify Password</string>
+    <string name="registerNow">Register Now</string>
+    <string name="userRegister">User Register</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
+    <string name="userName">UserName</string>
+    <string name="save">Save</string>
+    <string name="namePasswordNotNull"><![CDATA[Email & Password should not be empty]]></string>
+    <string name="anyFieldEmpty">All fields must be filled</string>
+    <string name="passwordNotEgal">Both Password must be equal</string>
 </resources>

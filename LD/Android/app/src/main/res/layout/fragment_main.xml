@@ -8,6 +8,7 @@
     tools:context=".ui.main.MainFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout6"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/purple_molkky"
@@ -16,50 +17,64 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:contentDescription="@string/logo"
+            android:src="@drawable/logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.158" />
+
+        <Button
+            android:id="@+id/buttonStartGame"
+            android:layout_width="259dp"
+            android:layout_height="91dp"
+            android:backgroundTint="@color/white"
+            android:text="@string/startGame"
+            android:textColor="@color/purple_molkky"
+            app:cornerRadius="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.535"
+            app:rippleColor="@color/orange" />
+
+        <Button
+            android:id="@+id/buttonConnectMolkky"
+            android:layout_width="259dp"
+            android:layout_height="91dp"
+            android:backgroundTint="@color/white"
+            android:text="@string/connectMolkky"
+            android:textColor="@color/purple_molkky"
+            app:cornerRadius="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.7"
+            app:rippleColor="@color/orange" />
+
+        <Button
+            android:id="@+id/buttonLogInMain"
+            android:layout_width="259dp"
+            android:layout_height="91dp"
+            android:backgroundTint="@color/white"
+            android:text="@string/connectUser"
+            android:textColor="@color/purple_molkky"
+            app:cornerRadius="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.942"
+            app:rippleColor="@color/orange" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <Button
-        android:id="@+id/buttonStartGame"
-        android:layout_width="259dp"
-        android:layout_height="91dp"
-        android:backgroundTint="@color/white"
-        android:text="@string/startGame"
-        android:textColor="@color/purple_molkky"
-        app:cornerRadius="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.592"
-        app:rippleColor="@color/orange" />
-
-    <Button
-        android:id="@+id/buttonConnectMolkky"
-        android:layout_width="259dp"
-        android:layout_height="91dp"
-        android:backgroundTint="@color/white"
-        android:text="@string/connectMolkky"
-        android:textColor="@color/purple_molkky"
-        app:cornerRadius="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.796"
-        app:rippleColor="@color/orange" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="65dp"
-        android:layout_marginBottom="73dp"
-        android:contentDescription="@string/logo"
-        android:src="@drawable/logo"
-        app:layout_constraintBottom_toTopOf="@+id/buttonStartGame"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

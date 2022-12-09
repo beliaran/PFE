@@ -27,6 +27,7 @@ public class MainFragment extends Fragment {
         NavController navController = NavHostFragment.findNavController(this);
         View inputFragmentView = inflater.inflate(R.layout.fragment_main, container, false);
         Button button = inputFragmentView.findViewById(R.id.buttonStartGame);
+        Button buttonLogIn = inputFragmentView.findViewById(R.id.buttonLogInMain);
         if(getActivity()!=null){
             ((MainActivity)getActivity()).setAllowBack(false);
             button.setOnClickListener(view -> {
@@ -39,6 +40,11 @@ public class MainFragment extends Fragment {
                 }
                 ((MainActivity)getActivity()).setAllowBack(true);
             });
+            buttonLogIn.setOnClickListener(view -> {
+                System.out.println("changed");
+                navController.navigate(R.id.nav_user_connection);
+            });
+
         }
         return inputFragmentView;
     }
