@@ -19,62 +19,66 @@ import fr.eseo.pfemolkky.models.Pin;
 
 public class BatteryListFragment extends Fragment {
 
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-        }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            // Inflate the layout for this fragment
-            View root = inflater.inflate(R.layout.fragment_battery_list, container, false);
-            if(getActivity()!=null){
-                ArrayList<Pin> pins = ((MainActivity) getActivity()).getGame().getPins();
-                LinearLayout playerList = root.findViewById((R.id.layout_showBatteryLevel));
-                ((MainActivity)getActivity()).setAllowBack(true);
-                for(Pin pinIteration : pins){
-                    View fragment = inflater.inflate(R.layout.fragment_battery, container, false);
-                    fragment.findViewById(R.id.layoutBattery).setBackgroundResource(R.drawable.playerroundedcornerdarkpurple);
-                    TextView textName = fragment.findViewById(R.id.batteryNumber);
-                    textName.setText(getResources().getString(R.string.pinName,String.valueOf(pinIteration.getNumber())));
-                    TextView textDisconnected = fragment.findViewById(R.id.batteryDisconnected);
-                    ImageView imageBattery = fragment.findViewById(R.id.imageBattery);
-                    if(pinIteration.isConnected()) {
-                        textDisconnected.setVisibility(View.INVISIBLE);
-                        switch(pinIteration.getBattery()) {
-                            case low: {
-                                imageBattery.setImageDrawable(getResources().getDrawable(R.drawable.battery_low));
-                                break;
-                            }
-                            case medium: {
-                                imageBattery.setImageDrawable(getResources().getDrawable(R.drawable.battery_50));
-                                break;
-                            }
-                            case excellent: {
-                                imageBattery.setImageDrawable(getResources().getDrawable(R.drawable.battery_75));
-                                break;
-                            }
-                            case full: {
-                                imageBattery.setImageDrawable(getResources().getDrawable(R.drawable.battery_full));
-                                break;
-                            }
-                            default: {
-                                textDisconnected.setVisibility(View.VISIBLE);
-                                imageBattery.setVisibility(View.INVISIBLE);
-                                break;
-                            }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View root = inflater.inflate(R.layout.fragment_battery_list, container, false);
+        if(getActivity()!=null){
+            ArrayList<Pin> pins = ((MainActivity) getActivity()).getGame().getPins();
+            LinearLayout playerList = root.findViewById((R.id.layout_showBatteryLevel));
+            ((MainActivity)getActivity()).setAllowBack(true);
+            for(Pin pinIteration : pins){
+                View fragment = inflater.inflate(R.layout.fragment_battery, container, false);
+                fragment.findViewById(R.id.layoutBattery).setBackgroundResource(R.drawable.playerroundedcornerdarkpurple);
+                TextView textName = fragment.findViewById(R.id.batteryNumber);
+                textName.setText(getResources().getString(R.string.pinName,String.valueOf(pinIteration.getNumber())));
+                TextView textDisconnected = fragment.findViewById(R.id.batteryDisconnected);
+                ImageView imageBattery = fragment.findViewById(R.id.imageBattery);
+                if(pinIteration.isConnected()) {
+                    textDisconnected.setVisibility(View.INVISIBLE);
+                    switch(pinIteration.getBattery()) {
+                        case dead: {
+                            imageBattery.setImageDrawable(getResources().getDrawable(R.drawable.battery_low));
+                            break;
+                        }
+                        case low: {
+                            imageBattery.setImageDrawable(getResources().getDrawable(R.drawable.battery_25));
+                            break;
+                        }
+                        case medium: {
+                            imageBattery.setImageDrawable(getResources().getDrawable(R.drawable.battery_50));
+                            break;
+                        }
+                        case excellent: {
+                            imageBattery.setImageDrawable(getResources().getDrawable(R.drawable.battery_75));
+                            break;
+                        }
+                        case full: {
+                            imageBattery.setImageDrawable(getResources().getDrawable(R.drawable.battery_full));
+                            break;
+                        }
+                        default: {
+                            textDisconnected.setVisibility(View.VISIBLE);
+                            imageBattery.setVisibility(View.INVISIBLE);
+                            break;
                         }
                     }
-                    else {
-                        imageBattery.setVisibility(View.INVISIBLE);
-                    }
-                    playerList.addView(fragment);
                 }
-
-                Button backToGame = root.findViewById(R.id.buttonValidateRound);
-                backToGame.setOnClickListener(view -> (getActivity()).onBackPressed());
+                else {
+                    imageBattery.setVisibility(View.INVISIBLE);
+                }
+                playerList.addView(fragment);
             }
-            return root;
+
+            Button backToGame = root.findViewById(R.id.buttonValidateRound);
+            backToGame.setOnClickListener(view -> (getActivity()).onBackPressed());
         }
+        return root;
     }
+}
