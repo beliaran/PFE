@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -21,6 +22,8 @@ import fr.eseo.pfemolkky.models.Game;
 
 public class MainFragment extends Fragment {
 
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -30,6 +33,7 @@ public class MainFragment extends Fragment {
         fr.eseo.pfemolkky.databinding.FragmentMainBinding binding = FragmentMainBinding.inflate(inflater);
         View inputFragmentView = inflater.inflate(R.layout.fragment_main, container, false);
         Button button = inputFragmentView.findViewById(R.id.buttonStartGame);
+        Button chooseMolkkyBtn = inputFragmentView.findViewById(R.id.buttonConnectMolkky);
         if(getActivity()!=null){
             ((MainActivity)getActivity()).setAllowBack(false);
             button.setOnClickListener(view -> {
@@ -37,7 +41,19 @@ public class MainFragment extends Fragment {
                 ((MainActivity)getActivity()).setGame(new Game());
                 ((MainActivity)getActivity()).setAllowBack(true);
             });
+            chooseMolkkyBtn.setOnClickListener(view -> {
+                if(((MainActivity) getActivity()).bluetoothAdapter == null){
+                    //TODO Rajouter au champ string
+                    Toast.makeText(getContext(), "Le bluetooth n'est pas supporté par votre smarthphone",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    navController.navigate(R.id.select_molkky);
+                    ((MainActivity) getActivity()).setAllowBack(true);
+                }
+            });
         }
         return inputFragmentView;
     }
+
 }

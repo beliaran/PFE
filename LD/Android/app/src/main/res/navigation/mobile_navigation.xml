@@ -11,6 +11,11 @@
         android:label="@string/fragment_main"
         tools:layout="@layout/fragment_main" />
     <fragment
+        android:id="@+id/select_molkky"
+        android:name="fr.eseo.pfemolkky.ui.selectmolkky.selectMolkky"
+        android:label="@string/selectmolkky"
+        tools:layout="@layout/fragment_select_molkky" />
+    <fragment
         android:id="@+id/nav_start_game"
         android:name="fr.eseo.pfemolkky.ui.addplayers.AddPlayersFragment"
         android:label="@string/fragment_add_players"
