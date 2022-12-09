@@ -48,7 +48,6 @@
     <string name="displayScore" translatable="false">%1$s/%2$s</string>
     <string name="cross" translatable="false">cross</string>
     <string name="addButton" translatable="false">addButton</string>
-    <string name="imageCup" translatable="false">imageCup</string>
     <string name="logo" translatable="false">logo</string>
     <string name="imagePodium" translatable="false">Podium</string>
     <string name="batteryFull" translatable="false">Battery Full</string>

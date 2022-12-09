@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
         NavigationView navView = findViewById(R.id.nav_view);
 

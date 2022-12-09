@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
@@ -44,23 +45,23 @@ public class BatteryListFragment extends Fragment {
                     textDisconnected.setVisibility(View.INVISIBLE);
                     switch(pinIteration.getBattery()) {
                         case dead: {
-                            imageBattery.setImageDrawable(getResources().getDrawable(R.drawable.battery_low));
+                            imageBattery.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.battery_low, null));
                             break;
                         }
                         case low: {
-                            imageBattery.setImageDrawable(getResources().getDrawable(R.drawable.battery_25));
+                            imageBattery.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.battery_25, null));
                             break;
                         }
                         case medium: {
-                            imageBattery.setImageDrawable(getResources().getDrawable(R.drawable.battery_50));
+                            imageBattery.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.battery_50, null));
                             break;
                         }
                         case excellent: {
-                            imageBattery.setImageDrawable(getResources().getDrawable(R.drawable.battery_75));
+                            imageBattery.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.battery_75, null));
                             break;
                         }
                         case full: {
-                            imageBattery.setImageDrawable(getResources().getDrawable(R.drawable.battery_full));
+                            imageBattery.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.battery_full, null));
                             break;
                         }
                         default: {
