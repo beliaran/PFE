@@ -76,12 +76,12 @@ public class BatteryListFragment extends Fragment {
                 }
                 else {
                     imageBattery.setVisibility(View.INVISIBLE);
-                    fragment.setOnClickListener(view -> {
-                        Bundle bundle = new Bundle();
-                        bundle.putInt("pinNumber", pinIteration.getNumber());
-                        navController.navigate(R.id.nav_add_pin,bundle);
-                    });
                 }
+                fragment.setOnClickListener(view -> {
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pinNumber", pinIteration.getNumber());
+                    navController.navigate(R.id.nav_add_pin,bundle);
+                });
                 playerList.addView(fragment);
             }
 

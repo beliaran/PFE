@@ -102,9 +102,9 @@ public class GameFragment extends Fragment {
                 ((LinearLayout)root.findViewById(R.id.croix)).addView(iv);
             }
             //Test de frame
-            /*String frame1 = "000000100000000100000078000000000000000000000000";
+           /* String frame1 = "000011000000000101001110000000000000000000000000";
             pinFrameAnalysis(frame1);
-            String frame2 = "000000120000000000000010000000000000000000000000";
+            String frame2 = "000000100000000000000010000000000000000000000000";
             pinFrameAnalysis(frame2);*/
 
             updateInterface();
@@ -290,12 +290,12 @@ public class GameFragment extends Fragment {
             String accel = frame.substring(25, 32);
             String angle = frame.substring(33, 40);
             String distance = frame.substring(41, 48);
-            int intNum = Integer.parseInt(num)-1;
-            int intMod = Integer.parseInt(mod);
-            int intBat = Integer.parseInt(bat);
-            int intAccel = Integer.parseInt(accel);
-            int intAngle = Integer.parseInt(angle);
-            int intDistance = Integer.parseInt(distance);
+            int intNum = Integer.parseInt(num,2)-1;
+            int intMod = Integer.parseInt(mod,2);
+            int intBat = Integer.parseInt(bat,2);
+            int intAccel = Integer.parseInt(accel,2);
+            int intAngle = Integer.parseInt(angle,2);
+            int intDistance = Integer.parseInt(distance,2);
             System.out.println(intNum);
             System.out.println(num);
             System.out.println(intMod);

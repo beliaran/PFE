@@ -80,12 +80,12 @@ public class AddPin extends Fragment {
             String accel = frame.substring(24, 31);
             String angle = frame.substring(32, 39);
             String distance = frame.substring(40, 47);
-            int intNum = Integer.parseInt(num);
-            int intMod = Integer.parseInt(mod);
-            int intBat = Integer.parseInt(bat);
-            int intAccel = Integer.parseInt(accel);
-            int intAngle = Integer.parseInt(angle);
-            int intDistance = Integer.parseInt(distance);
+            int intNum = Integer.parseInt(num,2);
+            int intMod = Integer.parseInt(mod,2);
+            int intBat = Integer.parseInt(bat,2);
+            int intAccel = Integer.parseInt(accel,2);
+            int intAngle = Integer.parseInt(angle,2);
+            int intDistance = Integer.parseInt(distance,2);
             if(intNum == 0 && intMod == 0){
                 Pin pin = new Pin(pinNumber);
                 if (intBat < 100) {
