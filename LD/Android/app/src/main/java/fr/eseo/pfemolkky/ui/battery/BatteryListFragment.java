@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import java.util.ArrayList;
 
@@ -19,7 +21,7 @@ import fr.eseo.pfemolkky.R;
 import fr.eseo.pfemolkky.models.Pin;
 
 public class BatteryListFragment extends Fragment {
-
+    NavController navController;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,7 @@ public class BatteryListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_battery_list, container, false);
+        navController=NavHostFragment.findNavController(this);
         if(getActivity()!=null){
             ArrayList<Pin> pins = ((MainActivity) getActivity()).getGame().getPins();
             LinearLayout playerList = root.findViewById((R.id.layout_showBatteryLevel));
@@ -73,6 +76,11 @@ public class BatteryListFragment extends Fragment {
                 }
                 else {
                     imageBattery.setVisibility(View.INVISIBLE);
+                    fragment.setOnClickListener(view -> {
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("pinNumber", pinIteration.getNumber());
+                        navController.navigate(R.id.nav_add_pin,bundle);
+                    });
                 }
                 playerList.addView(fragment);
             }

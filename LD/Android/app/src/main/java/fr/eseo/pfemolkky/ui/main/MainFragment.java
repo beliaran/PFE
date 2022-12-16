@@ -14,9 +14,12 @@ import android.widget.Button;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import java.util.ArrayList;
+
 import fr.eseo.pfemolkky.MainActivity;
 import fr.eseo.pfemolkky.R;
 import fr.eseo.pfemolkky.models.Game;
+import fr.eseo.pfemolkky.models.Pin;
 
 public class MainFragment extends Fragment {
 
@@ -32,12 +35,7 @@ public class MainFragment extends Fragment {
             ((MainActivity)getActivity()).setAllowBack(false);
             button.setOnClickListener(view -> {
                 navController.navigate(R.id.nav_start_game);
-                if(((MainActivity)getActivity()).getPins().isEmpty()){
-                    ((MainActivity)getActivity()).setGame(new Game());
-                }
-                else{
-                    ((MainActivity)getActivity()).setGame(new Game(((MainActivity)getActivity()).getPins()));
-                }
+                ((MainActivity)getActivity()).setGame(new Game(((MainActivity)getActivity()).getPins()));
                 ((MainActivity)getActivity()).setAllowBack(true);
             });
             buttonLogIn.setOnClickListener(view -> {

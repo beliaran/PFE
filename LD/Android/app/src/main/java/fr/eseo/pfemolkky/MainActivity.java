@@ -47,9 +47,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        for(int i=0;i<12;i++){
+            pins.add(new Pin(i+1));
+        }
+
         //Test pour voir l'affichage des batteries
-        TestBattery test = new TestBattery();
-        setPins(test.getPins());
+        //TestBattery test = new TestBattery();
+        //setPins(test.getPins());
 
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);

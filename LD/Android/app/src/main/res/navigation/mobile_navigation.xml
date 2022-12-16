@@ -50,4 +50,9 @@
         android:name="fr.eseo.pfemolkky.ui.user.UserRegisterFragment"
         android:label="@string/userRegister"
         tools:layout="@layout/fragment_user_register" />
+    <fragment
+        android:id="@+id/nav_add_pin"
+        android:name="fr.eseo.pfemolkky.ui.addPin.AddPin"
+        android:label="@string/addPin"
+        tools:layout="@layout/fragment_add_pin" />
 </navigation>

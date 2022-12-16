@@ -52,4 +52,9 @@
     <string name="namePasswordNotNull">L\'Email et le Mot de Passe doivent être tous les deux renseignés</string>
     <string name="anyFieldEmpty">Chaque champ doit être rempli</string>
     <string name="passwordNotEgal">Les deux mots de passe doivent être égaux</string>
+    <string name="nextTurn">Tour Suivant</string>
+    <string name="addPin">Ajouter une Quille</string>
+    <string name="modifyPin">Modifier la Quille %1$s</string>
+    <string name="pin0">Quille 0</string>
+    <string name="pinAnalyzedEmpty">Aucune Quille Trouvée</string>
 </resources>

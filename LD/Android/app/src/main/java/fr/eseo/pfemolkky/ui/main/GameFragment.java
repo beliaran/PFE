@@ -24,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReference;
 
 import fr.eseo.pfemolkky.MainActivity;
 import fr.eseo.pfemolkky.R;
@@ -41,6 +42,7 @@ public class GameFragment extends Fragment {
     private NavController navController;
     private Game game;
     private Button buttonValidate;
+    AtomicReference<Boolean> nextTurn = new AtomicReference<>(false);
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -113,53 +115,58 @@ public class GameFragment extends Fragment {
                 navController.navigate(R.id.nav_battery);
                 listImageView= new ArrayList<>();
             });
-
             buttonValidate.setOnClickListener(view -> {
-                int countFallen = 0;
-                for(Pin pin : pins){
-                    if(pin.hasFallen()){
-                        countFallen+=1;
-                    }
-                }
-                if(countFallen==1){
+                if(!nextTurn.get()){
+                    int countFallen = 0;
                     for(Pin pin : pins){
                         if(pin.hasFallen()){
-                            player.setMissed(0);
-                            player.setScore(player.getScore()+ pin.getNumber());
-                            player.setUniquePin(player.getUniquePin()+1);
-                            player.setFallenPins(player.getFallenPins()+1);
+                            countFallen+=1;
                         }
                     }
-                }
-                else if(countFallen==0){
-                    player.setMissed(player.getMissed()+1);
-                    if(player.getMissed()==3){
-                        if(game.getTypeOfGame()!= Game.TypeOfGame.tournament){
-                            player.setScore(0);
-                            player.setMissed(0);
-                        }
-                        else{
-                            player.setScore(0);
-                            game.getPlayers().remove(player);
-                            playerNumber=playerNumber-1;
+                    if(countFallen==1){
+                        for(Pin pin : pins){
+                            if(pin.hasFallen()){
+                                player.setMissed(0);
+                                player.setScore(player.getScore()+ pin.getNumber());
+                                player.setUniquePin(player.getUniquePin()+1);
+                                player.setFallenPins(player.getFallenPins()+1);
+                            }
                         }
                     }
-                }else{
-                    player.setMissed(0);
-                    player.setScore(player.getScore()+ countFallen);
-                    player.setFallenPins(player.getFallenPins()+countFallen);
-                }
-                if((game.getTypeOfGame()== Game.TypeOfGame.tournament && game.getPlayers().size()==1)||player.getScore()==game.getScoreToWin()){
-                    //To do when win
-                    Bundle bundle = new Bundle();
-                    if(game.getTypeOfGame()== Game.TypeOfGame.tournament){
-                        bundle.putInt("winner",0);
+                    else if(countFallen==0){
+                        player.setMissed(player.getMissed()+1);
+                        if(player.getMissed()==3){
+                            if(game.getTypeOfGame()!= Game.TypeOfGame.tournament){
+                                player.setScore(0);
+                                player.setMissed(0);
+                            }
+                            else{
+                                player.setScore(0);
+                                game.getPlayers().remove(player);
+                                playerNumber=playerNumber-1;
+                            }
+                        }
                     }else{
-                        bundle.putInt("winner",playerNumber);
+                        player.setMissed(0);
+                        player.setScore(player.getScore()+ countFallen);
+                        player.setFallenPins(player.getFallenPins()+countFallen);
                     }
-                    navController.navigate(R.id.nav_winner,bundle);
+                    if((game.getTypeOfGame()== Game.TypeOfGame.tournament && game.getPlayers().size()==1)||player.getScore()==game.getScoreToWin()){
+                        //To do when win
+                        Bundle bundle = new Bundle();
+                        if(game.getTypeOfGame()== Game.TypeOfGame.tournament){
+                            bundle.putInt("winner",0);
+                        }else{
+                            bundle.putInt("winner",playerNumber);
+                        }
+                        navController.navigate(R.id.nav_winner,bundle);
 
-                }else{
+                    }else{
+                        nextTurn.set(true);
+                        buttonValidate.setText(getResources().getString(R.string.nextTurn));
+                    }
+                }
+                else {
                     if(player.getScore()>game.getScoreToWin()){
                         player.setScore(game.getScoreToWin()/2);
                     }
@@ -217,52 +224,94 @@ public class GameFragment extends Fragment {
     }
 
     private void updateButton() {
-        int countFallen = 0;
-        int scoreButton=0;
-        for(Pin pin : pins){
-            if(pin.hasFallen()){
-                countFallen+=1;
-            }
-        }
-        if(countFallen==1){
+        if(!nextTurn.get()){
+            int countFallen = 0;
+            int scoreButton=0;
             for(Pin pin : pins){
                 if(pin.hasFallen()){
-                    scoreButton=pin.getNumber();
-                    buttonValidate.setText(getResources().getString(R.string.validatePoints, String.valueOf(scoreButton)));
+                    countFallen+=1;
                 }
             }
-        }else if(countFallen==0){
-            buttonValidate.setText(getResources().getString(R.string.validate0Point, String.valueOf(scoreButton)));
-            if(game.getTypeOfGame()==Game.TypeOfGame.tournament && player.getMissed()==2) {
-                buttonValidate.setText(getResources().getString(R.string.disqualifyPlayer, String.valueOf(player.getName())));
+            if(countFallen==1){
+                for(Pin pin : pins){
+                    if(pin.hasFallen()){
+                        scoreButton=pin.getNumber();
+                        buttonValidate.setText(getResources().getString(R.string.validatePoints, String.valueOf(scoreButton)));
+                    }
+                }
+            }else if(countFallen==0){
+                buttonValidate.setText(getResources().getString(R.string.validate0Point, String.valueOf(scoreButton)));
+                if(game.getTypeOfGame()==Game.TypeOfGame.tournament && player.getMissed()==2) {
+                    buttonValidate.setText(getResources().getString(R.string.disqualifyPlayer, String.valueOf(player.getName())));
+                }
+            }else {
+                scoreButton = countFallen;
+                buttonValidate.setText(getResources().getString(R.string.validatePoints, String.valueOf(scoreButton)));
             }
-        }else{
-            scoreButton=countFallen;
-            buttonValidate.setText(getResources().getString(R.string.validatePoints, String.valueOf(scoreButton)));
-
         }
     }
 
     private void updateInterface() {
-        if(getActivity()!=null){
-            for(int i=0;i<12;i++){
-                if(!pins.get(i).isConnected()){
-                    listImageView.get(i).setBackgroundResource(R.drawable.circlepinbuttondisconnected);
-                }else{
-                    listImageView.get(i).setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.circlepinbutton));
+        if(!nextTurn.get()){
+            if(getActivity()!=null){
+                for(int i=0;i<12;i++){
+                    if(!pins.get(i).isConnected()){
+                        listImageView.get(i).setBackgroundResource(R.drawable.circlepinbuttondisconnected);
+                    }else{
+                        listImageView.get(i).setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.circlepinbutton));
+                    }
+                    if(pins.get(i).hasFallen()){
+                        listImageView.get(i).setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.circlepinbuttonfallen));
+                    }
+                    int g = i;
+                    listImageView.get(i).setOnClickListener(view -> {
+                        pins.get(g).setFallen(!pins.get(g).hasFallen());
+                        updateInterface();
+                        updateButton();
+                    });
                 }
-                if(pins.get(i).hasFallen()){
-                    listImageView.get(i).setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.circlepinbuttonfallen));
-                }
-                int g = i;
-                listImageView.get(i).setOnClickListener(view -> {
-                    pins.get(g).setFallen(!pins.get(g).hasFallen());
-                    updateInterface();
-                    updateButton();
-                });
             }
+
         }
     }
 
-
+    public void pinFrameAnalysis(String frame){
+        if(frame.length()==48) {
+            String num = frame.substring(0, 7);
+            String mod = frame.substring(8, 15);
+            String bat = frame.substring(16, 23);
+            String accel = frame.substring(24, 31);
+            String angle = frame.substring(32, 39);
+            String distance = frame.substring(40, 47);
+            int intNum = Integer.parseInt(num);
+            int intMod = Integer.parseInt(mod);
+            int intBat = Integer.parseInt(bat);
+            int intAccel = Integer.parseInt(accel);
+            int intAngle = Integer.parseInt(angle);
+            int intDistance = Integer.parseInt(distance);
+            pins.get(intNum).setConnected(true);
+            if (intMod == 1 && !nextTurn.get()) {
+                pins.get(intNum).setFallen(true);
+                updateInterface();
+            }
+            if (intBat < 100) {
+                pins.get(intNum).setBattery(Pin.Battery.full);
+            }
+            if (intBat < 75) {
+                pins.get(intNum).setBattery(Pin.Battery.excellent);
+            }
+            if (intBat < 50) {
+                pins.get(intNum).setBattery(Pin.Battery.medium);
+            }
+            if (intBat < 25) {
+                pins.get(intNum).setBattery(Pin.Battery.low);
+            }
+            if (intBat < 5) {
+                pins.get(intNum).setBattery(Pin.Battery.dead);
+            }
+            if (intMod == 2) {
+                pins.get(intNum).setConnected(false);
+            }
+        }
+    }
 }

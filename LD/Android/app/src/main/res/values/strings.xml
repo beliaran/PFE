@@ -74,4 +74,10 @@
     <string name="namePasswordNotNull"><![CDATA[Email & Password should not be empty]]></string>
     <string name="anyFieldEmpty">All fields must be filled</string>
     <string name="passwordNotEgal">Both Password must be equal</string>
+    <string name="nextTurn">Next Turn</string>
+    <string name="addPin">Add a Pin</string>
+    <string name="empty" translatable="false">Empty</string>
+    <string name="modifyPin">Modify the Pin %1$s</string>
+    <string name="pinAnalyzedEmpty">No Pin Found</string>
+    <string name="pin0">Pin 0</string>
 </resources>
