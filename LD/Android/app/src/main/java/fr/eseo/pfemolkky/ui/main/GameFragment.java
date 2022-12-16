@@ -101,6 +101,11 @@ public class GameFragment extends Fragment {
                 iv.setLayoutParams(new ViewGroup.LayoutParams(pxWidth,pxHeight));
                 ((LinearLayout)root.findViewById(R.id.croix)).addView(iv);
             }
+            //Test de frame
+            /*String frame1 = "000000100000000100000078000000000000000000000000";
+            pinFrameAnalysis(frame1);
+            String frame2 = "000000120000000000000010000000000000000000000000";
+            pinFrameAnalysis(frame2);*/
 
             updateInterface();
             buttonValidate= root.findViewById(R.id.buttonValidateRound);
@@ -276,20 +281,27 @@ public class GameFragment extends Fragment {
     }
 
     public void pinFrameAnalysis(String frame){
+        System.out.println(frame);
+        System.out.println(frame.length());
         if(frame.length()==48) {
-            String num = frame.substring(0, 7);
-            String mod = frame.substring(8, 15);
-            String bat = frame.substring(16, 23);
-            String accel = frame.substring(24, 31);
-            String angle = frame.substring(32, 39);
-            String distance = frame.substring(40, 47);
-            int intNum = Integer.parseInt(num);
+            String num = frame.substring(0, 8);
+            String mod = frame.substring(9, 16);
+            String bat = frame.substring(16, 24);
+            String accel = frame.substring(25, 32);
+            String angle = frame.substring(33, 40);
+            String distance = frame.substring(41, 48);
+            int intNum = Integer.parseInt(num)-1;
             int intMod = Integer.parseInt(mod);
             int intBat = Integer.parseInt(bat);
             int intAccel = Integer.parseInt(accel);
             int intAngle = Integer.parseInt(angle);
             int intDistance = Integer.parseInt(distance);
+            System.out.println(intNum);
+            System.out.println(num);
+            System.out.println(intMod);
+            System.out.println(mod);
             pins.get(intNum).setConnected(true);
+
             if (intMod == 1 && !nextTurn.get()) {
                 pins.get(intNum).setFallen(true);
                 updateInterface();

@@ -15,7 +15,7 @@ public class BluetoothFrameReader {
             String accel = frame.substring(24, 31);
             String angle = frame.substring(32, 39);
             String distance = frame.substring(40, 47);
-            int intNum = Integer.parseInt(num);
+            int intNum = Integer.parseInt(num)-1;
             int intMod = Integer.parseInt(mod);
             int intBat = Integer.parseInt(bat);
             int intAccel = Integer.parseInt(accel);
