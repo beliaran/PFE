@@ -43,6 +43,8 @@ public class GameFragment extends Fragment {
     private Game game;
     private Button buttonValidate;
     AtomicReference<Boolean> nextTurn = new AtomicReference<>(false);
+    private TextView textViewScore;
+    private LinearLayout croix;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -55,8 +57,7 @@ public class GameFragment extends Fragment {
             player = ((MainActivity)getActivity()).getGame().getPlayers().get(playerNumber);
             TextView textViewPlayer = root.findViewById(R.id.idPlayer);
             textViewPlayer.setText(player.getName());
-            TextView textViewScore = root.findViewById(R.id.scorePlayer);
-            textViewScore.setText(getResources().getString(R.string.scorePlayer, String.valueOf(player.getScore()),String.valueOf(game.getScoreToWin())));
+            textViewScore = root.findViewById(R.id.scorePlayer);
             pins = ((MainActivity)getActivity()).getGame().getPins();
             Button imageViewPin1 = root.findViewById(R.id.pin1);
             Button imageViewPin2 = root.findViewById(R.id.pin2);
@@ -82,6 +83,8 @@ public class GameFragment extends Fragment {
             listImageView.add(imageViewPin10);
             listImageView.add(imageViewPin11);
             listImageView.add(imageViewPin12);
+            croix = (LinearLayout)root.findViewById(R.id.croix);
+            buttonValidate= root.findViewById(R.id.buttonValidateRound);
             DisplayMetrics displayMetrics = new DisplayMetrics();
             (getActivity()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
             for(Button imageViewPin : listImageView){
@@ -93,14 +96,7 @@ public class GameFragment extends Fragment {
                 layoutParams.height = (displayMetrics.widthPixels-50)/4;
                 imageViewPin.setLayoutParams(layoutParams);
             }
-            for(int i=0;i<player.getMissed();i++){
-                ImageView iv = new ImageView(getContext());
-                iv.setImageDrawable(ContextCompat.getDrawable(getActivity(), android.R.drawable.ic_delete));
-                int pxWidth = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50,getResources().getDisplayMetrics()));
-                int pxHeight = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50,getResources().getDisplayMetrics()));
-                iv.setLayoutParams(new ViewGroup.LayoutParams(pxWidth,pxHeight));
-                ((LinearLayout)root.findViewById(R.id.croix)).addView(iv);
-            }
+            
             //Test de frame
            /* String frame1 = "000011000000000101001110000000000000000000000000";
             pinFrameAnalysis(frame1);
@@ -108,8 +104,6 @@ public class GameFragment extends Fragment {
             pinFrameAnalysis(frame2);*/
 
             updateInterface();
-            buttonValidate= root.findViewById(R.id.buttonValidateRound);
-            updateButton();
             ImageView imageCup = root.findViewById(R.id.imageCup);
             imageCup.setOnClickListener(view -> {
                 navController.navigate(R.id.nav_scoreboard);
@@ -157,9 +151,12 @@ public class GameFragment extends Fragment {
                         player.setFallenPins(player.getFallenPins()+countFallen);
                     }
                     if((game.getTypeOfGame()== Game.TypeOfGame.tournament && game.getPlayers().size()==1)||player.getScore()==game.getScoreToWin()){
+                        for(Pin pin : pins){
+                            pin.setFallen(false);
+                        }
                         //To do when win
                         Bundle bundle = new Bundle();
-                        if(game.getTypeOfGame()== Game.TypeOfGame.tournament){
+                        if(game.getTypeOfGame() == Game.TypeOfGame.tournament){
                             bundle.putInt("winner",0);
                         }else{
                             bundle.putInt("winner",playerNumber);
@@ -168,7 +165,7 @@ public class GameFragment extends Fragment {
 
                     }else{
                         nextTurn.set(true);
-                        buttonValidate.setText(getResources().getString(R.string.nextTurn));
+                        updateInterface();
                     }
                 }
                 else {
@@ -254,29 +251,45 @@ public class GameFragment extends Fragment {
                 buttonValidate.setText(getResources().getString(R.string.validatePoints, String.valueOf(scoreButton)));
             }
         }
+        else {
+            buttonValidate.setText(getResources().getString(R.string.nextTurn));
+        }
     }
 
     private void updateInterface() {
-        if(!nextTurn.get()){
-            if(getActivity()!=null){
-                for(int i=0;i<12;i++){
-                    if(!pins.get(i).isConnected()){
-                        listImageView.get(i).setBackgroundResource(R.drawable.circlepinbuttondisconnected);
-                    }else{
-                        listImageView.get(i).setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.circlepinbutton));
-                    }
-                    if(pins.get(i).hasFallen()){
-                        listImageView.get(i).setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.circlepinbuttonfallen));
-                    }
+        if(getActivity()!=null){
+            textViewScore.setText(getResources().getString(R.string.scorePlayer, String.valueOf(player.getScore()),String.valueOf(game.getScoreToWin())));
+            croix.removeAllViews();
+            for(int i=0;i<player.getMissed();i++){
+                ImageView iv = new ImageView(getContext());
+                iv.setImageDrawable(ContextCompat.getDrawable(getActivity(), android.R.drawable.ic_delete));
+                int pxWidth = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50,getResources().getDisplayMetrics()));
+                int pxHeight = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50,getResources().getDisplayMetrics()));
+                iv.setLayoutParams(new ViewGroup.LayoutParams(pxWidth,pxHeight));
+                croix.addView(iv);
+            }
+            for(int i=0;i<12;i++){
+                if(!nextTurn.get()){
                     int g = i;
                     listImageView.get(i).setOnClickListener(view -> {
                         pins.get(g).setFallen(!pins.get(g).hasFallen());
                         updateInterface();
-                        updateButton();
                     });
                 }
+                else{
+                    int g = i;
+                    listImageView.get(i).setClickable(false);
+                }
+                if(!pins.get(i).isConnected()){
+                    listImageView.get(i).setBackgroundResource(R.drawable.circlepinbuttondisconnected);
+                }else{
+                    listImageView.get(i).setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.circlepinbutton));
+                }
+                if(pins.get(i).hasFallen()){
+                    listImageView.get(i).setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.circlepinbuttonfallen));
+                }
+                updateButton();
             }
-
         }
     }
 

@@ -2,6 +2,7 @@ package fr.eseo.pfemolkky.ui.main;
 
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -72,6 +73,15 @@ public class Winner extends Fragment {
             textAverageScorePerRound.setText(String.valueOf(averageScorePerRound));
             Button backToMenu = root.findViewById(R.id.buttonReturnToMenu);
             backToMenu.setOnClickListener(view -> navController.navigate(R.id.nav_main));
+            OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+                @Override
+                public void handleOnBackPressed() {
+                    if(getActivity()!=null){
+                        navController.navigate(R.id.nav_main);
+                    }
+                }
+            };
+            requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
         }
         return root;
     }

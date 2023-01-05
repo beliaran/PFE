@@ -2,6 +2,7 @@ package fr.eseo.pfemolkky.ui.main;
 
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -32,16 +33,25 @@ public class MainFragment extends Fragment {
         Button button = inputFragmentView.findViewById(R.id.buttonStartGame);
         Button buttonLogIn = inputFragmentView.findViewById(R.id.buttonLogInMain);
         if(getActivity()!=null){
-            ((MainActivity)getActivity()).setAllowBack(false);
+            ((MainActivity)getActivity()).setAllowBack(true);
             button.setOnClickListener(view -> {
                 navController.navigate(R.id.nav_start_game);
                 ((MainActivity)getActivity()).setGame(new Game(((MainActivity)getActivity()).getPins()));
-                ((MainActivity)getActivity()).setAllowBack(true);
             });
             buttonLogIn.setOnClickListener(view -> {
                 System.out.println("changed");
                 navController.navigate(R.id.nav_user_connection);
             });
+            OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+                @Override
+                public void handleOnBackPressed() {
+                    if(getActivity()!=null){
+                        System.out.println("called");
+                        getActivity().finish();
+                    }
+                }
+            };
+            requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
 
         }
         return inputFragmentView;
