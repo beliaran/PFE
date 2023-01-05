@@ -80,4 +80,5 @@
     <string name="modifyPin">Modify the Pin %1$s</string>
     <string name="pinAnalyzedEmpty">No Pin Found</string>
     <string name="pin0">Pin 0</string>
+    <string name="selectmolkky" translatable="false">selectMolkky</string>
 </resources>
