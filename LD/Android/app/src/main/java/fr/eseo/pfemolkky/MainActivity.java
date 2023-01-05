@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
     public ArrayList<BluetoothDevice> bluetoothDevices = new ArrayList<>();
 
+    public BluetoothDevice molkkyDevice;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -48,6 +48,12 @@ public class SelectMolkky extends Fragment {
 
     private ArrayList<BluetoothDevice> bluetoothMolkkyDevices = new ArrayList<>();
 
+    private BluetoothGattService service;
+
+    private BluetoothGattCharacteristic gattCharacteristic;
+    private BluetoothGattCharacteristic gattCharacteristicTx;
+    private BluetoothGatt gattMollky;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -82,23 +88,9 @@ public class SelectMolkky extends Fragment {
                 if (ble.getName().equals("Molkky") && !bluetoothMolkkyDevices.contains(ble)) {
                     Log.d(TAG, "find device");
                     bluetoothMolkkyDevices.add(ble);
-                    BluetoothGatt gatt = ble.connectGatt(main, false, bluetoothGattCallback);
-                    if(gatt.connect()){
-                        if(gatt.discoverServices()) {
-                            BluetoothGattService service = gatt.getService(UUID.fromString("6E400001-B5A3-F393-E0A9-E50E24DCCA9E"));
-                            BluetoothGattCharacteristic gattCharacteristic = service.getCharacteristic(UUID.fromString("6E400002-B5A3-F393-E0A9-E50E24DCCA9E"));
-                            gattCharacteristic.setValue("3");
-                            gattCharacteristic.setWriteType(WRITE_TYPE_DEFAULT);
-                            gatt.writeCharacteristic(gattCharacteristic);
-
-                            BluetoothGattCharacteristic gattCharacteristicTx = service.getCharacteristic(UUID.fromString("6E400003-B5A3-F393-E0A9-E50E24DCCA9E"));
-                            BluetoothGattDescriptor descriptor = gattCharacteristicTx.getDescriptor(UUID.fromString("00002902-0000-1000-8000-00805f9b34fb"));
-                            descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
-                            gattCharacteristicTx.addDescriptor(descriptor);
-                            gatt.writeDescriptor(descriptor);
-                            gatt.setCharacteristicNotification(gattCharacteristicTx, true);
-
-                        }
+                    //Element for connection
+                    gattMollky = ble.connectGatt(main, false, bluetoothGattCallback);
+                    if(gattMollky.connect()){
                     }
                 }
             }
@@ -106,15 +98,45 @@ public class SelectMolkky extends Fragment {
     }
 
     private final BluetoothGattCallback bluetoothGattCallback = new BluetoothGattCallback() {
+        @SuppressLint("MissingPermission")
         @Override
         public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
             if (newState == BluetoothProfile.STATE_CONNECTED) {
                 Log.d(TAG, "connected");
+                if(gattMollky.discoverServices()){
+                }
 
             } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
                 Log.d(TAG, "disconnected");
             }
 
+        }
+
+        @SuppressLint("MissingPermission")
+        @Override
+        public void onServicesDiscovered(BluetoothGatt gatt, int status){
+            Log.d(TAG, "service discovered");
+            service = gattMollky.getService(UUID.fromString("6E400001-B5A3-F393-E0A9-E50E24DCCA9E"));
+            if(service != null){
+                Log.d(TAG, "service ok");
+                gattCharacteristic = service.getCharacteristic(UUID.fromString("6E400002-B5A3-F393-E0A9-E50E24DCCA9E"));
+                gattCharacteristicTx = service.getCharacteristic(UUID.fromString("6E400003-B5A3-F393-E0A9-E50E24DCCA9E"));
+                gattCharacteristic.setValue("3");
+                gattCharacteristic.setWriteType(WRITE_TYPE_DEFAULT);
+                gattMollky.writeCharacteristic(gattCharacteristic);
+
+                BluetoothGattDescriptor descriptor = gattCharacteristicTx.getDescriptor(UUID.fromString("00002902-0000-1000-8000-00805f9b34fb"));
+                descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
+                gattCharacteristicTx.addDescriptor(descriptor);
+                gattCharacteristicTx.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE);
+                gattMollky.writeDescriptor(descriptor);
+                descriptor.setValue(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE);
+                gattCharacteristicTx.addDescriptor(descriptor);
+                gattMollky.writeDescriptor(descriptor);
+                if(gattMollky.setCharacteristicNotification(gattCharacteristicTx, true)){
+                    Log.d(TAG, "Notification ok");
+                }
+            }
         }
 
         @Override
@@ -130,8 +152,13 @@ public class SelectMolkky extends Fragment {
         }
 
         @Override
+        public void onCharacteristicRead(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status){
+            Log.d(TAG, "onCharacteristicRead");
+        }
+
+        @Override
         public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic ){
-            Log.d(TAG, String.valueOf(gatt.getService(UUID.fromString("6E400001-B5A3-F393-E0A9-E50E24DCCA9E")).getCharacteristic(UUID.fromString("6E400003-B5A3-F393-E0A9-E50E24DCCA9E")).getValue()));
+           Log.d(TAG,"billy");
         }
 
     };
