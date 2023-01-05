@@ -125,29 +125,30 @@ public class SelectMolkky extends Fragment {
                 gattCharacteristic.setWriteType(WRITE_TYPE_DEFAULT);
                 gattMollky.writeCharacteristic(gattCharacteristic);
 
-                BluetoothGattDescriptor descriptor = gattCharacteristicTx.getDescriptor(UUID.fromString("00002902-0000-1000-8000-00805f9b34fb"));
-                descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
-                gattCharacteristicTx.addDescriptor(descriptor);
-                gattCharacteristicTx.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE);
-                gattMollky.writeDescriptor(descriptor);
-                descriptor.setValue(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE);
-                gattCharacteristicTx.addDescriptor(descriptor);
-                gattMollky.writeDescriptor(descriptor);
-                if(gattMollky.setCharacteristicNotification(gattCharacteristicTx, true)){
-                    Log.d(TAG, "Notification ok");
-                }
             }
         }
 
+        @SuppressLint("MissingPermission")
         @Override
         public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status){
+            Log.d(TAG, "onCharacteristicWrite");
             switch (status){
                 case GATT_SUCCESS:
                     Log.d(TAG, "message send success");
+                    if(gattMollky.setCharacteristicNotification(gattCharacteristicTx, true)){
+                        Log.d(TAG, "Notification ok");
+                    }
+                    // 0x2902 org.bluetooth.descriptor.gatt.client_characteristic_configuration.xml
+                    UUID uuid = UUID.fromString("00002902-0000-1000-8000-00805f9b34fb");
+                    BluetoothGattDescriptor descriptor = gattCharacteristicTx.getDescriptor(uuid);
+                    descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
+                    gatt.writeDescriptor(descriptor);
                     break;
                 case GATT_WRITE_NOT_PERMITTED:
                     Log.d(TAG, "GATT_WRITE_NOT_PERMITTED");
                     break;
+                default:
+                    Log.d(TAG, String.valueOf(status));
             }
         }
 
