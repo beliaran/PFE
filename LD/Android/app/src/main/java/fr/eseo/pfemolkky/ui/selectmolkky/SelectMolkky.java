@@ -179,7 +179,6 @@ public class SelectMolkky extends Fragment {
                         Log.d(TAG, "Notification ok");
                     }
                     // 0x2902 org.bluetooth.descriptor.gatt.client_characteristic_configuration.xml
-                    //Activation de l'écoute des notifications
                     UUID uuid = UUID.fromString("00002902-0000-1000-8000-00805f9b34fb");
                     BluetoothGattDescriptor descriptor = gattCharacteristicTx.getDescriptor(uuid);
                     descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
