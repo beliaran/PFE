@@ -3,33 +3,34 @@ package fr.eseo.pfemolkky.service.bluetooth;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.annotation.SuppressLint;
-import android.bluetooth.BluetoothDevice;
 import android.bluetooth.le.BluetoothLeScanner;
 import android.bluetooth.le.ScanCallback;
 import android.bluetooth.le.ScanResult;
 import android.os.Handler;
 import android.util.Log;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import fr.eseo.pfemolkky.MainActivity;
+import fr.eseo.pfemolkky.ui.selectmolkky.SelectMolkky;
 
-public class scanBle {
+public class ScanBle {
 
 
     private static BluetoothLeScanner bluetoothLeScanner;
     private static boolean scanning;
     private static Handler handler = new Handler();
     private static MainActivity main;
+    private static SelectMolkky selectMolkky;
 
     // Stops scanning after 10 seconds.
     //TODO PUT THIS FINAL ON PROPERTIES FILES
     private static final long SCAN_PERIOD = 10000;
 
     @SuppressLint("MissingPermission")
-    public static void scan(MainActivity mainActivity) {
+    public static void scan(MainActivity mainActivity, SelectMolkky selectMolkkyFrag) {
         main = mainActivity;
+        selectMolkky = selectMolkkyFrag;
         if(main.bluetoothAdapter.getBluetoothLeScanner() == null) {
             return;
         }
@@ -63,6 +64,7 @@ public class scanBle {
             super.onScanResult(scanSettings,result);
             if(!main.bluetoothDevices.contains(result.getDevice())){
                 main.bluetoothDevices.add(result.getDevice());
+                selectMolkky.showDevice();
             }
         }
         @Override
@@ -80,5 +82,6 @@ public class scanBle {
             super.onScanFailed(errorCode);
             Log.d(TAG,"on  scan fail.");
         }
+
     };
 }

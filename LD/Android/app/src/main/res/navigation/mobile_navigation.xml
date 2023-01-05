@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_main" />
     <fragment
         android:id="@+id/select_molkky"
-        android:name="fr.eseo.pfemolkky.ui.selectmolkky.selectMolkky"
+        android:name="fr.eseo.pfemolkky.ui.selectmolkky.SelectMolkky"
         android:label="@string/selectmolkky"
         tools:layout="@layout/fragment_select_molkky" />
     <fragment
