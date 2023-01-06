@@ -32,7 +32,7 @@ public class ScoreBoard extends Fragment {
         View root = inflater.inflate(R.layout.fragment_score_board, container, false);
         if(getActivity()!=null){
             ArrayList<Player> players = ((MainActivity) getActivity()).getGame().getPlayers();
-            LinearLayout playerList = (LinearLayout) root.findViewById((R.id.layout_showPlayerScore));
+            LinearLayout playerList = root.findViewById((R.id.layout_showPlayerScore));
             ((MainActivity)getActivity()).setAllowBack(true);
             for(Player playerIteration : players){
                 View fragment = inflater.inflate(R.layout.fragment_player_score_board, container, false);
@@ -45,7 +45,7 @@ public class ScoreBoard extends Fragment {
             }
 
             Button backToGame = root.findViewById(R.id.buttonValidateRound);
-            backToGame.setOnClickListener(view -> ((MainActivity)getActivity()).onBackPressed());
+            backToGame.setOnClickListener(view -> (getActivity()).onBackPressed());
         }
         return root;
     }

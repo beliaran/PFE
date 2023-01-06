@@ -13,16 +13,30 @@
 
         <ImageView
             android:id="@+id/imageCup"
-            android:layout_width="92dp"
-            android:layout_height="96dp"
-            android:contentDescription="@string/imageCup"
-            android:src="@drawable/cup"
+            android:layout_width="77dp"
+            android:layout_height="98dp"
+            android:contentDescription="@string/imagePodium"
+            android:src="@drawable/podium"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintHorizontal_bias="0.047"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.025" />
+            app:layout_constraintVertical_bias="0.022" />
+
+        <ImageView
+            android:id="@+id/imageBattery"
+            android:layout_width="72dp"
+            android:layout_height="64dp"
+            android:rotation="270"
+            android:src="@drawable/battery_full"
+            android:contentDescription="@string/batteryFull"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.952"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.043" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -63,7 +77,8 @@
                         android:text="@string/pin7"
                         android:textSize="34sp"
                         app:backgroundTint="@null"
-                        app:rippleColor="@color/orange" />
+                        app:rippleColor="@color/orange"
+                        style="?android:attr/borderlessButtonStyle"/>
 
                     <Button
                         android:id="@+id/pin9"
@@ -73,7 +88,8 @@
                         android:text="@string/pin9"
                         android:textSize="34sp"
                         app:backgroundTint="@null"
-                        app:rippleColor="@color/orange" />
+                        app:rippleColor="@color/orange"
+                        style="?android:attr/borderlessButtonStyle"/>
 
                     <Button
                         android:id="@+id/pin8"
@@ -83,7 +99,8 @@
                         android:text="@string/pin8"
                         android:textSize="34sp"
                         app:backgroundTint="@null"
-                        app:rippleColor="@color/orange" />
+                        app:rippleColor="@color/orange"
+                        style="?android:attr/borderlessButtonStyle"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -101,14 +118,14 @@
                         android:text="@string/pin5"
                         android:textSize="34sp"
                         app:backgroundTint="@null"
-                        app:rippleColor="@color/orange" />
+                        app:rippleColor="@color/orange"
+                        style="?android:attr/borderlessButtonStyle"/>
 
                     <Button
                         android:id="@+id/pin11"
+                        style="?android:attr/borderlessButtonStyle"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:layout_marginStart="1dp"
-                        android:layout_marginEnd="1dp"
                         android:background="@drawable/circlepinbutton"
                         android:text="@string/pin11"
                         android:textSize="34sp"
@@ -123,13 +140,14 @@
                         android:text="@string/pin12"
                         android:textSize="34sp"
                         app:backgroundTint="@null"
-                        app:rippleColor="@color/orange" />
+                        app:rippleColor="@color/orange"
+                        style="?android:attr/borderlessButtonStyle"/>
 
                     <Button
                         android:id="@+id/pin6"
+                        style="?android:attr/borderlessButtonStyle"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:layout_marginStart="1dp"
                         android:background="@drawable/circlepinbutton"
                         android:text="@string/pin6"
                         android:textSize="34sp"
@@ -152,7 +170,8 @@
                         android:text="@string/pin3"
                         android:textSize="34sp"
                         app:backgroundTint="@null"
-                        app:rippleColor="@color/orange" />
+                        app:rippleColor="@color/orange"
+                        style="?android:attr/borderlessButtonStyle"/>
 
                     <Button
                         android:id="@+id/pin10"
@@ -162,7 +181,8 @@
                         android:text="@string/pin10"
                         android:textSize="34sp"
                         app:backgroundTint="@null"
-                        app:rippleColor="@color/orange" />
+                        app:rippleColor="@color/orange"
+                        style="?android:attr/borderlessButtonStyle"/>
 
                     <Button
                         android:id="@+id/pin4"
@@ -172,7 +192,8 @@
                         android:text="@string/pin4"
                         android:textSize="34sp"
                         app:backgroundTint="@null"
-                        app:rippleColor="@color/orange" />
+                        app:rippleColor="@color/orange"
+                        style="?android:attr/borderlessButtonStyle"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -189,7 +210,8 @@
                         android:text="@string/pin1"
                         android:textSize="34sp"
                         app:backgroundTint="@null"
-                        app:rippleColor="@color/orange" />
+                        app:rippleColor="@color/orange"
+                        style="?android:attr/borderlessButtonStyle"/>
 
                     <Button
                         android:id="@+id/pin2"
@@ -199,7 +221,8 @@
                         android:text="@string/pin2"
                         android:textSize="34sp"
                         app:backgroundTint="@null"
-                        app:rippleColor="@color/orange" />
+                        app:rippleColor="@color/orange"
+                        style="?android:attr/borderlessButtonStyle"/>
                 </LinearLayout>
 
             </LinearLayout>

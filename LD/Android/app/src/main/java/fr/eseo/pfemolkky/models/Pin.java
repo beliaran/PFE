@@ -9,6 +9,11 @@ public class Pin {
     public Pin(int i) {
         setNumber(i);
     }
+    public Pin(int i, Battery battery){
+        setNumber(i);
+        setBattery(battery);
+        setConnected(true);
+    }
 
     public enum Battery {dead, low, medium, excellent, full}
 

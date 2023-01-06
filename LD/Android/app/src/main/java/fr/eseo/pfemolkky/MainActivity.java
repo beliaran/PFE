@@ -9,6 +9,7 @@ import androidx.navigation.ui.NavigationUI;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,10 +19,13 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 
 import fr.eseo.pfemolkky.models.Game;
+import fr.eseo.pfemolkky.models.Pin;
+import fr.eseo.pfemolkky.tests.TestBattery;
 
 
 public class MainActivity extends AppCompatActivity {
     Game game;
+    ArrayList<Pin> pins = new ArrayList<>();
 
     public boolean isAllowBack() {
         return allowBack;
@@ -32,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean allowBack =true;
-
+    public ArrayList<Pin> getPins(){ return pins; }
+    public void setPins(ArrayList<Pin> pins) { this.pins = pins; }
     public Game getGame() {
         return game;
     }
@@ -50,6 +55,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        for(int i=0;i<12;i++){
+            pins.add(new Pin(i+1));
+        }
+
+        //Test pour voir l'affichage des batteries
+        //TestBattery test = new TestBattery();
+        //setPins(test.getPins());
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         NavigationView navView = findViewById(R.id.nav_view);
@@ -79,8 +92,6 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (isAllowBack()) {
             super.onBackPressed();
-        } else {
-            //do nothing
         }
     }
 }

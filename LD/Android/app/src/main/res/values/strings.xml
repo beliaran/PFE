@@ -48,7 +48,39 @@
     <string name="displayScore" translatable="false">%1$s/%2$s</string>
     <string name="cross" translatable="false">cross</string>
     <string name="addButton" translatable="false">addButton</string>
-    <string name="imageCup" translatable="false">imageCup</string>
     <string name="logo" translatable="false">logo</string>
+    <string name="imagePodium" translatable="false">Podium</string>
+    <string name="batteryFull" translatable="false">Battery Full</string>
+    <string name="batteryNumber" translatable="false">Battery Number</string>
+    <string name="batteryDisconnected">Disconnected</string>
+    <string name="batteryLevel" translatable="false">Battery Level</string>
+    <string name="pinName">Pin %1$s</string>
+    <string name="battery" translatable="false">Battery</string>
+    <string name="userConnection">User Connection</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="submit">Sign In</string>
+    <string name="connection">Connection</string>
+    <string name="askSign">Not already registered?</string>
+    <string name="register">Register</string>
+    <string name="connectUser">Sign In</string>
+    <string name="passwordVerification">Verify Password</string>
+    <string name="registerNow">Register Now</string>
+    <string name="userRegister">User Register</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
+    <string name="userName">UserName</string>
+    <string name="save">Save</string>
+    <string name="namePasswordNotNull"><![CDATA[Email & Password should not be empty]]></string>
+    <string name="anyFieldEmpty">All fields must be filled</string>
+    <string name="passwordNotEgal">Both Password must be equal</string>
+    <string name="nextTurn">Next Turn</string>
+    <string name="addPin">Add a Pin</string>
+    <string name="empty" translatable="false">Empty</string>
+    <string name="modifyPin">Modify the Pin %1$s</string>
+    <string name="pinAnalyzedEmpty">No Pin Found</string>
+    <string name="pin0">Pin 0</string>
     <string name="selectmolkky" translatable="false">selectMolkky</string>
+    <string name="allowBluetooth">Allow Bluetooth</string>
+    <string name="deviceAnalyzedEmpty">No Device Detected</string>
 </resources>
