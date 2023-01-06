@@ -129,8 +129,8 @@ public class Game {
     }
 
     /**
-     *
-     * @param typeOfGame 
+     * Replace the current score to win by another
+     * @param typeOfGame the new type of game
      */
     public void setTypeOfGame(TypeOfGame typeOfGame) {
         if(typeOfGame==TypeOfGame.classic || typeOfGame==TypeOfGame.tournament){
