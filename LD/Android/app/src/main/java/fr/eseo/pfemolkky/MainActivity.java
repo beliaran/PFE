@@ -61,8 +61,6 @@ public class MainActivity extends AppCompatActivity {
         //Test pour voir l'affichage des batteries
         //TestBattery test = new TestBattery();
         //setPins(test.getPins());
-
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         NavigationView navView = findViewById(R.id.nav_view);

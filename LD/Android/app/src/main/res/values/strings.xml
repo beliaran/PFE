@@ -81,4 +81,6 @@
     <string name="pinAnalyzedEmpty">No Pin Found</string>
     <string name="pin0">Pin 0</string>
     <string name="selectmolkky" translatable="false">selectMolkky</string>
+    <string name="allowBluetooth">Allow Bluetooth</string>
+    <string name="deviceAnalyzedEmpty">No Device Detected</string>
 </resources>
