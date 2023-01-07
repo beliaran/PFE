@@ -25,36 +25,40 @@ import fr.eseo.pfemolkky.models.Player;
 
 public class Winner extends Fragment {
     private NavController navController;
-    private int globalScore=0;
+    private int globalScore = 0;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
+    /**
+     * Function called when fragment is created <br>
+     * Inflate the fragment
+     *
+     * @param inflater           the layout xml containing the page
+     * @param container          a group of view containing the page
+     * @param savedInstanceState the saved instante state between the pages
+     * @return the inflated fragment with all elements
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_winner, container, false);
         navController = NavHostFragment.findNavController(this);
-        if(getActivity()!=null){
+        if (getActivity() != null) {
             Game game = ((MainActivity) getActivity()).getGame();
             ArrayList<Player> players = game.getPlayersList();
             Player brute;
-            brute= players.get(0);
+            brute = players.get(0);
             Player sniper;
-            sniper= players.get(0);
+            sniper = players.get(0);
             LinearLayout playerList = root.findViewById(R.id.playerList);
             players.sort(Comparator.comparingInt(Player::getScore));
             Collections.reverse(players);
-            for(Player playerIteration : players){
-                globalScore+=playerIteration.getScore();
-                if(brute.getFallenPins()<playerIteration.getFallenPins()){
-                    brute=playerIteration;
+            for (Player playerIteration : players) {
+                globalScore += playerIteration.getScore();
+                if (brute.getFallenPins() < playerIteration.getFallenPins()) {
+                    brute = playerIteration;
                 }
-                if(sniper.getUniquePin()<playerIteration.getUniquePin()){
-                    sniper=playerIteration;
+                if (sniper.getUniquePin() < playerIteration.getUniquePin()) {
+                    sniper = playerIteration;
                 }
                 View fragment = inflater.inflate(R.layout.fragment_player_score_board, container, false);
                 TextView textName = fragment.findViewById(R.id.playerName);
@@ -63,11 +67,11 @@ public class Winner extends Fragment {
                 textScore.setText(getResources().getString(R.string.displayScore, String.valueOf(playerIteration.getScore()), String.valueOf(game.getScoreToWin())));
                 playerList.addView(fragment);
             }
-            float averageScore = (float)globalScore / (float)players.size();
+            float averageScore = (float) globalScore / (float) players.size();
             float averageScorePerRound = averageScore / ((MainActivity) getActivity()).getGame().getRound();
-            TextView textSniper= root.findViewById(R.id.playerSniper);
-            TextView textBrute= root.findViewById(R.id.playerBrute);
-            TextView textAverageScorePerRound= root.findViewById(R.id.averageScorePerRound);
+            TextView textSniper = root.findViewById(R.id.playerSniper);
+            TextView textBrute = root.findViewById(R.id.playerBrute);
+            TextView textAverageScorePerRound = root.findViewById(R.id.averageScorePerRound);
             textSniper.setText(sniper.getName());
             textBrute.setText(brute.getName());
             textAverageScorePerRound.setText(String.valueOf(averageScorePerRound));
@@ -76,7 +80,7 @@ public class Winner extends Fragment {
             OnBackPressedCallback callback = new OnBackPressedCallback(true) {
                 @Override
                 public void handleOnBackPressed() {
-                    if(getActivity()!=null){
+                    if (getActivity() != null) {
                         navController.navigate(R.id.nav_main);
                     }
                 }

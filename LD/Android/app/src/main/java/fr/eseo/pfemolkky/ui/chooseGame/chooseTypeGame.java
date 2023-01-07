@@ -21,11 +21,15 @@ public class chooseTypeGame extends Fragment {
 
     private NavController navController;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
+    /**
+     * Function called when fragment is created <br>
+     * Inflate the fragment
+     *
+     * @param inflater           the layout xml containing the page
+     * @param container          a group of view containing the page
+     * @param savedInstanceState the saved instante state between the pages
+     * @return the inflated fragment with all elements
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -34,25 +38,25 @@ public class chooseTypeGame extends Fragment {
         navController = NavHostFragment.findNavController(this);
         ConstraintLayout tournamentButton = root.findViewById(R.id.tournamentButton);
         Bundle bundle = new Bundle();
-        bundle.putInt("player",0);
+        bundle.putInt("player", 0);
         tournamentButton.setOnClickListener(view -> {
-            if(getActivity()!=null){
+            if (getActivity() != null) {
                 tournamentButton.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.selectedtypeofgameroundedcorner));
-                ((MainActivity)getActivity()).getGame().setTypeOfGame(TypeOfGame.tournament);
-                navController.navigate(R.id.nav_game,bundle);
+                ((MainActivity) getActivity()).getGame().setTypeOfGame(TypeOfGame.tournament);
+                navController.navigate(R.id.nav_game, bundle);
             }
         });
         ConstraintLayout classicButton = root.findViewById(R.id.classicButton);
         classicButton.setOnClickListener(view -> {
-            if(getActivity()!=null){
-                classicButton.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.selectedtypeofgameroundedcorner));
-                ((MainActivity)getActivity()).getGame().setTypeOfGame(TypeOfGame.classic);
-                navController.navigate(R.id.nav_game,bundle);
+            if (getActivity() != null) {
+                classicButton.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.selectedtypeofgameroundedcorner));
+                ((MainActivity) getActivity()).getGame().setTypeOfGame(TypeOfGame.classic);
+                navController.navigate(R.id.nav_game, bundle);
             }
         });
         ConstraintLayout quickGameButton = root.findViewById(R.id.quickGameButton);
         quickGameButton.setOnClickListener(view -> {
-            if(getActivity()!=null) {
+            if (getActivity() != null) {
                 quickGameButton.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.selectedtypeofgameroundedcorner));
                 ((MainActivity) getActivity()).getGame().setTypeOfGame(TypeOfGame.fast);
                 navController.navigate(R.id.nav_game, bundle);
@@ -60,10 +64,10 @@ public class chooseTypeGame extends Fragment {
         });
         ConstraintLayout pastisButton = root.findViewById(R.id.pastisButton);
         pastisButton.setOnClickListener(view -> {
-            if(getActivity()!=null){
-                pastisButton.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.selectedtypeofgameroundedcorner));
-                ((MainActivity)getActivity()).getGame().setTypeOfGame(TypeOfGame.pastis);
-                navController.navigate(R.id.nav_game,bundle);
+            if (getActivity() != null) {
+                pastisButton.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.selectedtypeofgameroundedcorner));
+                ((MainActivity) getActivity()).getGame().setTypeOfGame(TypeOfGame.pastis);
+                navController.navigate(R.id.nav_game, bundle);
             }
         });
         return root;

@@ -22,31 +22,36 @@ import fr.eseo.pfemolkky.models.Pin;
 
 public class BatteryListFragment extends Fragment {
     NavController navController;
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
+    /**
+     * Function called when fragment is created <br>
+     * Inflate the fragment
+     *
+     * @param inflater           the layout xml containing the page
+     * @param container          a group of view containing the page
+     * @param savedInstanceState the saved instante state between the pages
+     * @return the inflated fragment with all elements
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_battery_list, container, false);
-        navController=NavHostFragment.findNavController(this);
-        if(getActivity()!=null){
+        navController = NavHostFragment.findNavController(this);
+        if (getActivity() != null) {
             ArrayList<Pin> pins = ((MainActivity) getActivity()).getGame().getPins();
             LinearLayout playerList = root.findViewById((R.id.layout_showBatteryLevel));
-            ((MainActivity)getActivity()).setAllowBack(true);
-            for(Pin pinIteration : pins){
+            ((MainActivity) getActivity()).setAllowBack(true);
+            for (Pin pinIteration : pins) {
                 View fragment = inflater.inflate(R.layout.fragment_battery, container, false);
                 fragment.findViewById(R.id.layoutBattery).setBackgroundResource(R.drawable.playerroundedcornerdarkpurple);
                 TextView textName = fragment.findViewById(R.id.batteryNumber);
-                textName.setText(getResources().getString(R.string.pinName,String.valueOf(pinIteration.getNumber())));
+                textName.setText(getResources().getString(R.string.pinName, String.valueOf(pinIteration.getNumber())));
                 TextView textDisconnected = fragment.findViewById(R.id.batteryDisconnected);
                 ImageView imageBattery = fragment.findViewById(R.id.imageBattery);
-                if(pinIteration.isConnected()) {
+                if (pinIteration.isConnected()) {
                     textDisconnected.setVisibility(View.INVISIBLE);
-                    switch(pinIteration.getBattery()) {
+                    switch (pinIteration.getBattery()) {
                         case dead: {
                             imageBattery.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.battery_low, null));
                             break;
@@ -73,14 +78,13 @@ public class BatteryListFragment extends Fragment {
                             break;
                         }
                     }
-                }
-                else {
+                } else {
                     imageBattery.setVisibility(View.INVISIBLE);
                 }
                 fragment.setOnClickListener(view -> {
                     Bundle bundle = new Bundle();
                     bundle.putInt("pinNumber", pinIteration.getNumber());
-                    navController.navigate(R.id.nav_add_pin,bundle);
+                    navController.navigate(R.id.nav_add_pin, bundle);
                 });
                 playerList.addView(fragment);
             }

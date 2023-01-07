@@ -6,14 +6,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothManager;
-import android.content.pm.ActivityInfo;
-import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager;
-
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -46,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
         this.game = game;
     }
 
-    public BluetoothAdapter bluetoothAdapter;
+    public android.bluetooth.BluetoothAdapter bluetoothAdapter;
 
-    public ArrayList<BluetoothDevice> bluetoothDevices = new ArrayList<>();
+    public ArrayList<android.bluetooth.BluetoothDevice> bluetoothDevices = new ArrayList<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(android.os.Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         for(int i=0;i<12;i++){
@@ -61,11 +53,11 @@ public class MainActivity extends AppCompatActivity {
         //Test pour voir l'affichage des batteries
         //TestBattery test = new TestBattery();
         //setPins(test.getPins());
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        requestWindowFeature(android.view.Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         NavigationView navView = findViewById(R.id.nav_view);
 
-        BluetoothManager bluetoothManager = getSystemService(BluetoothManager.class);
+        android.bluetooth.BluetoothManager bluetoothManager = getSystemService(android.bluetooth.BluetoothManager.class);
         bluetoothAdapter = bluetoothManager.getAdapter();
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
@@ -77,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
             NavigationUI.setupWithNavController(navView, navController);
 
-            this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            this.getWindow().setFlags(android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN,android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN);
             if(getSupportActionBar()!=null){
                 getSupportActionBar().hide();
             }

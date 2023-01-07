@@ -65,6 +65,15 @@ public class SelectMolkky extends Fragment {
     private ViewGroup container;
     private LayoutInflater inflater;
 
+    /**
+     * Function called when fragment is created <br>
+     * Inflate the fragment
+     *
+     * @param inflater           the layout xml containing the page
+     * @param container          a group of view containing the page
+     * @param savedInstanceState the saved instante state between the pages
+     * @return the inflated fragment with all elements
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,

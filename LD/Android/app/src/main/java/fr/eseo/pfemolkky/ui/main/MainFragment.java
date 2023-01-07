@@ -26,6 +26,15 @@ import fr.eseo.pfemolkky.models.Pin;
 
 public class MainFragment extends Fragment {
 
+    /**
+     * Function called when fragment is created <br>
+     * Inflate the fragment
+     *
+     * @param inflater           the layout xml containing the page
+     * @param container          a group of view containing the page
+     * @param savedInstanceState the saved instante state between the pages
+     * @return the inflated fragment with all elements
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -35,23 +44,22 @@ public class MainFragment extends Fragment {
         Button button = inputFragmentView.findViewById(R.id.buttonStartGame);
         Button buttonLogIn = inputFragmentView.findViewById(R.id.buttonLogInMain);
         Button chooseMolkkyBtn = inputFragmentView.findViewById(R.id.buttonConnectMolkky);
-        if(getActivity()!=null){
-            ((MainActivity)getActivity()).setAllowBack(true);
+        if (getActivity() != null) {
+            ((MainActivity) getActivity()).setAllowBack(true);
             button.setOnClickListener(view -> {
                 navController.navigate(R.id.nav_start_game);
-                ((MainActivity)getActivity()).setGame(new Game(((MainActivity)getActivity()).getPins()));
+                ((MainActivity) getActivity()).setGame(new Game(((MainActivity) getActivity()).getPins()));
             });
             buttonLogIn.setOnClickListener(view -> {
                 System.out.println("changed");
                 navController.navigate(R.id.nav_user_connection);
             });
             chooseMolkkyBtn.setOnClickListener(view -> {
-                if(((MainActivity) getActivity()).bluetoothAdapter == null){
+                if (((MainActivity) getActivity()).bluetoothAdapter == null) {
                     //TODO Rajouter au champ string
                     Toast.makeText(getContext(), "Le bluetooth n'est pas supporté par votre smarthphone",
                             Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     navController.navigate(R.id.select_molkky);
                     ((MainActivity) getActivity()).setAllowBack(true);
                 }
@@ -59,7 +67,7 @@ public class MainFragment extends Fragment {
             OnBackPressedCallback callback = new OnBackPressedCallback(true) {
                 @Override
                 public void handleOnBackPressed() {
-                    if(getActivity()!=null){
+                    if (getActivity() != null) {
                         System.out.println("called");
                         getActivity().finish();
                     }
