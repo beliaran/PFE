@@ -191,6 +191,9 @@ public class GameFragment extends Fragment {
                 @Override
                 public void handleOnBackPressed() {
                     if(getActivity()!=null){
+                        for(Pin pin : pins){
+                            pin.setFallen(false);
+                        }
                         LinearLayout view = new LinearLayout(getContext());
                         ImageView iv = new ImageView(getContext());
                         iv.setImageDrawable(ContextCompat.getDrawable(getActivity(), android.R.drawable.ic_dialog_alert));
