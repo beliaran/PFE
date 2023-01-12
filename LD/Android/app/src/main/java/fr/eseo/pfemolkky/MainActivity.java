@@ -8,6 +8,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothManager;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -49,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
     public BluetoothAdapter bluetoothAdapter;
 
     public ArrayList<BluetoothDevice> bluetoothDevices = new ArrayList<>();
-
-    public BluetoothDevice molkkyDevice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

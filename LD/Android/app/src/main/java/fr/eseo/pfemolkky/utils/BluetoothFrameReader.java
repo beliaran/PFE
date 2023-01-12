@@ -1,45 +1,56 @@
 package fr.eseo.pfemolkky.utils;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
+import android.util.Log;
+
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReference;
 
 import fr.eseo.pfemolkky.MainActivity;
 import fr.eseo.pfemolkky.models.Pin;
 
 public class BluetoothFrameReader {
-    public void frameReader(MainActivity activity, String frame){
+
+    public  static void frameReader(MainActivity activity, byte[] trame){
+        frameReader(activity, trame, new AtomicReference<>());
+    }
+
+    public static void frameReader(MainActivity activity, byte[] trame, AtomicReference<Boolean> nextTurn){
         ArrayList<Pin> pins = activity.getPins();
-        if(frame.length()==48) {
-            String num = frame.substring(0, 7);
-            String mod = frame.substring(8, 15);
-            String bat = frame.substring(16, 23);
-            String accel = frame.substring(24, 31);
-            String angle = frame.substring(32, 39);
-            String distance = frame.substring(40, 47);
-            int intNum = Integer.parseInt(num,2)-1;
-            int intMod = Integer.parseInt(mod,2);
-            int intBat = Integer.parseInt(bat,2);
-            int intAccel = Integer.parseInt(accel,2);
-            int intAngle = Integer.parseInt(angle,2);
-            int intDistance = Integer.parseInt(distance,2);
-            pins.get(intNum).setConnected(true);
-            if (intBat < 100) {
-                pins.get(intNum).setBattery(Pin.Battery.full);
+        if(trame.length == 6){
+            int num = trame[0]-1;
+
+            int mod = trame[1];
+            int bat = trame[2];
+            int accel = trame[3];
+            int angle = trame[4];
+            int distance = trame[5];
+
+            pins.get(num).setConnected(true);
+
+            if (mod == 1 && !nextTurn.get()) {
+                pins.get(num).setFallen(true);
             }
-            if (intBat < 75) {
-                pins.get(intNum).setBattery(Pin.Battery.excellent);
+            if (bat < 100) {
+                pins.get(num).setBattery(Pin.Battery.full);
             }
-            if (intBat < 50) {
-                pins.get(intNum).setBattery(Pin.Battery.medium);
+            if (bat < 75) {
+                pins.get(num).setBattery(Pin.Battery.excellent);
             }
-            if (intBat < 25) {
-                pins.get(intNum).setBattery(Pin.Battery.low);
+            if (bat < 50) {
+                pins.get(num).setBattery(Pin.Battery.medium);
             }
-            if (intBat < 5) {
-                pins.get(intNum).setBattery(Pin.Battery.dead);
+            if (bat < 25) {
+                pins.get(num).setBattery(Pin.Battery.low);
             }
-            if (intMod == 2) {
-                pins.get(intNum).setConnected(false);
+            if (bat < 5) {
+                pins.get(num).setBattery(Pin.Battery.dead);
+            }
+            if (mod == 2) {
+                pins.get(num).setConnected(false);
             }
         }
+        activity.setPins(pins);
     }
 }
