@@ -35,7 +35,7 @@ import fr.eseo.pfemolkky.models.Game;
 import fr.eseo.pfemolkky.models.Pin;
 import fr.eseo.pfemolkky.models.Player;
 import fr.eseo.pfemolkky.service.bluetooth.BleDialogue;
-import fr.eseo.pfemolkky.service.bluetooth.BluetoothFrameReader;
+import fr.eseo.pfemolkky.service.bluetooth.BluetoothTrameReader;
 
 /**
  * Class which is called when the User play the game
@@ -219,12 +219,6 @@ public class GameFragment extends Fragment {
                 layoutParams.height = (displayMetrics.widthPixels - 50) / 4;
                 imageViewPin.setLayoutParams(layoutParams);
             }
-
-            //Test de frame
-           /* String frame1 = "000011000000000101001110000000000000000000000000";
-            pinFrameAnalysis(frame1);
-            String frame2 = "000000100000000000000010000000000000000000000000";
-            pinFrameAnalysis(frame2);*/
 
             updateInterface();
             ImageView imageCup = root.findViewById(R.id.imageCup);
@@ -480,9 +474,7 @@ public class GameFragment extends Fragment {
 
     public void callBackBle(byte[] trame){
         if(this.isVisible()){
-            BluetoothFrameReader.frameReader((MainActivity) this.getActivity(),trame, nextTurn);
-
-            Log.d(TAG, "update");
+            BluetoothTrameReader.frameReader((MainActivity) this.getActivity(),trame, nextTurn);
             updateInterface();
         }
     }

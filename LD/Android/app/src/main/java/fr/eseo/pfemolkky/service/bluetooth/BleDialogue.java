@@ -20,6 +20,8 @@ import androidx.fragment.app.Fragment;
 
 import java.util.UUID;
 
+import fr.eseo.pfemolkky.models.Pin;
+import fr.eseo.pfemolkky.ui.addPin.AddPin;
 import fr.eseo.pfemolkky.ui.main.GameFragment;
 
 public final class BleDialogue {
@@ -121,13 +123,21 @@ public final class BleDialogue {
         @Override
         public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
             byte[] trame = gattCharacteristicTx.getValue();
-            byte[] trameTest = {12,1,50,6,20,20};
+            byte[] trameTest = {12,0,50,6,20,20};
             if (fragment.getClass().equals(GameFragment.class) && fragment.isVisible()) {
-                Log.d(TAG, trameTest.toString());
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         GameFragment callBack = (GameFragment) fragment;
+                        callBack.callBackBle(trameTest);
+                    }
+                });
+            }
+            else if(fragment.getClass().equals(AddPin.class) && fragment.isVisible()){
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        AddPin callBack = (AddPin) fragment;
                         callBack.callBackBle(trameTest);
                     }
                 });
@@ -155,5 +165,13 @@ public final class BleDialogue {
 
     public final void runOnUiThread(Runnable action) {
         mHandler.post(action);
+    }
+
+    @SuppressLint("MissingPermission")
+    public void updatePin(Pin pin, int num){
+        byte[] trame = {0, (byte) pin.getNumber(), (byte) num};
+        gattCharacteristic.setValue(trame);
+        gattCharacteristic.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
+        gattMollky.writeCharacteristic(gattCharacteristic);
     }
 }
