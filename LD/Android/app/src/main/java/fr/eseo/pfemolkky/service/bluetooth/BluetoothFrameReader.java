@@ -1,4 +1,4 @@
-package fr.eseo.pfemolkky.utils;
+package fr.eseo.pfemolkky.service.bluetooth;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 

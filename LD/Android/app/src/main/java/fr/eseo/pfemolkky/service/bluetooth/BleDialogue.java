@@ -28,7 +28,6 @@ public final class BleDialogue {
 
     final Handler mHandler = new Handler();
 
-    private BluetoothDevice bleDevice;
     private BluetoothGattService service;
     public BluetoothGatt gattMollky;
 

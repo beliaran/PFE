@@ -35,7 +35,7 @@ import fr.eseo.pfemolkky.models.Game;
 import fr.eseo.pfemolkky.models.Pin;
 import fr.eseo.pfemolkky.models.Player;
 import fr.eseo.pfemolkky.service.bluetooth.BleDialogue;
-import fr.eseo.pfemolkky.utils.BluetoothFrameReader;
+import fr.eseo.pfemolkky.service.bluetooth.BluetoothFrameReader;
 
 public class GameFragment extends Fragment {
 
