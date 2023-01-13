@@ -1,5 +1,7 @@
 package fr.eseo.pfemolkky.ui.main;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.app.AlertDialog;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -31,12 +34,15 @@ import fr.eseo.pfemolkky.R;
 import fr.eseo.pfemolkky.models.Game;
 import fr.eseo.pfemolkky.models.Pin;
 import fr.eseo.pfemolkky.models.Player;
+import fr.eseo.pfemolkky.service.bluetooth.BleDialogue;
+import fr.eseo.pfemolkky.service.bluetooth.BluetoothFrameReader;
+
 /**
  * Class which is called when the User play the game
  */
 public class GameFragment extends Fragment {
     /**
-     * The
+     * The player index in the list of players
      */
     private int playerNumber;
     /**
@@ -167,6 +173,7 @@ public class GameFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_game, container, false);
         navController = NavHostFragment.findNavController(this);
+        BleDialogue.getInstance(this);
         if (getArguments() != null && getActivity() != null) {
             playerNumber = getArguments().getInt("player");
             game = ((MainActivity) getActivity()).getGame();
@@ -222,11 +229,13 @@ public class GameFragment extends Fragment {
             updateInterface();
             ImageView imageCup = root.findViewById(R.id.imageCup);
             imageCup.setOnClickListener(view -> {
+                BleDialogue.getInstance(null);
                 navController.navigate(R.id.nav_scoreboard);
                 listImageView = new ArrayList<>();
             });
             ImageView imageBattery = root.findViewById(R.id.imageBattery);
             imageBattery.setOnClickListener(view -> {
+                BleDialogue.getInstance(null);
                 navController.navigate(R.id.nav_battery);
                 listImageView = new ArrayList<>();
             });
@@ -469,50 +478,28 @@ public class GameFragment extends Fragment {
         }
     }
 
-    public void pinFrameAnalysis(String frame) {
-        System.out.println(frame);
-        System.out.println(frame.length());
-        if (frame.length() == 48) {
-            String num = frame.substring(0, 8);
-            String mod = frame.substring(9, 16);
-            String bat = frame.substring(16, 24);
-            String accel = frame.substring(25, 32);
-            String angle = frame.substring(33, 40);
-            String distance = frame.substring(41, 48);
-            int intNum = Integer.parseInt(num, 2) - 1;
-            int intMod = Integer.parseInt(mod, 2);
-            int intBat = Integer.parseInt(bat, 2);
-            int intAccel = Integer.parseInt(accel, 2);
-            int intAngle = Integer.parseInt(angle, 2);
-            int intDistance = Integer.parseInt(distance, 2);
-            System.out.println(intNum);
-            System.out.println(num);
-            System.out.println(intMod);
-            System.out.println(mod);
-            pins.get(intNum).setConnected(true);
+    public void callBackBle(byte[] trame){
+        if(this.isVisible()){
+            BluetoothFrameReader.frameReader((MainActivity) this.getActivity(),trame, nextTurn);
 
-            if (intMod == 1 && !nextTurn.get()) {
-                pins.get(intNum).setFallen(true);
-                updateInterface();
-            }
-            if (intBat < 100) {
-                pins.get(intNum).setBattery(Pin.Battery.full);
-            }
-            if (intBat < 75) {
-                pins.get(intNum).setBattery(Pin.Battery.excellent);
-            }
-            if (intBat < 50) {
-                pins.get(intNum).setBattery(Pin.Battery.medium);
-            }
-            if (intBat < 25) {
-                pins.get(intNum).setBattery(Pin.Battery.low);
-            }
-            if (intBat < 5) {
-                pins.get(intNum).setBattery(Pin.Battery.dead);
-            }
-            if (intMod == 2) {
-                pins.get(intNum).setConnected(false);
-            }
+            Log.d(TAG, "update");
+            updateInterface();
         }
+    }
+
+    public void onStop() {
+        super.onStop();
+        BleDialogue.getInstance(null);
+    }
+
+    public void onResume(){
+        super.onResume();
+        BleDialogue.getInstance(this);
+        updateInterface();
+    }
+
+    public void onPause(){
+        super.onPause();
+        BleDialogue.getInstance(null);
     }
 }

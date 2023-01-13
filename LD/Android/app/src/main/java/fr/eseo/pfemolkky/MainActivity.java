@@ -6,6 +6,15 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothManager;
+import android.content.pm.ActivityInfo;
+import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
+
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;

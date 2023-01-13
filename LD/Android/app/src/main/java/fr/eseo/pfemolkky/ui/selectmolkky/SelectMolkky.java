@@ -1,24 +1,15 @@
 package fr.eseo.pfemolkky.ui.selectmolkky;
 
-import static android.bluetooth.BluetoothGatt.GATT_SUCCESS;
-import static android.bluetooth.BluetoothGatt.GATT_WRITE_NOT_PERMITTED;
-import static android.bluetooth.BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import static fr.eseo.pfemolkky.service.bluetooth.ScanBle.scan;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothGatt;
-import android.bluetooth.BluetoothGattCallback;
 import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
-import android.bluetooth.BluetoothProfile;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,27 +26,20 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 import fr.eseo.pfemolkky.MainActivity;
 import fr.eseo.pfemolkky.R;
 import fr.eseo.pfemolkky.databinding.FragmentMainBinding;
-import fr.eseo.pfemolkky.models.Pin;
+import fr.eseo.pfemolkky.service.bluetooth.BleDialogue;
 import fr.eseo.pfemolkky.service.bluetooth.BlePermission;
-import fr.eseo.pfemolkky.service.bluetooth.BluetoothLeService;
 
 public class SelectMolkky extends Fragment {
-
-    //TODO CHANGER LOCATION OF THIS STATIC
-    private static final int REQUEST_ENABLE_BT = 10;
 
     private MainActivity main;
 
@@ -64,6 +48,10 @@ public class SelectMolkky extends Fragment {
     private LinearLayout linearLayoutListOfDevice;
     private ViewGroup container;
     private LayoutInflater inflater;
+    private BluetoothGattService service;
+
+    private BluetoothGattCharacteristic gattCharacteristic;
+    private BluetoothGattCharacteristic gattCharacteristicTx;
 
     /**
      * Function called when fragment is created <br>
@@ -74,6 +62,7 @@ public class SelectMolkky extends Fragment {
      * @param savedInstanceState the saved instante state between the pages
      * @return the inflated fragment with all elements
      */
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -124,67 +113,18 @@ public class SelectMolkky extends Fragment {
 
     @SuppressLint("MissingPermission")
     public void showDevice() {
-        //TODO SHOW ALL DEVICE
-
         for (BluetoothDevice ble : main.bluetoothDevices) {
             if (ble.getName() != null) {
                 if (ble.getName().equals("Molkky") && !bluetoothMolkkyDevices.contains(ble)) {
                     Log.d(TAG, "find device");
                     bluetoothMolkkyDevices.add(ble);
-                    BluetoothGatt gatt = ble.connectGatt(main, false, bluetoothGattCallback);
-                    if (gatt.connect()) {
-                        if (gatt.discoverServices()) {
-                            BluetoothGattService service = gatt.getService(UUID.fromString("6E400001-B5A3-F393-E0A9-E50E24DCCA9E"));
-                            BluetoothGattCharacteristic gattCharacteristic = service.getCharacteristic(UUID.fromString("6E400002-B5A3-F393-E0A9-E50E24DCCA9E"));
-                            gattCharacteristic.setValue("3");
-                            gattCharacteristic.setWriteType(WRITE_TYPE_DEFAULT);
-                            gatt.writeCharacteristic(gattCharacteristic);
-
-                            BluetoothGattCharacteristic gattCharacteristicTx = service.getCharacteristic(UUID.fromString("6E400003-B5A3-F393-E0A9-E50E24DCCA9E"));
-                            BluetoothGattDescriptor descriptor = gattCharacteristicTx.getDescriptor(UUID.fromString("00002902-0000-1000-8000-00805f9b34fb"));
-                            descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
-                            gattCharacteristicTx.addDescriptor(descriptor);
-                            gatt.writeDescriptor(descriptor);
-                            gatt.setCharacteristicNotification(gattCharacteristicTx, true);
-
-                        }
-                    }
+                    updatePage();
                 }
             }
         }
     }
 
-    private final BluetoothGattCallback bluetoothGattCallback = new BluetoothGattCallback() {
-        @Override
-        public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
-            if (newState == BluetoothProfile.STATE_CONNECTED) {
-                Log.d(TAG, "connected");
-
-            } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
-                Log.d(TAG, "disconnected");
-            }
-
-        }
-
-        @Override
-        public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
-            switch (status) {
-                case GATT_SUCCESS:
-                    Log.d(TAG, "message send success");
-                    break;
-                case GATT_WRITE_NOT_PERMITTED:
-                    Log.d(TAG, "GATT_WRITE_NOT_PERMITTED");
-                    break;
-            }
-        }
-
-        @Override
-        public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
-            Log.d(TAG, String.valueOf(gatt.getService(UUID.fromString("6E400001-B5A3-F393-E0A9-E50E24DCCA9E")).getCharacteristic(UUID.fromString("6E400003-B5A3-F393-E0A9-E50E24DCCA9E")).getValue()));
-        }
-
-    };
-
+    @SuppressLint("MissingPermission")
     public void updatePage() {
         linearLayoutListOfDevice.removeAllViews();
         if (bluetoothMolkkyDevices.isEmpty()) {
@@ -196,10 +136,18 @@ public class SelectMolkky extends Fragment {
         for (BluetoothDevice bluetoothDevice : bluetoothMolkkyDevices) {
             View fragment = inflater.inflate(R.layout.fragment_pin, container, false);
             TextView textPin = fragment.findViewById(R.id.textPin);
-            if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED) {
-                textPin.setText(bluetoothDevice.getName());
-                linearLayoutListOfDevice.addView(fragment);
-            }
+            textPin.setText(bluetoothDevice.getName());
+            linearLayoutListOfDevice.addView(fragment);
+            fragment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    connect(bluetoothDevice);
+                }
+            });
         }
+    }
+
+    private void connect(BluetoothDevice bluetoothDevice){
+        BleDialogue.getInstance(this).connect(bluetoothDevice);
     }
 }
