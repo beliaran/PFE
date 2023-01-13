@@ -31,25 +31,132 @@ import fr.eseo.pfemolkky.R;
 import fr.eseo.pfemolkky.models.Game;
 import fr.eseo.pfemolkky.models.Pin;
 import fr.eseo.pfemolkky.models.Player;
-
+/**
+ * Class which is called when the User play the game
+ */
 public class GameFragment extends Fragment {
-
+    /**
+     * The
+     */
     private int playerNumber;
+    /**
+     * The list of the pins of the game
+     */
     private ArrayList<Pin> pins = new ArrayList<>();
+    /**
+     * The list of the image view representing the pin in the display
+     */
     private ArrayList<Button> listImageView = new ArrayList<>();
-
+    /**
+     * The actual player
+     */
     private Player player;
+    /**
+     * The navigation controller
+     */
     private NavController navController;
+    /**
+     * The game instance in the Main activity
+     */
     private Game game;
+    /**
+     * The button to validate the score and go to the next turn
+     */
     private Button buttonValidate;
+    /**
+     * The boolean representing if the game is on pause between two throws
+     */
     AtomicReference<Boolean> nextTurn = new AtomicReference<>(false);
+    /**
+     * The score displayed on the screen
+     */
     private TextView textViewScore;
+    /**
+     * The layout containing the representation of the number of times player missed all pins
+     */
     private LinearLayout croix;
 
     /**
      * Function called when fragment is created <br>
-     * Inflate the fragment
-     *
+     * <div style="padding-left : 10px">
+     *      &#x27A2 Inflate the fragment <br>
+     *      &#x27A2 Get the current player <br>
+     *      &#x27A2 Change the text which display the name by the name of the current player <br>
+     *      &#x27A2 Display the score of the player <br>
+     *      &#x27A2 Get all the buttons representing the pin and add them to a list <br>
+     *      &#8649 For all pins<br>
+     *      <div style="padding-left : 10px">
+     *          &#x27A2 Adapt the display to the width of the phone <br>
+     *      </div>
+     *      &#x27FE Set the function called when players click on the podium <br>
+     *      <div style="padding-left : 10px">
+     *          &#x27A2 Navigate to the scoreboard page <br>
+     *      </div>
+     *      &#x27FE Set the function called when players click on the battery <br>
+     *      <div style="padding-left : 10px">
+     *          &#x27A2 Navigate to the battery listing page <br>
+     *      </div>
+     *      &#x27FE Set the function called when players click on the validate button<br>
+     *      <div style="padding-left : 10px">
+     *          &#x21a6 If the game is not on pause<br>
+     *          <div style="padding-left : 10px">
+     *             &#x27A2 Calculate the number of pin that are fallen <br>
+     *             &#x21a6  If the count is equal to 1 <br>
+     *           	<div style="padding-left : 10px">
+     *               	&#x27A2 Add the value of the pin to the player score <br>
+     *               	&#x27A2 Set the value of the number of times player missed all pins to 0 <br>
+     *               	&#x27A2 Add 1 to the number of times the player tackled one pin<br>
+     *               	&#x27A2 Add 1 to the number of pin the player tackled<br>
+     *          	</div>
+     * 			&#x21a6 If the count is equal to 0 <br>
+     * 			<div style="padding-left : 10px">
+     * 				&#x27A2 Add 1 to the number of times player missed all pins<br>
+     * 				&#x21a6 If the number of times player missed all pins is equal to 3 <br>
+     * 				<div style="padding-left : 10px">
+     * 					&#x21a6 If the type of game is different than tournament <br>
+     * 					<div style="padding-left : 10px">
+     * 						&#x27A2 Set the value of the number of times player missed all pins to 0 <br>
+     * 						&#x27A2 Set the score value to 0 <br>
+     * 					</div>
+     * 					&#x21a6 If the type of game is tournament <br>
+     * 					<div style="padding-left : 10px">
+     * 						&#x27A2 Set the score value to 0 <br>
+     * 						&#x27A2 Remove the player from the list (he is disqualified) <br>
+     * 					</div>
+     * 				</div>
+     * 			</div>
+     * 			&#x21a6 If the count is different than 0 & 1 <br>
+     * 			<div style="padding-left : 10px">
+     * 				&#x27A2 Add the value of count to the player score <br>
+     * 				&#x27A2 Set the value of the number of times player missed all pins to 0 <br>
+     * 				&#x27A2 Add the count to the number of pin the player tackled<br>
+     * 			</div>
+     * 			&#x21a6 If the score is more than the score to win <br>
+     * 			<div style="padding-left : 10px">
+     * 				&#x27A2 Player score is divided by 2 <br>
+     * 			</div>
+     * 			&#x21a6 If the game is a tournament and the player is the only one left or if the player score is equal to the score to win <br>
+     * 			<div style="padding-left : 10px">
+     * 				&#x27A2 Player number is passed as parameter <br>
+     * 				&#x27A2 Navigate to the end of game page <br>
+     * 			</div>
+     * 			&#x21a6 If end of game is not reached <br>
+     * 			<div style="padding-left : 10px">
+     * 				&#x27A2 The game is paused between two rounds and interface is updated with scores<br>
+     * 			</div>
+     *          </div>
+     *          &#x21a6 If the game is on pause<br>
+     *          <div style="padding-left : 10px">
+     *               &#x27A2 Reset the state of all pins <br>
+     * 			  &#x27A2 Set the parameter as the next player to play<br>
+     * 			  &#x27A2 Navigate to a new page game with the parameter the next player<br>
+     *          </div>
+     *      </div>
+     * 	 &#x27FE Set the function called when players click on the back button<br>
+     *      <div style="padding-left : 10px">
+     * 		&#x27A2 Create an alert dialog which will ask if the User really want to leave the current game, if he selects yes he will be redirected to the main menu, otherwise the game continues <br>
+     * 	 </div>
+     * </div>
      * @param inflater           the layout xml containing the page
      * @param container          a group of view containing the page
      * @param savedInstanceState the saved instante state between the pages
@@ -157,6 +264,9 @@ public class GameFragment extends Fragment {
                         player.setScore(player.getScore() + countFallen);
                         player.setFallenPins(player.getFallenPins() + countFallen);
                     }
+                    if (player.getScore() > game.getScoreToWin()) {
+                        player.setScore(game.getScoreToWin() / 2);
+                    }
                     if ((game.getTypeOfGame() == Game.TypeOfGame.tournament && game.getPlayers().size() == 1) || player.getScore() == game.getScoreToWin()) {
                         for (Pin pin : pins) {
                             pin.setFallen(false);
@@ -175,9 +285,6 @@ public class GameFragment extends Fragment {
                         updateInterface();
                     }
                 } else {
-                    if (player.getScore() > game.getScoreToWin()) {
-                        player.setScore(game.getScoreToWin() / 2);
-                    }
                     for (Pin pin : pins) {
                         pin.setFallen(false);
                     }
@@ -195,9 +302,6 @@ public class GameFragment extends Fragment {
                 @Override
                 public void handleOnBackPressed() {
                     if (getActivity() != null) {
-                        for (Pin pin : pins) {
-                            pin.setFallen(false);
-                        }
                         LinearLayout view = new LinearLayout(getContext());
                         ImageView iv = new ImageView(getContext());
                         iv.setImageDrawable(ContextCompat.getDrawable(getActivity(), android.R.drawable.ic_dialog_alert));
@@ -215,7 +319,12 @@ public class GameFragment extends Fragment {
                         AlertDialog dialog = new AlertDialog.Builder(getContext())
                                 .setCustomTitle(view)
                                 .setMessage(getResources().getText(R.string.textLeave))
-                                .setPositiveButton(getResources().getText(R.string.yes), (dialog1, which) -> navController.navigate(R.id.nav_main))
+                                .setPositiveButton(getResources().getText(R.string.yes), (dialog1, which) -> {
+                                    navController.navigate(R.id.nav_main);
+                                    for (Pin pin : pins) {
+                                        pin.setFallen(false);
+                                    }
+                                })
                                 .setNegativeButton(getResources().getText(R.string.no), null).create();
                         dialog.setOnShowListener(arg0 -> {
                             TypedValue typedValue = new TypedValue();
@@ -234,6 +343,35 @@ public class GameFragment extends Fragment {
         return root;
     }
 
+    /**
+     * Function to update the button validate
+     * <div style="padding-left : 10px">
+     * 	&#x21a6 If the game is not on pause<br>
+     * 	<div style="padding-left : 10px">
+     * 		&#x27A2 Count the number of fallen pins <br>
+     * 		&#x21a6 If only one pin fell <br>
+     * 		<div style="padding-left : 10px">
+     * 			&#x27A2 Set the text of the button according to the pin number<br>
+     * 		</div>
+     * 		&#x21a6 If no pin fell <br>
+     * 		<div style="padding-left : 10px">
+     * 			&#x27A2 Set the text of the button according to the count<br>
+     * 			&#x21a6 If the player already missed 2 times and the type of game is a tournament <br>
+     * 			<div style="padding-left : 10px">
+     * 				&#x27A2 Button asks if player is disqualified
+     * 			</div>
+     * 		</div>
+     * 		&#x21a6 If more than one pin fell <br>
+     * 		<div style="padding-left : 10px">
+     * 			&#x27A2 Set the text of the button according to the count<br>
+     * 		</div>
+     * 	</div>
+     * 	&#x21a6 If the game is on pause<br>
+     * 	<div style="padding-left : 10px">
+     * 		&#x27A2 Set the text of the button to Next Turn
+     * 	</div>
+     * </div>
+     */
     private void updateButton() {
         if (!nextTurn.get()) {
             int countFallen = 0;
@@ -264,6 +402,37 @@ public class GameFragment extends Fragment {
         }
     }
 
+    /**
+     * Function to update the page
+     * <div style="padding-left : 10px">
+     * 	&#x27A2 Set the displayed score to the score of the player<br>
+     * 	&#8649 Display cross for the number of times a player missed<br>
+     * 	&#8649 for each pin <br>
+     * 	<div style="padding-left : 10px">
+     * 		&#x21a6 If the game is not on pause <br>
+     * 		<div style="padding-left : 10px">
+     * 			&#x27FE Change the state of the pin when clicked <br>
+     * 		</div>
+     * 		&#x21a6 If the game is on pause <br>
+     * 		<div style="padding-left : 10px">
+     * 			&#x27A2 Make the button not clickable <br>
+     * 		</div>
+     * 		&#x21a6 If the pin is not connected<br>
+     * 		<div style="padding-left : 10px">
+     * 			&#x27A2 Display the drawable of disconnected pin <br>
+     * 		</div>
+     * 		&#x21a6 If the pin is connected<br>
+     * 		<div style="padding-left : 10px">
+     * 			&#x27A2 Display the drawable of connected pin <br>
+     * 		</div>
+     * 		&#x21a6 If the pin is not connected<br>
+     * 		<div style="padding-left : 10px">
+     * 			&#x27A2 Display the drawable of disconnected pin <br>
+     * 		</div>
+     * 		&#x27A2 Update the button <br>
+     * 	</div>
+     * </div>
+     */
     private void updateInterface() {
         if (getActivity() != null) {
             textViewScore.setText(getResources().getString(R.string.scorePlayer, String.valueOf(player.getScore()), String.valueOf(game.getScoreToWin())));
@@ -295,8 +464,8 @@ public class GameFragment extends Fragment {
                 if (pins.get(i).hasFallen()) {
                     listImageView.get(i).setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.circlepinbuttonfallen));
                 }
-                updateButton();
             }
+            updateButton();
         }
     }
 

@@ -20,11 +20,29 @@ import fr.eseo.pfemolkky.models.Pin;
  * Class which is called when the User navigate to the page to add a pin or replace one
  */
 public class AddPin extends Fragment {
+    /**
+     * The inflated fragment
+     */
     private View root;
+    /**
+     * The list of pin analyzed by the phone
+     */
     private ArrayList<Pin> pinAnalyzed = new ArrayList<>();
+    /**
+     * The Layout which will contain the displayed fragments representing each pins
+     */
     private LinearLayout pinsToAddLayout;
+    /**
+     * The layout inflater which inflates the fragments
+     */
     private LayoutInflater inflater;
+    /**
+     * A group of view containing the page
+     */
     private ViewGroup container;
+    /**
+     * The pin number which is being modified
+     */
     private int pinNumber = 0;
 
     /**
@@ -61,34 +79,21 @@ public class AddPin extends Fragment {
         updatePage();
         return root;
     }
-    /**
-     * Function called when fragment is created <br>
-     * <div style="padding-left : 10px">
-     *      &#x27A2 Inflate the fragment<br>
-     *      &#x27A2 Add a player defined by a EditText and a Fragment fragment_added_player inflated<br>
-     *      &#x27A2 Set the button to add player response when clicked <br>
-     *
-     * </div>
-     *
-     * @param inflater           the layout xml containing the page
-     * @param container          a group of view containing the page
-     * @param savedInstanceState the saved instante state between the pages
-     * @return the inflated fragment with all elements
-     */
+
     /**
      * Function which update the page with the different pin that are analyzed<br>
      *     <div style="padding-left : 10px">
-     *         &#x27A2; If no pin is found :<br>
+     *         &#x21a6; If no pin is found :<br>
      *         <div style="padding-left : 10px">
-     *              &#x21a6; Method display a frame saying that no pin has been found <br>
+     *               &#x27A2; Method display a frame saying that no pin has been found <br>
      *         </div>
-     *         &#x27A2; If one or more pins are found : <br>
+     *         &#8649; for each pins that are found : <br>
      *         <div style="padding-left : 10px">
-     *              &#x21a6; Method display a list of frames with the name pin 0 <br>
-     *              &#x21a6; Set the function called when the frame is clicked :<br>
+     *              &#x27A2; Method display a list of frames with the name pin 0 <br>
+     *              &#x27FE; Set the function called when the frame is clicked<br>
      *              <div style="padding-left : 10px">
-     *                  &#x27FE; Replace the pin to change by the pin clicked<br>
-     *                  &#x27FE; Return to menu<br>
+     *                  &#x27A2; Replace the pin to change by the pin clicked<br>
+     *                  &#x27A2; Return to menu<br>
      *              </div>
      *         </div>
      *     </div>

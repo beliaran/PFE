@@ -16,14 +16,41 @@ import fr.eseo.pfemolkky.MainActivity;
 import fr.eseo.pfemolkky.R;
 import fr.eseo.pfemolkky.models.Game.TypeOfGame;
 
-
+/**
+ * Class which is called when the User navigate to the page to choose the type of game
+ */
 public class chooseTypeGame extends Fragment {
-
+    /**
+     * The navigation Controller
+     */
     private NavController navController;
 
     /**
      * Function called when fragment is created <br>
-     * Inflate the fragment
+     * <div style="padding-left : 10px">
+     *     &#x27A2 Inflate the fragment <br>
+     *     &#x27A2 Set the parameter for next page as the first player of the list<br>
+     *     &#x27FE Set the response if the player click on the tournament button<br>
+     *     <div style="padding-left : 10px">
+     *         &#x27A2 Set the type of game to tournament<br>
+     *         &#x27A2 Navigate to the page of the game with the parameters<br>
+     *     </div>
+     *     &#x27FE Set the response if the player click on the classic button<br>
+     *     <div style="padding-left : 10px">
+     *         &#x27A2 Set the type of game to classic<br>
+     *         &#x27A2 Navigate to the page of the game with the parameters<br>
+     *     </div>
+     *     &#x27FE Set the response if the player click on the quick button<br>
+     *     <div style="padding-left : 10px">
+     *         &#x27A2 Set the type of game to quick<br>
+     *         &#x27A2 Navigate to the page of the game with the parameters<br>
+     *     </div>
+     *     &#x27FE Set the response if the player click on the pastis button<br>
+     *     <div style="padding-left : 10px">
+     *         &#x27A2 Set the type of game to pastis<br>
+     *         &#x27A2 Navigate to the page of the game with the parameters<br>
+     *     </div>
+     * </div>
      *
      * @param inflater           the layout xml containing the page
      * @param container          a group of view containing the page

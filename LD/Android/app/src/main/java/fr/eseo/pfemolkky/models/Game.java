@@ -6,12 +6,29 @@ import java.util.ArrayList;
  * Class which will rule the game and define its main characteristics
  */
 public class Game {
-
+    /**
+     * The list of players which will be modified during the game
+     */
     private ArrayList<Player> players = new ArrayList<>();
+    /**
+     * The list of players which will remain unchanged during the whole game
+     */
     private ArrayList<Player> playersList = new ArrayList<>();
+    /**
+     * The list of pins of the game
+     */
     private ArrayList<Pin> pins = new ArrayList<>();
+    /**
+     * The number of rounds the game takes
+     */
     private int round = 1;
+    /**
+     * The type of game according to the TypeOfGame enumeration
+     */
     private TypeOfGame typeOfGame;
+    /**
+     * The score needed to win the game according to the type of the game
+     */
     private int scoreToWin;
 
     /**

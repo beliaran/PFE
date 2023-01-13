@@ -6,10 +6,25 @@ import androidx.annotation.NonNull;
  * Class which initialize a player
  */
 public class Player {
+    /**
+     * The name of the player
+     */
     private String name;
+    /**
+     * The number of times player missed all pins (between 0 and 3)
+     */
     private int missed = 0;
+    /**
+     * The score of the player
+     */
     private int score = 0;
+    /**
+     * The number of times player takled only one pin
+     */
     private int uniquePin = 0;
+    /**
+     * The total number of pins the player has tackled
+     */
     private int fallenPins = 0;
 
     /**

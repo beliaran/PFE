@@ -22,8 +22,18 @@ import fr.eseo.pfemolkky.R;
 public class UserRegisterFragment extends Fragment {
     /**
      * Function called when fragment is created <br>
-     * Inflate the fragment
-     *
+     * <div style="padding-left : 10px">
+     * 	&#x27A2 Inflate the fragment <br>
+     * 	&#x27FE If button Register is pressed <br>
+     * 	<div style="padding-left : 10px">
+     * 		&#x21a6 Check if all fields are filled <br>
+     * 		<div style="padding-left : 10px">
+     * 			&#x21a6 Check if password and password verification are equal<br>
+     * 			&#x21a6 Display that both passwords must be equal if not equal <br>
+     * 		</div>
+     * 		&#x21a6 Display that all fields must be filled if not <br>
+     * 	</div>
+     * </div>
      * @param inflater           the layout xml containing the page
      * @param container          a group of view containing the page
      * @param savedInstanceState the saved instante state between the pages

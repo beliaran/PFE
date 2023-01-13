@@ -23,13 +23,24 @@ import fr.eseo.pfemolkky.R;
 import fr.eseo.pfemolkky.databinding.FragmentMainBinding;
 import fr.eseo.pfemolkky.models.Game;
 import fr.eseo.pfemolkky.models.Pin;
-
+/**
+ * Class which is called when the User launch the app
+ */
 public class MainFragment extends Fragment {
 
     /**
      * Function called when fragment is created <br>
-     * Inflate the fragment
-     *
+     * <div style="padding-left : 10px">
+     * 	&#x27A2 Inflate the fragment <br>
+     * 	&#x27FE Navigate to the page to add players if button start a game is clicked <br>
+     * 	&#x27FE Navigate to the page to log in if button Log in is clicked <br>
+     * 	&#x27FE If button Connect to molkky is clicked <br>
+     * 	<div style="padding-left : 10px">
+     * 		&#x21a6 Display that bluetooth can not work on the telephone if the bluetooth is not supported on the phone
+     * 		&#x21a6 Navigate to the page to select the molkky if the bluetooth is supported on the phone
+     * 	</div>
+     * 	&#x27FE Close the app when button back is clicked <br>
+     * </div>
      * @param inflater           the layout xml containing the page
      * @param container          a group of view containing the page
      * @param savedInstanceState the saved instante state between the pages
@@ -51,13 +62,12 @@ public class MainFragment extends Fragment {
                 ((MainActivity) getActivity()).setGame(new Game(((MainActivity) getActivity()).getPins()));
             });
             buttonLogIn.setOnClickListener(view -> {
-                System.out.println("changed");
                 navController.navigate(R.id.nav_user_connection);
             });
             chooseMolkkyBtn.setOnClickListener(view -> {
                 if (((MainActivity) getActivity()).bluetoothAdapter == null) {
                     //TODO Rajouter au champ string
-                    Toast.makeText(getContext(), "Le bluetooth n'est pas supporté par votre smarthphone",
+                    Toast.makeText(getContext(), getResources().getString(R.string.bluetoothNotSupported),
                             Toast.LENGTH_SHORT).show();
                 } else {
                     navController.navigate(R.id.select_molkky);

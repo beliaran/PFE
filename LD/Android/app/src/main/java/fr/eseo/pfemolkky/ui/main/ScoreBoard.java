@@ -17,13 +17,23 @@ import fr.eseo.pfemolkky.MainActivity;
 import fr.eseo.pfemolkky.R;
 import fr.eseo.pfemolkky.models.Player;
 
-
+/**
+ * Class called when player navigate to the page of Scoreboard
+ */
 public class ScoreBoard extends Fragment {
 
     /**
      * Function called when fragment is created <br>
-     * Inflate the fragment
-     *
+     * <div style="padding-left : 10px">
+     * 	&#x27A2 Inflate the fragment <br>
+     * 	&#x27A2 Get the list of players <br>
+     * 	&#8649 For each player <br>
+     * 	<div style="padding-left : 10px">
+     * 		&#x27A2 Create a fragment<br>
+     * 		&#x27A2 Set the name and score of the player on the fragment<br>
+     * 		&#x27A2 Add the fragment to the page<br>
+     * 	</div>
+     * </div>
      * @param inflater           the layout xml containing the page
      * @param container          a group of view containing the page
      * @param savedInstanceState the saved instante state between the pages

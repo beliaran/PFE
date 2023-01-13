@@ -4,9 +4,21 @@ package fr.eseo.pfemolkky.models;
  * Class that initialize one pin
  */
 public class Pin {
+    /**
+     * The number displayed on the pin
+     */
     private int number;
+    /**
+     * The value if the pin is connected
+     */
     private boolean connected = false;
+    /**
+     * The value if the pin is fallen
+     */
     private boolean fallen = false;
+    /***
+     * The battery level between the 5 states in the enum Battery
+     */
     private Battery battery = Battery.dead;
 
     /**

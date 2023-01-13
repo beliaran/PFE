@@ -23,8 +23,16 @@ import fr.eseo.pfemolkky.R;
 public class UserConnectionFragment extends Fragment {
     /**
      * Function called when fragment is created <br>
-     * Inflate the fragment
-     *
+     * <div style="padding-left : 10px">
+     * 	&#x27A2 Inflate the fragment <br>
+     * 	&#x27A2 Restore the previous preferences <br>
+     * 	&#x27FE If button Log in is pressed <br>
+     * 	<div style="padding-left : 10px">
+     * 		&#x21a6 Save the password and username in preferences if no field is empty<br>
+     * 		&#x21a6 Display that all fields must be filled if at least one of the two field is empty<br>
+     * 	</div>
+     * 	&#x27FE If button Register is pressed, User is redirected to the registering page<br>
+     * </div>
      * @param inflater           the layout xml containing the page
      * @param container          a group of view containing the page
      * @param savedInstanceState the saved instante state between the pages

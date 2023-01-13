@@ -23,14 +23,27 @@ import fr.eseo.pfemolkky.R;
 import fr.eseo.pfemolkky.models.Game;
 import fr.eseo.pfemolkky.models.Player;
 
+/**
+ * Class called at the end of the game
+ */
 public class Winner extends Fragment {
+    /**
+     * The navigaation controller
+     */
     private NavController navController;
+    /**
+     * The score of all players cumulated
+     */
     private int globalScore = 0;
 
     /**
      * Function called when fragment is created <br>
-     * Inflate the fragment
-     *
+     * <div style="padding-left : 10px">
+     * 	&#x27A2 Inflate the fragment <br>
+     * 	&#x27A2 Get the list of players<br>
+     * 	&#x27A2 Define each role according to the players statistics <br>
+     * 	&#x27FE Navigate to menu when the player clicks on the button back to menu<br>
+     * </div>
      * @param inflater           the layout xml containing the page
      * @param container          a group of view containing the page
      * @param savedInstanceState the saved instante state between the pages
