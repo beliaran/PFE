@@ -13,6 +13,7 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
 import android.bluetooth.BluetoothProfile;
+import android.os.Handler;
 import android.util.Log;
 
 import androidx.fragment.app.Fragment;
@@ -24,6 +25,8 @@ import fr.eseo.pfemolkky.ui.main.GameFragment;
 public final class BleDialogue {
 
     private static volatile BleDialogue instance = null;
+
+    final Handler mHandler = new Handler();
 
     private BluetoothDevice bleDevice;
     private BluetoothGattService service;
@@ -120,10 +123,15 @@ public final class BleDialogue {
         public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
             byte[] trame = gattCharacteristicTx.getValue();
             byte[] trameTest = {12,1,50,6,20,20};
-            if (fragment.getClass().equals(GameFragment.class)) {
+            if (fragment.getClass().equals(GameFragment.class) && fragment.isVisible()) {
                 Log.d(TAG, trameTest.toString());
-                GameFragment callBack = (GameFragment) fragment;
-                callBack.callBackBle(trameTest);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        GameFragment callBack = (GameFragment) fragment;
+                        callBack.callBackBle(trameTest);
+                    }
+                });
             }
         }
 
@@ -144,5 +152,9 @@ public final class BleDialogue {
             else return false;
         }
         return false;
+    }
+
+    public final void runOnUiThread(Runnable action) {
+        mHandler.post(action);
     }
 }

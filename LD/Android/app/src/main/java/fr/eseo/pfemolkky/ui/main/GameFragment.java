@@ -3,7 +3,6 @@ package fr.eseo.pfemolkky.ui.main;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.app.AlertDialog;
-import android.bluetooth.BluetoothDevice;
 import android.content.res.Resources;
 import android.os.Bundle;
 
@@ -108,11 +107,13 @@ public class GameFragment extends Fragment {
             updateInterface();
             ImageView imageCup = root.findViewById(R.id.imageCup);
             imageCup.setOnClickListener(view -> {
+                BleDialogue.getInstance(null);
                 navController.navigate(R.id.nav_scoreboard);
                 listImageView= new ArrayList<>();
             });
             ImageView imageBattery = root.findViewById(R.id.imageBattery);
             imageBattery.setOnClickListener(view -> {
+                BleDialogue.getInstance(null);
                 navController.navigate(R.id.nav_battery);
                 listImageView= new ArrayList<>();
             });
@@ -305,5 +306,21 @@ public class GameFragment extends Fragment {
             Log.d(TAG, "update");
             updateInterface();
         }
+    }
+
+    public void onStop() {
+        super.onStop();
+        BleDialogue.getInstance(null);
+    }
+
+    public void onResume(){
+        super.onResume();
+        BleDialogue.getInstance(this);
+        updateInterface();
+    }
+
+    public void onPause(){
+        super.onPause();
+        BleDialogue.getInstance(null);
     }
 }
