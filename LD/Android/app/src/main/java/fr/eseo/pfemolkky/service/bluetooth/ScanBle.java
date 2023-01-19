@@ -25,7 +25,7 @@ public class ScanBle {
 
     // Stops scanning after 10 seconds.
     //TODO PUT THIS FINAL ON PROPERTIES FILES
-    private static final long SCAN_PERIOD = 10000;
+    private static final long SCAN_PERIOD = 5000;
 
     @SuppressLint("MissingPermission")
     public static void scan(MainActivity mainActivity, SelectMolkky selectMolkkyFrag) {

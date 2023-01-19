@@ -16,8 +16,9 @@ public class BluetoothTrameReader {
         System.out.println(activity);
         ArrayList<Pin> pins = activity.getPins();
         Pin pin = new Pin();
-        if(trame.length == 6){
-            int num = trame[0]-1;
+        if(trame.length == 6 && trame[0] > 0 && trame[0] <= 12){
+            int num = trame[0];
+            int index = num -1;
 
             int mod = trame[1];
             int bat = trame[2];
@@ -45,14 +46,14 @@ public class BluetoothTrameReader {
             }
             if (mod == 2) {
                 pin.setConnected(false);
-                pins.set(num,pin);
+                pins.set(index,pin);
             }
             if (mod == 1 && !nextTurn.get()) {
                 pin.setFallen(true);
-                pins.set(num,pin);
+                pins.set(index,pin);
             }
             if(mod == 3){
-                pins.set(num,pin);
+                pins.set(index,pin);
             }
 
         }

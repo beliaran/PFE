@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 
 import java.util.UUID;
 
+import fr.eseo.pfemolkky.MainActivity;
 import fr.eseo.pfemolkky.models.Pin;
 import fr.eseo.pfemolkky.ui.addPin.AddPin;
 import fr.eseo.pfemolkky.ui.main.GameFragment;
@@ -123,13 +124,13 @@ public final class BleDialogue {
         @Override
         public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
             byte[] trame = gattCharacteristicTx.getValue();
-            byte[] trameTest = {12,0,50,6,20,20};
+            //byte[] trameTest = {12,0,50,6,20,20};
             if (fragment.getClass().equals(GameFragment.class) && fragment.isVisible()) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         GameFragment callBack = (GameFragment) fragment;
-                        callBack.callBackBle(trameTest);
+                        callBack.callBackBle(trame);
                     }
                 });
             }
@@ -138,7 +139,7 @@ public final class BleDialogue {
                     @Override
                     public void run() {
                         AddPin callBack = (AddPin) fragment;
-                        callBack.callBackBle(trameTest);
+                        callBack.callBackBle(trame);
                     }
                 });
             }
@@ -156,6 +157,10 @@ public final class BleDialogue {
             //Element for connection
             gattMollky = bleDevice.connectGatt(fragment.getActivity(), false, bluetoothGattCallback);
             if(gattMollky.connect()){
+                //Delet all device detected
+                MainActivity main = (MainActivity) fragment.getActivity();
+                main.bluetoothDevices.clear();
+
                 return true;
             }
             else return false;
