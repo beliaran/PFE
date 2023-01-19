@@ -1,5 +1,6 @@
 package fr.eseo.pfemolkky.ui.addplayers;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -9,6 +10,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -19,12 +21,13 @@ import android.widget.LinearLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 import fr.eseo.pfemolkky.MainActivity;
 import fr.eseo.pfemolkky.R;
 import fr.eseo.pfemolkky.models.Player;
-
+import com.jmedeisis.draglinearlayout.DragLinearLayout;
 /**
  * Class which is called when the User navigate to the page to add players to the game
  */
@@ -57,6 +60,8 @@ public class AddPlayersFragment extends Fragment {
      * a group of view containing the page
      */
     private ViewGroup container;
+    private DragLinearLayout layoutPlayers;
+
     /**
      * Function called when fragment is created <br>
      * <div style="padding-left : 10px">
@@ -81,6 +86,7 @@ public class AddPlayersFragment extends Fragment {
         playersName = new HashMap<>();
         players = new ArrayList<>();
         root = inflater.inflate(R.layout.fragment_add_players, container, false);
+        layoutPlayers = root.findViewById(R.id.layoutPlayers);
         navController = NavHostFragment.findNavController(this);
         this.container = container;
         if (this.getActivity() != null) {
@@ -137,6 +143,16 @@ public class AddPlayersFragment extends Fragment {
             }
             navController.navigate(R.id.nav_choose_type);
         });
+        layoutPlayers.setOnViewSwapListener(new DragLinearLayout.OnViewSwapListener() {
+            @Override
+            public void onSwap(View firstView, int firstPosition,
+                               View secondView, int secondPosition) {
+                Collections.swap(players, firstPosition-1, secondPosition-1);
+                Collections.swap(playersFragment, firstPosition-1, secondPosition-1);
+                update();
+            }
+        });
+
         System.out.println(playersName);
         System.out.println(players.get(0).getText());
         System.out.println("<====================================>");
@@ -167,6 +183,14 @@ public class AddPlayersFragment extends Fragment {
         update();
     }
 
+    public void onDrag(){
+        for(int j = 1; j < layoutPlayers.getChildCount(); j++){
+            View child = layoutPlayers.getChildAt(j);
+            // the child will act as its own drag handle
+            layoutPlayers.setViewDraggable(child, child);
+        }
+    }
+
     /**
      * Function called to update the page
      * <div style="padding-left : 10px">
@@ -190,8 +214,8 @@ public class AddPlayersFragment extends Fragment {
      *     </div>
      * </div>
      */
+    @SuppressLint("ClickableViewAccessibility")
     public void update() {
-        LinearLayout layoutPlayers = root.findViewById(R.id.layoutPlayers);
         layoutPlayers.removeAllViews();
         if (getContext() != null) {
             ConstraintLayout clSpace = new ConstraintLayout(getContext());
@@ -234,6 +258,8 @@ public class AddPlayersFragment extends Fragment {
                     System.out.println(players.get(i - 1).getId());
                     (players.get(i - 1)).setText(playersName.get(players.get(i - 1)));
                 }
+                ImageView imageList = fragment.findViewById(R.id.imageList);
+                layoutPlayers.setViewDraggable(fragment, imageList);
             }
         }
     }

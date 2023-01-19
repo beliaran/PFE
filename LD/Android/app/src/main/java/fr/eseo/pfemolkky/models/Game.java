@@ -49,6 +49,24 @@ public class Game {
         this.round = round;
     }
 
+    /**
+     * Get if the end of the game is reached
+     * @param player the current player
+     * @return a boolean which check if the player won the game
+     */
+    public boolean checkIfEndGame(Player player) {
+        return (this.getTypeOfGame() == Game.TypeOfGame.tournament && this.getPlayers().size() == 1) || player.getScore() == this.getScoreToWin();
+    }
+
+    /**
+     * Get if the player is disqualified
+     * @param player the current player
+     * @return a boolean which check if the player is disqualified
+     */
+    public boolean checkIfDisqualified(Player player) {
+        return this.getTypeOfGame() == Game.TypeOfGame.tournament && player.getMissed()==0 && player.getScore()==0;
+    }
+
 
     /**
      * An enumeration of all the type of games

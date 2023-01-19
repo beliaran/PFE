@@ -23,7 +23,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
+            <com.jmedeisis.draglinearlayout.DragLinearLayout
                 android:id="@+id/layoutPlayers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
                     android:background="@color/purple_molkky">
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </LinearLayout>
+            </com.jmedeisis.draglinearlayout.DragLinearLayout>
         </ScrollView>
 
         <androidx.constraintlayout.widget.ConstraintLayout

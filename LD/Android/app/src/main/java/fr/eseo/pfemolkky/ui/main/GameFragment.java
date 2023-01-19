@@ -105,52 +105,7 @@ public class GameFragment extends Fragment {
      *      &#x27FE Set the function called when players click on the validate button<br>
      *      <div style="padding-left : 10px">
      *          &#x21a6 If the game is not on pause<br>
-     *          <div style="padding-left : 10px">
-     *             &#x27A2 Calculate the number of pin that are fallen <br>
-     *             &#x21a6  If the count is equal to 1 <br>
-     *           	<div style="padding-left : 10px">
-     *               	&#x27A2 Add the value of the pin to the player score <br>
-     *               	&#x27A2 Set the value of the number of times player missed all pins to 0 <br>
-     *               	&#x27A2 Add 1 to the number of times the player tackled one pin<br>
-     *               	&#x27A2 Add 1 to the number of pin the player tackled<br>
-     *          	</div>
-     * 			&#x21a6 If the count is equal to 0 <br>
-     * 			<div style="padding-left : 10px">
-     * 				&#x27A2 Add 1 to the number of times player missed all pins<br>
-     * 				&#x21a6 If the number of times player missed all pins is equal to 3 <br>
-     * 				<div style="padding-left : 10px">
-     * 					&#x21a6 If the type of game is different than tournament <br>
-     * 					<div style="padding-left : 10px">
-     * 						&#x27A2 Set the value of the number of times player missed all pins to 0 <br>
-     * 						&#x27A2 Set the score value to 0 <br>
-     * 					</div>
-     * 					&#x21a6 If the type of game is tournament <br>
-     * 					<div style="padding-left : 10px">
-     * 						&#x27A2 Set the score value to 0 <br>
-     * 						&#x27A2 Remove the player from the list (he is disqualified) <br>
-     * 					</div>
-     * 				</div>
-     * 			</div>
-     * 			&#x21a6 If the count is different than 0 & 1 <br>
-     * 			<div style="padding-left : 10px">
-     * 				&#x27A2 Add the value of count to the player score <br>
-     * 				&#x27A2 Set the value of the number of times player missed all pins to 0 <br>
-     * 				&#x27A2 Add the count to the number of pin the player tackled<br>
-     * 			</div>
-     * 			&#x21a6 If the score is more than the score to win <br>
-     * 			<div style="padding-left : 10px">
-     * 				&#x27A2 Player score is divided by 2 <br>
-     * 			</div>
-     * 			&#x21a6 If the game is a tournament and the player is the only one left or if the player score is equal to the score to win <br>
-     * 			<div style="padding-left : 10px">
-     * 				&#x27A2 Player number is passed as parameter <br>
-     * 				&#x27A2 Navigate to the end of game page <br>
-     * 			</div>
-     * 			&#x21a6 If end of game is not reached <br>
-     * 			<div style="padding-left : 10px">
-     * 				&#x27A2 The game is paused between two rounds and interface is updated with scores<br>
-     * 			</div>
-     *          </div>
+     *
      *          &#x21a6 If the game is on pause<br>
      *          <div style="padding-left : 10px">
      *               &#x27A2 Reset the state of all pins <br>
@@ -220,12 +175,6 @@ public class GameFragment extends Fragment {
                 imageViewPin.setLayoutParams(layoutParams);
             }
 
-            //Test de frame
-           /* String frame1 = "000011000000000101001110000000000000000000000000";
-            pinFrameAnalysis(frame1);
-            String frame2 = "000000100000000000000010000000000000000000000000";
-            pinFrameAnalysis(frame2);*/
-
             updateInterface();
             ImageView imageCup = root.findViewById(R.id.imageCup);
             imageCup.setOnClickListener(view -> {
@@ -241,58 +190,7 @@ public class GameFragment extends Fragment {
             });
             buttonValidate.setOnClickListener(view -> {
                 if (!nextTurn.get()) {
-                    int countFallen = 0;
-                    for (Pin pin : pins) {
-                        if (pin.hasFallen()) {
-                            countFallen += 1;
-                        }
-                    }
-                    if (countFallen == 1) {
-                        for (Pin pin : pins) {
-                            if (pin.hasFallen()) {
-                                player.setMissed(0);
-                                player.setScore(player.getScore() + pin.getNumber());
-                                player.setUniquePin(player.getUniquePin() + 1);
-                                player.setFallenPins(player.getFallenPins() + 1);
-                            }
-                        }
-                    } else if (countFallen == 0) {
-                        player.setMissed(player.getMissed() + 1);
-                        if (player.getMissed() == 3) {
-                            if (game.getTypeOfGame() != Game.TypeOfGame.tournament) {
-                                player.setScore(0);
-                                player.setMissed(0);
-                            } else {
-                                player.setScore(0);
-                                game.getPlayers().remove(player);
-                                playerNumber = playerNumber - 1;
-                            }
-                        }
-                    } else {
-                        player.setMissed(0);
-                        player.setScore(player.getScore() + countFallen);
-                        player.setFallenPins(player.getFallenPins() + countFallen);
-                    }
-                    if (player.getScore() > game.getScoreToWin()) {
-                        player.setScore(game.getScoreToWin() / 2);
-                    }
-                    if ((game.getTypeOfGame() == Game.TypeOfGame.tournament && game.getPlayers().size() == 1) || player.getScore() == game.getScoreToWin()) {
-                        for (Pin pin : pins) {
-                            pin.setFallen(false);
-                        }
-                        //To do when win
-                        Bundle bundle = new Bundle();
-                        if (game.getTypeOfGame() == Game.TypeOfGame.tournament) {
-                            bundle.putInt("winner", 0);
-                        } else {
-                            bundle.putInt("winner", playerNumber);
-                        }
-                        navController.navigate(R.id.nav_winner, bundle);
-
-                    } else {
-                        nextTurn.set(true);
-                        updateInterface();
-                    }
+                    countPoints();
                 } else {
                     for (Pin pin : pins) {
                         pin.setFallen(false);
@@ -350,6 +248,101 @@ public class GameFragment extends Fragment {
             requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
         }
         return root;
+    }
+
+    /**
+     * Function called to calculate the points of the player
+     *          <div style="padding-left : 10px">
+     *             &#x27A2 Calculate the number of pin that are fallen <br>
+     *             &#x21a6  If the count is equal to 1 <br>
+     *           	<div style="padding-left : 10px">
+     *               	&#x27A2 Add the value of the pin to the player score <br>
+     *               	&#x27A2 Set the value of the number of times player missed all pins to 0 <br>
+     *               	&#x27A2 Add 1 to the number of times the player tackled one pin<br>
+     *               	&#x27A2 Add 1 to the number of pin the player tackled<br>
+     *          	</div>
+     * 			&#x21a6 If the count is equal to 0 <br>
+     * 			<div style="padding-left : 10px">
+     * 				&#x27A2 Add 1 to the number of times player missed all pins<br>
+     * 				&#x21a6 If the number of times player missed all pins is equal to 3 <br>
+     * 				<div style="padding-left : 10px">
+     * 					&#x21a6 If the type of game is different than tournament <br>
+     * 					<div style="padding-left : 10px">
+     * 						&#x27A2 Set the value of the number of times player missed all pins to 0 <br>
+     * 						&#x27A2 Set the score value to 0 <br>
+     * 					</div>
+
+     * 				</div>
+     * 			</div>
+     * 			&#x21a6 If the count is different than 0 & 1 <br>
+     * 			<div style="padding-left : 10px">
+     * 				&#x27A2 Add the value of count to the player score <br>
+     * 				&#x27A2 Set the value of the number of times player missed all pins to 0 <br>
+     * 				&#x27A2 Add the count to the number of pin the player tackled<br>
+     * 			</div>
+     * 			&#x21a6 If the score is more than the score to win <br>
+     * 			<div style="padding-left : 10px">
+     * 				&#x27A2 Player score is divided by 2 <br>
+     * 			</div>
+     * 					&#x21a6 If the player is disqualified<br>
+     * 					<div style="padding-left : 10px">
+     * 						&#x27A2 Remove the player from the list (he is disqualified) <br>
+     * 					</div>
+     * 			&#x21a6 If the end of the game is reached<br>
+     * 			<div style="padding-left : 10px">
+     * 				&#x27A2 Player number is passed as parameter <br>
+     * 				&#x27A2 Navigate to the end of game page <br>
+     * 			</div>
+     * 			&#x21a6 If end of game is not reached <br>
+     * 			<div style="padding-left : 10px">
+     * 				&#x27A2 The game is paused between two rounds and interface is updated with scores<br>
+     * 			</div>
+     * 		</div>
+     */
+    private void countPoints() {
+        int countFallen = 0;
+        for (Pin pin : pins) {
+            if (pin.hasFallen()) {
+                countFallen += 1;
+            }
+        }
+        if (countFallen == 1) {
+            for (Pin pin : pins) {
+                if (pin.hasFallen()) {
+                    player.setMissed(0);
+                    player.setScore(player.getScore() + pin.getNumber());
+                    player.setUniquePin(player.getUniquePin() + 1);
+                    player.setFallenPins(player.getFallenPins() + 1);
+                }
+            }
+        } else if (countFallen == 0) {
+            player.setMissed(player.getMissed() + 1);
+            if (player.getMissed() == 3) {
+                player.setScore(0);
+                player.setMissed(0);
+            }
+        } else {
+            player.setMissed(0);
+            player.setScore(player.getScore() + countFallen);
+            player.setFallenPins(player.getFallenPins() + countFallen);
+        }
+        if (player.getScore() > game.getScoreToWin()) {
+            player.setScore(game.getScoreToWin() / 2);
+        }
+        if(game.checkIfDisqualified(player)){
+            game.getPlayers().remove(player);
+            playerNumber = playerNumber - 1;
+        }
+        if (game.checkIfEndGame(player)) {
+            for (Pin pin : pins) {
+                pin.setFallen(false);
+            }
+            navController.navigate(R.id.nav_winner);
+
+        } else {
+            nextTurn.set(true);
+            updateInterface();
+        }
     }
 
     /**
