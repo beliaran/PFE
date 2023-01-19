@@ -9,6 +9,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.util.TypedValue;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -87,9 +89,17 @@ public class AddPlayersFragment extends Fragment {
         players = new ArrayList<>();
         root = inflater.inflate(R.layout.fragment_add_players, container, false);
         layoutPlayers = root.findViewById(R.id.layoutPlayers);
+        ScrollView scrollViewPlayer = root.findViewById(R.id.scrollView3);
+
+
         navController = NavHostFragment.findNavController(this);
         this.container = container;
         if (this.getActivity() != null) {
+            Display display = getActivity().getWindowManager().getDefaultDisplay();
+            int width = display. getWidth();
+            int height = display.getHeight();
+            scrollViewPlayer.setLayoutParams(new ViewGroup.LayoutParams(width, height-Math.round(TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP, 80,getResources().getDisplayMetrics()))));
             if (!((MainActivity) this.getActivity()).getGame().getPlayers().isEmpty()) {
                 count=0;
                 for (int i = 0; i < ((MainActivity) this.getActivity()).getGame().getPlayers().size(); i++) {

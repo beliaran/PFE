@@ -1,6 +1,10 @@
 package fr.eseo.pfemolkky.service.bluetooth;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
 
 import fr.eseo.pfemolkky.MainActivity;
@@ -16,7 +20,15 @@ public class BluetoothTrameReader {
         System.out.println(activity);
         ArrayList<Pin> pins = activity.getPins();
         Pin pin = new Pin();
-        if(trame.length == 6 && trame[0] > 0 && trame[0] <= 12){
+        System.out.println(Arrays.toString(trame));
+        System.out.println(trame.length);
+        Context context = activity.getApplicationContext();
+        CharSequence text = Arrays.toString(trame) + "\n length : "+ String.valueOf(trame.length);
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+        if(trame.length >= 6 && trame.length <= 7 && trame[0] > 0 && trame[0] <= 12){
             int num = trame[0];
             int index = num -1;
 
