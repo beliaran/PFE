@@ -20,7 +20,11 @@ import androidx.fragment.app.Fragment;
 
 import java.util.UUID;
 
+import fr.eseo.pfemolkky.MainActivity;
+import fr.eseo.pfemolkky.models.Pin;
+import fr.eseo.pfemolkky.ui.addPin.AddPin;
 import fr.eseo.pfemolkky.ui.main.GameFragment;
+import fr.eseo.pfemolkky.ui.selectmolkky.SelectMolkky;
 
 public final class BleDialogue {
 
@@ -65,6 +69,7 @@ public final class BleDialogue {
         public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
             if (newState == BluetoothProfile.STATE_CONNECTED) {
                 Log.d(TAG, "connected");
+
                 if (gattMollky.discoverServices()) {
                 }
 
@@ -121,14 +126,25 @@ public final class BleDialogue {
         @Override
         public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
             byte[] trame = gattCharacteristicTx.getValue();
-            byte[] trameTest = {12,1,50,6,20,20};
+            if(trame == null){
+                return;
+            }
+            //byte[] trameTest = {12,0,50,6,20,20};
             if (fragment.getClass().equals(GameFragment.class) && fragment.isVisible()) {
-                Log.d(TAG, trameTest.toString());
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         GameFragment callBack = (GameFragment) fragment;
-                        callBack.callBackBle(trameTest);
+                        callBack.callBackBle(trame);
+                    }
+                });
+            }
+            else if(fragment.getClass().equals(AddPin.class) && fragment.isVisible()){
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        AddPin callBack = (AddPin) fragment;
+                        callBack.callBackBle(trame);
                     }
                 });
             }
@@ -146,6 +162,13 @@ public final class BleDialogue {
             //Element for connection
             gattMollky = bleDevice.connectGatt(fragment.getActivity(), false, bluetoothGattCallback);
             if(gattMollky.connect()){
+                //Delet all device detected
+                MainActivity main = (MainActivity) fragment.getActivity();
+                main.bluetoothDevices.clear();
+                if(this.fragment.getClass() == SelectMolkky.class){
+                    SelectMolkky callback = (SelectMolkky) this.fragment;
+                    callback.callBack();
+                }
                 return true;
             }
             else return false;
@@ -155,5 +178,13 @@ public final class BleDialogue {
 
     public final void runOnUiThread(Runnable action) {
         mHandler.post(action);
+    }
+
+    @SuppressLint("MissingPermission")
+    public void updatePin(Pin pin, int num){
+        byte[] trame = {0, (byte) pin.getNumber(), (byte) num};
+        gattCharacteristic.setValue(trame);
+        gattCharacteristic.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
+        gattMollky.writeCharacteristic(gattCharacteristic);
     }
 }

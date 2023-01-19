@@ -1,12 +1,22 @@
 package fr.eseo.pfemolkky.ui.main;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+import static fr.eseo.pfemolkky.service.bluetooth.ScanBle.scan;
+
+import android.bluetooth.BluetoothAdapter;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +33,8 @@ import fr.eseo.pfemolkky.R;
 import fr.eseo.pfemolkky.databinding.FragmentMainBinding;
 import fr.eseo.pfemolkky.models.Game;
 import fr.eseo.pfemolkky.models.Pin;
+import fr.eseo.pfemolkky.service.bluetooth.BlePermission;
+
 /**
  * Class which is called when the User launch the app
  */
@@ -55,6 +67,16 @@ public class MainFragment extends Fragment {
         Button button = inputFragmentView.findViewById(R.id.buttonStartGame);
         Button buttonLogIn = inputFragmentView.findViewById(R.id.buttonLogInMain);
         Button chooseMolkkyBtn = inputFragmentView.findViewById(R.id.buttonConnectMolkky);
+
+        ActivityResultLauncher<Intent> startActivityIntent = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        System.out.println(result.getResultCode());
+                    }
+                });
+
         if (getActivity() != null) {
             ((MainActivity) getActivity()).setAllowBack(true);
             button.setOnClickListener(view -> {
@@ -65,13 +87,23 @@ public class MainFragment extends Fragment {
                 navController.navigate(R.id.nav_user_connection);
             });
             chooseMolkkyBtn.setOnClickListener(view -> {
+
                 if (((MainActivity) getActivity()).bluetoothAdapter == null) {
                     //TODO Rajouter au champ string
                     Toast.makeText(getContext(), getResources().getString(R.string.bluetoothNotSupported),
                             Toast.LENGTH_SHORT).show();
                 } else {
-                    navController.navigate(R.id.select_molkky);
-                    ((MainActivity) getActivity()).setAllowBack(true);
+                    if (!((MainActivity) getActivity()).bluetoothAdapter.isEnabled()) {
+                        if (BlePermission.blePermission(this.getActivity())) {
+                            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                            startActivityIntent.launch(enableBtIntent);
+                        }
+                    } else {
+                        if (BlePermission.blePermission(this.getActivity())) {
+                            navController.navigate(R.id.select_molkky);
+                            ((MainActivity) getActivity()).setAllowBack(true);
+                        }
+                    }
                 }
             });
             OnBackPressedCallback callback = new OnBackPressedCallback(true) {

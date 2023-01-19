@@ -84,4 +84,5 @@
     <string name="allowBluetooth">Allow Bluetooth</string>
     <string name="deviceAnalyzedEmpty">No Device Detected</string>
     <string name="bluetoothNotSupported">Bluetooth is not supported on your smartphone</string>
+    <string name="FindMolkky">Find Molkky</string>
 </resources>

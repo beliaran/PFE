@@ -26,6 +26,8 @@ public class Pin {
      */
     public enum Battery {dead, low, medium, excellent, full}
 
+    public Pin(){};
+
     /**
      * Constructor which will initialize a pin taking only the pin number<br>
      * The pin is considered not connected<br>

@@ -50,8 +50,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
     implementation 'com.jmedeisis:draglinearlayout:1.1.0'
     // implementation files("C:/Users/gilli/AppData/Local/Android/Sdk/platforms/android-32/android.jar")
+    // implementation files("C:/Users/Renan/AppData/Local/Android/Sdk/platforms/android-32/android.jar")
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
-
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
