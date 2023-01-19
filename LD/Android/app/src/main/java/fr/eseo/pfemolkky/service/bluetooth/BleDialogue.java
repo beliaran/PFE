@@ -24,6 +24,7 @@ import fr.eseo.pfemolkky.MainActivity;
 import fr.eseo.pfemolkky.models.Pin;
 import fr.eseo.pfemolkky.ui.addPin.AddPin;
 import fr.eseo.pfemolkky.ui.main.GameFragment;
+import fr.eseo.pfemolkky.ui.selectmolkky.SelectMolkky;
 
 public final class BleDialogue {
 
@@ -68,6 +69,7 @@ public final class BleDialogue {
         public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
             if (newState == BluetoothProfile.STATE_CONNECTED) {
                 Log.d(TAG, "connected");
+
                 if (gattMollky.discoverServices()) {
                 }
 
@@ -124,6 +126,9 @@ public final class BleDialogue {
         @Override
         public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
             byte[] trame = gattCharacteristicTx.getValue();
+            if(trame == null){
+                return;
+            }
             //byte[] trameTest = {12,0,50,6,20,20};
             if (fragment.getClass().equals(GameFragment.class) && fragment.isVisible()) {
                 runOnUiThread(new Runnable() {
@@ -160,7 +165,10 @@ public final class BleDialogue {
                 //Delet all device detected
                 MainActivity main = (MainActivity) fragment.getActivity();
                 main.bluetoothDevices.clear();
-
+                if(this.fragment.getClass() == SelectMolkky.class){
+                    SelectMolkky callback = (SelectMolkky) this.fragment;
+                    callback.callBack();
+                }
                 return true;
             }
             else return false;

@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.activity.result.ActivityResult;
@@ -71,14 +72,6 @@ public class SelectMolkky extends Fragment {
         fr.eseo.pfemolkky.databinding.FragmentMainBinding binding = FragmentMainBinding.inflate(inflater);
         inputFragmentView = inflater.inflate(R.layout.fragment_select_molkky, container, false);
         Button bleScan = inputFragmentView.findViewById(R.id.scanBLEBtn);
-        ActivityResultLauncher<Intent> startActivityIntent = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        System.out.println(result.getResultCode());
-                    }
-                });
         main = (MainActivity) getActivity();
         Button buttonReturnToMenu = (Button) inputFragmentView.findViewById(R.id.buttonReturnToMenu);
         buttonReturnToMenu.setOnClickListener(view -> navController.navigate(R.id.nav_main));
@@ -95,17 +88,8 @@ public class SelectMolkky extends Fragment {
         linearLayoutListOfDevice = (LinearLayout) inputFragmentView.findViewById(R.id.listOfMolkky);
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
         bleScan.setOnClickListener(view -> {
-            if (!main.bluetoothAdapter.isEnabled()) {
-                if (BlePermission.blePermission(this.getActivity())) {
-                    Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                    startActivityIntent.launch(enableBtIntent);
-                }
-            } else {
-                if (BlePermission.blePermission(this.getActivity())) {
-                    scan(main, this);
-                    Log.d(TAG, "taille de test" + main.bluetoothDevices.size());
-                }
-            }
+            scan(main, this);
+            Log.d(TAG, "taille de test" + main.bluetoothDevices.size());
         });
         updatePage();
         return inputFragmentView;
@@ -149,5 +133,10 @@ public class SelectMolkky extends Fragment {
 
     private void connect(BluetoothDevice bluetoothDevice){
         BleDialogue.getInstance(this).connect(bluetoothDevice);
+    }
+
+    public void callBack(){
+        Toast.makeText(this.getActivity(), "Molkky connected",
+                Toast.LENGTH_SHORT).show();
     }
 }
