@@ -1,0 +1,98 @@
+Removed Pin From Net: NetName=NetD5_1 Pin=Power-1
+Change Component Designator: OldDesignator= NewDesignator=D?
+Change Component Designator: OldDesignator= NewDesignator=PULLUP SCL1
+Change Component Designator: OldDesignator= NewDesignator=PULLUP SDA1
+Change Component Designator: OldDesignator= NewDesignator=R2
+Change Component Designator: OldDesignator= NewDesignator=RX_inv
+Change Component Designator: OldDesignator= NewDesignator=RX_norm
+Change Component Designator: OldDesignator=  NewDesignator=Régulateur de charge
+Change Component Designator: OldDesignator= NewDesignator=TX_inv
+Change Component Designator: OldDesignator= NewDesignator=TX_norm
+Change Component Designator: OldDesignator=Aimant NewDesignator=Switch magnetique1
+Change Component Designator: OldDesignator=Alim. Q. NewDesignator=Connecteur_Alim_Quille1
+Change Component Designator: OldDesignator=Bat NewDesignator=Connecteur Bat
+Change Component Designator: OldDesignator=Link NewDesignator=Connecteur link
+Change Component Designator: OldDesignator=Power NewDesignator=Interrupteur glissière?
+Change Component Designator: OldDesignator=Power NewDesignator=Interrupteur Power
+Change Component Designator: OldDesignator=Prog NewDesignator=Connecteur prog1
+Change Component Designator: OldDesignator=Vext NewDesignator=Connecteur Vext
+Change component parameters: Designator = "R3" ("R3"); Footprint = "RESC2013X50X35ML15T15"; UniqueID = "\BUNHAGUP" ("\BUNHAGUP")
+Change component parameters (AddParameter): Name = "Case/Package"; Value = "0805"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Max Operating Temperature"; Value = "155°C"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Min Operating Temperature"; Value = "-55°C"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mounting Technology"; Value = "SM"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Pins"; Value = "2"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power"; Value = "125mW"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RoHS Compliant"; Value = "True"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "1%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "33k"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Voltage Rating"; Value = "150V"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R4" ("R4"); Footprint = "RESC2013X50X35ML15T15"; UniqueID = "\KPAZVKYA" ("\KPAZVKYA")
+Change component parameters (AddParameter): Name = "Case/Package"; Value = "0805"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Max Operating Temperature"; Value = "155°C"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Min Operating Temperature"; Value = "-55°C"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mounting Technology"; Value = "SM"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Pins"; Value = "2"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power"; Value = "125mW"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RoHS Compliant"; Value = "True"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "1%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "100k"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Voltage Rating"; Value = "150V"; VariantName = "[No Variations]"
+Added Component: Designator=Power btn(RESC1608X55X25ML10T15)
+Add component (AddParameter): Name = "Case/Package"; Value = "0603"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Max Operating Temperature"; Value = "155°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Min Operating Temperature"; Value = "-55°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "SM"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Pins"; Value = "2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Power"; Value = "100mW"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHS Compliant"; Value = "True"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "1%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "0"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=Power Vext(RESC1608X55X25ML10T15)
+Add component (AddParameter): Name = "Case/Package"; Value = "0603"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Max Operating Temperature"; Value = "155°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Min Operating Temperature"; Value = "-55°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "SM"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Pins"; Value = "2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Power"; Value = "100mW"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHS Compliant"; Value = "True"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "1%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "0"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=S?(0S102011MS2QN1)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = "0S102011MS2QN1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/0s102011ms2qn1/ck?region=nac"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://www.ckswitches.com/media/1428/os.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "8.7mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "C & K COMPONENTS"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "0S102011MS2QN1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "611-0S102011MS2QN1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/CK/0S102011MS2QN1?qs=xWNScUPc28o71osWFQSpZA%3D%3D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Testing Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Testing Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetD5_1 Pin=Power btn-2
+Added Pin To Net: NetName=Vext Pin=Power Vext-1
+Added Pin To Net: NetName=NetD5_1 Pin=Power Vext-2
+Added Pin To Net: NetName=NetInterrupteur Power_1 Pin=Interrupteur Power-1
+Added Pin To Net: NetName=NetInterrupteur Power_1 Pin=Power btn-1
+Added Net: Name=NetInterrupteur Power_1
+Added Member To Class: ClassName=Fusion Member=Component Connecteur_Alim_Quille1 S2B-PH-K-S
+Added Member To Class: ClassName=Fusion Member=Component Connecteur Bat S2B-PH-K-S
+Added Member To Class: ClassName=Fusion Member=Component Connecteur Vext S2B-PH-K-S
+Added Member To Class: ClassName=Fusion Member=Component D? BAT54C,215
+Added Member To Class: ClassName=Fusion Member=Component Interrupteur glissière? OS102011MA1QN1
+Added Member To Class: ClassName=Fusion Member=Component Interrupteur Power S2B-PH-K-S
+Added Member To Class: ClassName=Fusion Member=Component Power btn Resistor 4k7 +/-1% 0603 100 mW
+Added Member To Class: ClassName=Fusion Member=Component Power Vext Resistor 4k7 +/-1% 0603 100 mW
+Added Member To Class: ClassName=Fusion Member=Component PULLUP SCL1 RESISTANCE_CMS_0805
+Added Member To Class: ClassName=Fusion Member=Component PULLUP SDA1 RESISTANCE_CMS_0805
+Added Member To Class: ClassName=Fusion Member=Component R2 Resistor 4k7 +/-1% 0603 100 mW
+Added Member To Class: ClassName=Fusion Member=Component RX_inv Resistor 4k7 +/-1% 0603 100 mW
+Added Member To Class: ClassName=Fusion Member=Component RX_norm Resistor 4k7 +/-1% 0603 100 mW
+Added Member To Class: ClassName=Fusion Member=Component Régulateur de charge MCP73831T-2DCI/OT
+Added Member To Class: ClassName=Fusion Member=Component S? 0S102011MS2QN1
+Added Member To Class: ClassName=Fusion Member=Component Switch magnetique1 JUMPER2
+Added Member To Class: ClassName=Fusion Member=Component TX_inv Resistor 4k7 +/-1% 0603 100 mW
+Added Member To Class: ClassName=Fusion Member=Component TX_norm Resistor 4k7 +/-1% 0603 100 mW
+Added Room: Name=Fusion
