@@ -90,6 +90,21 @@ public class Winner extends Fragment {
             textAverageScorePerRound.setText(String.valueOf(averageScorePerRound));
             Button backToMenu = root.findViewById(R.id.buttonReturnToMenu);
             backToMenu.setOnClickListener(view -> navController.navigate(R.id.nav_main));
+
+            //Button for replay a game with same parameters
+            Button replay = root.findViewById(R.id.buttonReplay);
+            replay.setOnClickListener(view -> {
+                Game newGame = new Game(((MainActivity) getActivity()).getPins());
+                newGame.setTypeOfGame(game.getTypeOfGame());
+                for(Player player : game.getPlayers()){
+                    Player newPlayer = new Player(player.getName());
+                    newGame.addPlayer(newPlayer);
+                }
+                ((MainActivity) getActivity()).setGame(newGame);
+                Bundle bundle = new Bundle();
+                bundle.putInt("player", 0);
+                navController.navigate(R.id.nav_game, bundle);
+            });
             OnBackPressedCallback callback = new OnBackPressedCallback(true) {
                 @Override
                 public void handleOnBackPressed() {
