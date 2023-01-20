@@ -245,6 +245,19 @@ public class GameFragment extends Fragment {
                     }
                 }
             };
+            /*
+            // Bouchonnage Test
+            byte[] bytes = {1, 1, 1, 0, 0, 0};
+            BluetoothTrameReader.frameReader((MainActivity) getActivity(), bytes, new AtomicReference<>(false));
+            bytes = new byte[]{2, 1, 6, 0, 0, 0};
+            BluetoothTrameReader.frameReader((MainActivity) getActivity(), bytes, new AtomicReference<>(false));
+            bytes = new byte[]{3, 1, 26, 0, 0, 0};
+            BluetoothTrameReader.frameReader((MainActivity) getActivity(), bytes, new AtomicReference<>(false));
+            bytes = new byte[]{4, 1, 51, 0, 0, 0};
+            BluetoothTrameReader.frameReader((MainActivity) getActivity(), bytes, new AtomicReference<>(false));
+            bytes = new byte[]{5, 1, 76, 0, 0, 0};
+            BluetoothTrameReader.frameReader((MainActivity) getActivity(), bytes, new AtomicReference<>(false));
+            */
             requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
         }
         return root;

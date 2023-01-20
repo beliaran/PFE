@@ -125,7 +125,7 @@ public class SelectMolkky extends Fragment {
     }
 
     public void callBack(){
-        Toast.makeText(this.getActivity(), "Molkky connected",
+        Toast.makeText(this.getActivity(), R.string.textConnected,
                 Toast.LENGTH_SHORT).show();
     }
 

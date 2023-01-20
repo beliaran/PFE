@@ -19,7 +19,15 @@ public class BluetoothTrameReader {
     public static Pin frameReader(MainActivity activity, byte[] trame, AtomicReference<Boolean> nextTurn){
         ArrayList<Pin> pins = activity.getPins();
         Pin pin = new Pin();
-
+        System.out.println(Arrays.toString(trame));
+        System.out.println(trame.length);
+        /*
+        Context context = activity.getApplicationContext();
+        CharSequence text = Arrays.toString(trame) + "\n length : "+ trame.length;
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+        */
         if(trame.length >= 6 && trame.length <= 7 ){
             int num = trame[0];
             int index = num -1;
@@ -64,6 +72,7 @@ public class BluetoothTrameReader {
 
         }
         activity.setPins(pins);
+        System.out.println(pin);
         return pin;
     }
 }

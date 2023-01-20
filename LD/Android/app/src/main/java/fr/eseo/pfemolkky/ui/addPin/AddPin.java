@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicReference;
 
 import fr.eseo.pfemolkky.MainActivity;
 import fr.eseo.pfemolkky.R;
@@ -44,8 +45,11 @@ public class AddPin extends Fragment {
             pinNumber = getArguments().getInt("pinNumber");
             textModifyPin.setText(getResources().getString(R.string.modifyPin, String.valueOf(pinNumber)));
         }
-
-
+        /*
+        // Bouchonnage Test
+        byte[] bytes = {0, 3, 76, 0, 0, 0};
+        pinAnalyzed.add(BluetoothTrameReader.frameReader((MainActivity) getActivity(), bytes, new AtomicReference<>(false)));
+        */
         updatePage();
         return root;
     }

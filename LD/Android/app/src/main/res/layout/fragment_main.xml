@@ -68,7 +68,7 @@
             android:backgroundTint="@color/white"
             android:text="@string/connectUser"
             android:textColor="@color/purple_molkky"
-            android:visibility="invisible"
+            android:visibility="visible"
             app:cornerRadius="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
