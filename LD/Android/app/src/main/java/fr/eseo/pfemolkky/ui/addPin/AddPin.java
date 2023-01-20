@@ -99,4 +99,19 @@ public class AddPin extends Fragment {
         pinAnalyzed.add(BluetoothTrameReader.frameReader((MainActivity) this.getActivity(),trame));
         updatePage();
     }
+
+    public void onStop() {
+        super.onStop();
+        BleDialogue.getInstance(null);
+    }
+
+    public void onResume(){
+        super.onResume();
+        BleDialogue.getInstance(this);
+    }
+
+    public void onPause(){
+        super.onPause();
+        BleDialogue.getInstance(null);
+    }
 }

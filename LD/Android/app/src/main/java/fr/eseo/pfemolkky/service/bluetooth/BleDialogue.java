@@ -32,6 +32,8 @@ public final class BleDialogue {
 
     final Handler mHandler = new Handler();
 
+    private MainActivity main;
+
     private BluetoothGattService service;
     public BluetoothGatt gattMollky;
 
@@ -45,6 +47,7 @@ public final class BleDialogue {
     private BleDialogue(Fragment fragment){
         super();
         this.fragment = fragment;
+        this.main = (MainActivity) fragment.getActivity();
     }
 
     private Fragment fragment;
@@ -74,7 +77,12 @@ public final class BleDialogue {
                 }
 
             } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
-                Log.d(TAG, "disconnected");
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                });
             }
 
         }
@@ -165,9 +173,14 @@ public final class BleDialogue {
                 //Delet all device detected
                 MainActivity main = (MainActivity) fragment.getActivity();
                 main.bluetoothDevices.clear();
-                if(this.fragment.getClass() == SelectMolkky.class){
-                    SelectMolkky callback = (SelectMolkky) this.fragment;
-                    callback.callBack();
+                if(this.fragment.getClass().equals(SelectMolkky.class)){
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            SelectMolkky callback = (SelectMolkky) fragment;
+                            callback.callBack();
+                        }
+                    });
                 }
                 return true;
             }

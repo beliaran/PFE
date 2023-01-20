@@ -5,11 +5,9 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import static fr.eseo.pfemolkky.service.bluetooth.ScanBle.scan;
 
 import android.annotation.SuppressLint;
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,10 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -38,7 +32,6 @@ import fr.eseo.pfemolkky.MainActivity;
 import fr.eseo.pfemolkky.R;
 import fr.eseo.pfemolkky.databinding.FragmentMainBinding;
 import fr.eseo.pfemolkky.service.bluetooth.BleDialogue;
-import fr.eseo.pfemolkky.service.bluetooth.BlePermission;
 
 public class SelectMolkky extends Fragment {
 
@@ -49,10 +42,6 @@ public class SelectMolkky extends Fragment {
     private LinearLayout linearLayoutListOfDevice;
     private ViewGroup container;
     private LayoutInflater inflater;
-    private BluetoothGattService service;
-
-    private BluetoothGattCharacteristic gattCharacteristic;
-    private BluetoothGattCharacteristic gattCharacteristicTx;
 
     /**
      * Function called when fragment is created <br>
@@ -85,11 +74,11 @@ public class SelectMolkky extends Fragment {
         };
         this.inflater = inflater;
         this.container = container;
+        scan(main, this);
         linearLayoutListOfDevice = (LinearLayout) inputFragmentView.findViewById(R.id.listOfMolkky);
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
         bleScan.setOnClickListener(view -> {
             scan(main, this);
-            Log.d(TAG, "taille de test" + main.bluetoothDevices.size());
         });
         updatePage();
         return inputFragmentView;
@@ -138,5 +127,20 @@ public class SelectMolkky extends Fragment {
     public void callBack(){
         Toast.makeText(this.getActivity(), "Molkky connected",
                 Toast.LENGTH_SHORT).show();
+    }
+
+    public void onStop() {
+        super.onStop();
+        BleDialogue.getInstance(null);
+    }
+
+    public void onResume(){
+        super.onResume();
+        BleDialogue.getInstance(this);
+    }
+
+    public void onPause(){
+        super.onPause();
+        BleDialogue.getInstance(null);
     }
 }

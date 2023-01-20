@@ -17,18 +17,10 @@ public class BluetoothTrameReader {
     }
 
     public static Pin frameReader(MainActivity activity, byte[] trame, AtomicReference<Boolean> nextTurn){
-        System.out.println(activity);
         ArrayList<Pin> pins = activity.getPins();
         Pin pin = new Pin();
-        System.out.println(Arrays.toString(trame));
-        System.out.println(trame.length);
-        Context context = activity.getApplicationContext();
-        CharSequence text = Arrays.toString(trame) + "\n length : "+ String.valueOf(trame.length);
-        int duration = Toast.LENGTH_SHORT;
 
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-        if(trame.length >= 6 && trame.length <= 7 && trame[0] > 0 && trame[0] <= 12){
+        if(trame.length >= 6 && trame.length <= 7 ){
             int num = trame[0];
             int index = num -1;
 
@@ -56,16 +48,18 @@ public class BluetoothTrameReader {
             if (bat < 5) {
                 pin.setBattery(Pin.Battery.dead);
             }
-            if (mod == 2) {
-                pin.setConnected(false);
-                pins.set(index,pin);
-            }
-            if (mod == 1 && !nextTurn.get()) {
-                pin.setFallen(true);
-                pins.set(index,pin);
-            }
-            if(mod == 3){
-                pins.set(index,pin);
+            if(trame[0] > 0 && trame[0] <= 12){
+                if (mod == 2) {
+                    pin.setConnected(false);
+                    pins.set(index,pin);
+                }
+                if (mod == 1 && !nextTurn.get()) {
+                    pin.setFallen(true);
+                    pins.set(index,pin);
+                }
+                if(mod == 3){
+                    pins.set(index,pin);
+                }
             }
 
         }
