@@ -14,8 +14,10 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -149,5 +151,10 @@ public class MainActivity extends AppCompatActivity {
         if (isAllowBack()) {
             super.onBackPressed();
         }
+    }
+
+    public void disconnect(){
+        Toast.makeText(this, "Disconnected",
+                Toast.LENGTH_LONG).show();
     }
 }

@@ -1,9 +1,9 @@
 package fr.eseo.pfemolkky.ui.main;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.app.AlertDialog;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -15,7 +15,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -25,6 +24,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
@@ -161,7 +161,7 @@ public class GameFragment extends Fragment {
             listImageView.add(imageViewPin10);
             listImageView.add(imageViewPin11);
             listImageView.add(imageViewPin12);
-            croix = (LinearLayout) root.findViewById(R.id.croix);
+            croix = root.findViewById(R.id.croix);
             buttonValidate = root.findViewById(R.id.buttonValidateRound);
             DisplayMetrics displayMetrics = new DisplayMetrics();
             (getActivity()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -468,7 +468,6 @@ public class GameFragment extends Fragment {
                         updateInterface();
                     });
                 } else {
-                    int g = i;
                     listImageView.get(i).setClickable(false);
                 }
                 if (!pins.get(i).isConnected()) {
@@ -489,6 +488,16 @@ public class GameFragment extends Fragment {
             BluetoothTrameReader.frameReader((MainActivity) this.getActivity(),trame, nextTurn);
             updateInterface();
         }
+    }
+
+    public void disconnect(){
+        Snackbar snack =Snackbar.make(this.getView(),"Molkky deconnected",Snackbar.LENGTH_INDEFINITE).setAction("ok", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+        snack.setTextColor(Color.WHITE).setBackgroundTint(getResources().getColor(R.color.purple_molkky)).show();
+
     }
 
     public void onStop() {
