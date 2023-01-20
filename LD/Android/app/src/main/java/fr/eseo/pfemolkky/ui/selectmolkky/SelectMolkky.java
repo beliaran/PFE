@@ -6,8 +6,6 @@ import static fr.eseo.pfemolkky.service.bluetooth.ScanBle.scan;
 
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattService;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;

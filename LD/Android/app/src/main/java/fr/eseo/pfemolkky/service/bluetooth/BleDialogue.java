@@ -15,6 +15,7 @@ import android.bluetooth.BluetoothGattService;
 import android.bluetooth.BluetoothProfile;
 import android.os.Handler;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -77,10 +78,15 @@ public final class BleDialogue {
                 }
 
             } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
+                Log.d(TAG, "disconnected");
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
+                        main.disconnect();
+                        if(fragment.getClass().equals(GameFragment.class)){
+                            GameFragment gameFragment = (GameFragment) fragment;
+                            gameFragment.disconnect();
+                        }
                     }
                 });
             }
