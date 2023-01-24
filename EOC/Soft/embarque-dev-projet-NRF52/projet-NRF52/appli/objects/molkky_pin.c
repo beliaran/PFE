@@ -46,7 +46,7 @@
 
 #include "../common/battery.h"
 
-
+#include "nrf_drv_gpiote.h"
 
 #include <math.h>
 
@@ -64,7 +64,7 @@
 #define Y 1
 #define Z 2
 
-#define PIN_ID 8 //identifiant de la quille
+#define PIN_ID 12 //identifiant de la quille
 
 #define BOARD_LED 12 //pin de la led
 
@@ -77,9 +77,12 @@
 #define MAX_IDLE_TIME 3600000000 //tps en us avant mise en veille en cas d'immobilité (ici 1h)
 #define MPU_INIT_DELAY 25 //tps nécessaire à l'init du mpu en ms (besoin de le faire régulièrement car mpu défectueux)
 #define NB_CHECK_FALL 1 //nombre de mesures pour confirmer une chute
-#define NB_MSG_MAX 10
-#define POWER_PIN 17
 #define MSG_MAX_INTERVAL 600000000 //tps max en us entre 2 messages (ici 10min) -> envoi d'un msg batterie "alive"
+#define NB_MSG_MAX 10
+
+#define POWER_PIN 17
+#define VBAT_EN_PIN 29
+#define MAGNET_PIN 13
 
 #define ANGLE_FALLEN_X 20
 #define ANGLE_FALLEN_Y 70
@@ -96,6 +99,7 @@ uint8_t get_angle();
 
 bool_e check_fallen();
 bool_e check_up();
+void init_event(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action);
 void send_init_signal();
 void send_batt_signal();
 void send_death_signal();
@@ -131,7 +135,6 @@ static bool_e fallenX = 0;
 static bool_e fallenY = 0;
 //static bool_e upX = 0;
 //static bool_e upY = 0;
-static uint32_t time_init_mpu = 0;
 
 
 typedef enum{
@@ -170,11 +173,15 @@ void molkky_pin_board_state_machine(void){
 	case START:
 
 		gpio_init();
+#if(ENABLE_LED)
 		nrf_gpio_pin_write(BOARD_LED, 1);
+#endif
 //		time_init_mpu = SYSTICK_get_time_us();
 		molkky_init_mpu();
 //		time_init_mpu = SYSTICK_get_time_us() - time_init_mpu;
 		MEASURE_VBAT_init();
+		nrf_gpio_cfg_output(VBAT_EN_PIN);
+		nrf_gpio_pin_write(VBAT_EN_PIN, 0);
 		ret_code_t err_code;
 		err_code = NRF_LOG_INIT(NULL);
 		APP_ERROR_CHECK(err_code);
@@ -196,7 +203,9 @@ void molkky_pin_board_state_machine(void){
 		tx_payload.data[PL_BATT_LVL] = 0;
 		tx_payload.data[PL_ACCEL] = 0;
 		tx_payload.data[PL_ANGLE] = 0;
+#if(ENABLE_LED)
 		nrf_gpio_pin_write(BOARD_LED, 0);
+#endif
 		state_pin = IDLE;
 //		state_pin = SEND_MSG;
 		break;
@@ -217,9 +226,9 @@ void molkky_pin_board_state_machine(void){
 		if(SYSTICK_get_time_us() - last_msg_time > MSG_MAX_INTERVAL){
 			send_batt_signal();
 		}
-		if(SYSTICK_get_time_us() - last_move_time > MAX_IDLE_TIME){
-			send_death_signal();
-		}
+//		if(SYSTICK_get_time_us() - last_move_time > MAX_IDLE_TIME){
+//			send_death_signal();
+//		}
 		break;
 
 	case CHECK_FALL:
@@ -243,7 +252,9 @@ void molkky_pin_board_state_machine(void){
 		check_fall_cpt = 0;
 		if(state_pin == FALLEN){
 			last_move_time = SYSTICK_get_time_us();
+#if(ENABLE_LED)
 			nrf_gpio_pin_write(BOARD_LED, 1);
+#endif
 		}
 
 	break;
@@ -283,11 +294,7 @@ void molkky_pin_board_state_machine(void){
 		break;
 
 	case WAIT:
-//		if(SYSTICK_get_time_us() - timer > sampling_period){
 		SYSTICK_delay_us(sampling_period);
-//			molkky_init_mpu();
-//			SYSTICK_delay_ms(MPU_INIT_DELAY);
-//			if(check_up()){
 			if(!check_fallen()){
 				state_pin = CHECK_UP;
 			}
@@ -295,6 +302,12 @@ void molkky_pin_board_state_machine(void){
 				state_pin = WAIT;
 			}
 //			timer = SYSTICK_get_time_us();
+			if(SYSTICK_get_time_us() - last_msg_time > MSG_MAX_INTERVAL){
+				send_batt_signal();
+			}
+	//		if(SYSTICK_get_time_us() - last_move_time > MAX_IDLE_TIME){
+	//			send_death_signal();
+	//		}
 //		}
 		break;
 
@@ -318,12 +331,14 @@ void molkky_pin_board_state_machine(void){
 		check_up_cpt = 0;
 		if(state_pin == IDLE){
 			last_move_time = SYSTICK_get_time_us();
+#if(ENABLE_LED)
 			nrf_gpio_pin_write(BOARD_LED, 0);
+#endif
 		}
 		break;
 
 //	case SEND_MSG:
-//		molkky_init_mpu();
+////		molkky_init_mpu();
 //		SYSTICK_delay_ms(25);
 //		molkky_get_angle(&angleX, &angleY, &angleZ);
 //		tx_payload.noack = true;
@@ -391,6 +406,19 @@ void nrf_esb_event_handler(nrf_esb_evt_t const * p_event)
 
 void gpio_init( void )
 {
+	 ret_code_t err_code;
+
+	    err_code = nrf_drv_gpiote_init();
+	    APP_ERROR_CHECK(err_code);
+
+	    nrf_drv_gpiote_in_config_t in_config = GPIOTE_CONFIG_IN_SENSE_LOTOHI(true);
+		in_config.pull = NRF_GPIO_PIN_PULLDOWN;
+
+		err_code = nrf_drv_gpiote_in_init(MAGNET_PIN, &in_config, init_event);
+		APP_ERROR_CHECK(err_code);
+
+		    nrf_drv_gpiote_in_event_enable(MAGNET_PIN, true);
+
     nrf_gpio_range_cfg_output(8, 15);
     bsp_board_init(BSP_INIT_LEDS);
 }
@@ -439,7 +467,13 @@ void process_ms(void)
 }
 
 uint8_t get_batt_lvl(){
-	return MEASURE_VBAT_get_level();
+	nrf_gpio_pin_write(VBAT_EN_PIN, 1);
+	SYSTICK_delay_ms(10);
+	uint8_t measure = MEASURE_VBAT_get_level();
+	nrf_gpio_pin_write(VBAT_EN_PIN, 0);
+	measure = 11;	//bouchon soft car problème de lecture
+
+	return measure;
 }
 
 uint8_t get_accel(){
@@ -480,10 +514,37 @@ bool_e check_up(){
 				}
 }
 
+void init_event(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action){
+	while(nrf_gpio_pin_read(MAGNET_PIN)){
+		send_init_signal();
+		SYSTICK_delay_ms(1000);
+	}
+}
+
+void send_init_signal(){
+	tx_payload.noack = true;
+	tx_payload.data[PL_PIN_ID] = PIN_ID;
+	tx_payload.data[PL_MSG_TYPE] = PIN_INIT;
+	tx_payload.data[PL_BATT_LVL] = get_batt_lvl();
+	tx_payload.data[PL_ACCEL] = 0;
+	tx_payload.data[PL_ANGLE] = 0;
+
+	for(uint8_t i=0; i<NB_MSG_MAX; i++){
+		if (nrf_esb_write_payload(&tx_payload) == NRF_SUCCESS){
+				debug_printf("Envoi réussi\n");
+				}
+				else
+				{
+					debug_printf("Sending packet failed\n");
+				}
+		SYSTICK_delay_ms(delay_msg);
+	}
+
+}
+
 void send_batt_signal(){
 		uint8_t batt_lvl = get_batt_lvl();
 		tx_payload.noack = true;
-//		tx_payload.data[1] = 1;
 		tx_payload.data[PL_PIN_ID] = PIN_ID;
 		tx_payload.data[PL_MSG_TYPE] = PIN_BATT;
 		tx_payload.data[PL_BATT_LVL] = batt_lvl;
@@ -500,15 +561,16 @@ void send_batt_signal(){
 					}
 			SYSTICK_delay_ms(delay_msg);
 		}
-		if(batt_lvl<=10){
-			send_death_signal();
-		}
+
+		//désactivé car problème de lecture de la batterie
+//		if(batt_lvl<=10){
+//			send_death_signal();
+//		}
 		last_msg_time = SYSTICK_get_time_us();
 }
 
 void send_death_signal(){
 		tx_payload.noack = true;
-//		tx_payload.data[1] = 1;
 		tx_payload.data[PL_PIN_ID] = PIN_ID;
 		tx_payload.data[PL_MSG_TYPE] = PIN_DEATH;
 		tx_payload.data[PL_BATT_LVL] = get_batt_lvl();

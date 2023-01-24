@@ -261,13 +261,13 @@
 	#if OBJECT_ID == MOLKKY_PIN_BOARD
 		#define USE_MPU6050 1
 		#define MPU6050_VCC_PIN 11
-//		#define MPU6050_VCC_PIN 8
 		#define USE_UART_SOFT 1
 		#define NRF52832_XXAA 1
 		#define I2C_SDA_PIN_NB 25
 		#define I2C_SCL_PIN_NB 26
 
 	#endif
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -277,12 +277,18 @@
 
 
 #ifndef PIN_UART_TX
-//	#define PIN_UART_TX			8
+#if(CUSTOM_BOARD)
+	#define PIN_UART_TX			8
+#else
 	#define PIN_UART_TX			30
 #endif
+#endif
 #ifndef PIN_UART_RX
-//	#define PIN_UART_RX			6
+#if(CUSTOM_BOARD)
+	#define PIN_UART_RX			6
+#else
 	#define PIN_UART_RX			27
+#endif
 #endif
 
 #define PIN_BUTTON_NETWORK	18
