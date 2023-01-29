@@ -62,4 +62,5 @@
     <string name="bluetoothNotSupported">Le bluetooth n\'est pas supporté par votre smarthphone</string>
     <string name="FindMolkky">Trouver les Molkkys</string>
     <string name="textConnected">Molkky Connecté</string>
+    <string name="replay">Rejouer</string>
 </resources>
