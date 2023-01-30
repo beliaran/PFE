@@ -15,6 +15,9 @@ EOC :
 - [Draw.io](https://app.diagrams.net/#G1043w-ReVlp8RX4udpgBM5xO3jmGDzmA3)
 - [Veille techno](https://reseaueseo-my.sharepoint.com/:w:/r/personal/julien_janvier_reseau_eseo_fr/_layouts/15/Doc.aspx?sourcedoc=%7B168702F3-D2B1-41BD-B6B3-61408A435F24%7D&file=Veille%20techno%20NRF52.docx&action=default&mobileredirect=true)
 - [Ressources conception](https://reseaueseo-my.sharepoint.com/personal/morgan_leroux_reseau_eseo_fr/_layouts/15/doc.aspx?sourcedoc={25e011e3-e705-4bc5-88e2-d4122beba602}&action=edit)
+- [Documentation objet connecté](https://reseaueseo-my.sharepoint.com/:w:/g/personal/morgan_leroux_reseau_eseo_fr/EZ6zsM1YprRGmffRIx2oK6wBqRzq87JUgF8EwohvVU-kCA?e=dUjXrs)
+- [Rapport de conception Hardware](https://reseaueseo-my.sharepoint.com/:w:/g/personal/morgan_leroux_reseau_eseo_fr/EdDa6rmKKb9Dt8Y0_CXRxJIBly_3PnR2CzefZ5_MldX1bw?e=UBeTBV)
+- [Choix des composants](https://reseaueseo-my.sharepoint.com/:w:/g/personal/morgan_leroux_reseau_eseo_fr/ET2mVW2yu_ZIkHHPdd2KgFIBvIh-ZCiSrvgWuqB1qfv2hQ?e=lty9Sr)
 
 --------
 
