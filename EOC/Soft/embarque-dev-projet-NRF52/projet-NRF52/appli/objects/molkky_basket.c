@@ -50,13 +50,6 @@
 #include "components/libraries/util/sdk_common.h"
 #include "../common/serial_dialog.h"
 
-//#include "components/libraries/uart/app_uart.h"
-//#include "nrf_uart.h"
-//#include "nrf_uarte.h"
-//#include <stdarg.h>
-
-//#include "nrf_uart.h"
-//#include "app_uart.h"
 
 #include "../main.h"
 
@@ -65,24 +58,23 @@
 
 #if OBJECT_ID == MOLKKY_BASKET
 
-#define BASKET_ID 0
+#define BASKET_ID 0	//identifiant de la carte
 #define ESB_PAYLOAD_LENGTH 5
 #define PIN_QT 12 //nombre de quilles dans un jeu
 #define MSG_INTERVAL 1000000 //temps en us séparant l'envoi de 2 messages d'une même quille (ici 1seconde)
 
+/* données utilisées pour la mesure de distance via RSSI */
 #define FREQUENCY 2450 // fréquence de l'esb en MHz
 #define PATH_LOSS 2 // perte de chemin
-
-//#define RX_PIN 6
-//#define TX_PIN 8
 
 #define BOARD_LED 12
 /*
  * L'objectif de ce script est de recevoir les messages envoyés en ESB par les quilles, de séparer les messages venant des quilles liées au panier des quilles qui sont en mode init
  *  puis de transmettre leur message en UART en ajoutant la distance mesurée à partir du RSSI
- *  message reçu : 		Id	|	Type msg	|	BatLvl	|	Accel	|	Angle
- *  message envoyé : 	Id	|	Type msg	|	BatLvl	|	Accel	|	Angle	| Distance (RSSI)
+ *  message reçu : 		Id							|	Type msg	|	BatLvl	|	Accel	|	Angle
+ *  message envoyé : 	n°de quille (entre 1 et 12)	|	Type msg	|	BatLvl	|	Accel	|	Angle	| Distance (RSSI)
  */
+
 typedef struct{
 	uint8_t id;
 	uint32_t time_since_last_msg;
@@ -123,8 +115,6 @@ enum{
 typedef enum{
 	INIT,
 	RECEIVE_DATA,
-	WAIT,
-	STOP
 }state_e;
 
 int8_t pin_identify(pin_t pin);
@@ -158,7 +148,6 @@ void nrf_esb_event_handler(nrf_esb_evt_t const * p_event)
             break;
         case NRF_ESB_EVENT_RX_RECEIVED:
             NRF_LOG_DEBUG("RX RECEIVED EVENT");
-//            debug_printf("Something received\n");
             if (nrf_esb_read_rx_payload(&rx_payload) == NRF_SUCCESS)
             {
 
@@ -234,7 +223,6 @@ uint32_t esb_init( void )
     return err_code;
 }
 
-//uint8_t tx_data[8] = {12,1,10,0,0,42,(uint8_t)'\n'};
 void molkky_basket_state_machine(void){
 
 
@@ -262,8 +250,6 @@ void molkky_basket_state_machine(void){
 #if(ENABLE_LED)
 			nrf_gpio_cfg_output(BOARD_LED);
 #endif
-//			nrf_gpio_pin_write(RX_PIN, 0);
-//			nrf_gpio_pin_write(TX_PIN, 0);
 			err_code = esb_init();
 			APP_ERROR_CHECK(err_code);
 
@@ -273,7 +259,7 @@ void molkky_basket_state_machine(void){
 			APP_ERROR_CHECK(err_code);
 			debug_printf("init done\n");
 
-			// définition à la mano des id des quilles, à terme, il faudra les stocker et les lire en mémoire
+			// définition à la main des id des quilles, à terme, il faudra les stocker et les lire en mémoire
 			for(uint8_t i = 0; i<12; i++){
 				pin_tab[i].id = i+1;
 				pin_tab[i].time_since_last_msg = 0;
@@ -288,28 +274,12 @@ void molkky_basket_state_machine(void){
 
 		case RECEIVE_DATA:{
 			while(1){
-//				for (uint32_t i = 0; i < 8; i++)
-//				 				    {
-//				while (SERIAL_DIALOG_put(tx_data[i]) != NRF_SUCCESS);
-//				 				    }
-//				nrf_gpio_pin_toggle(19);
-//				nrf_delay_ms(1000);
 			}
 
 
 			break;}
 
-		case WAIT:
-			debug_printf("on attend avant d'envoyer à nouveau\n");
-//			nrf_delay_ms(5000);
-//			tx_payload.data[1]=0;
-//			state = SEND_DATA;
 
-			break;
-
-		case STOP:
-			//Mode OFF à coder
-			break;
 		default:
 			break;
 	}

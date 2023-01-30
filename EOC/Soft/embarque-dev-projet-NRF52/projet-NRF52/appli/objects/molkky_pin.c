@@ -64,30 +64,32 @@
 #define Y 1
 #define Z 2
 
-#define PIN_ID 12 //identifiant de la quille
+#define PIN_ID 11 //identifiant de la quille
 
 #define BOARD_LED 12 //pin de la led
 
 #define FREQ 5   // Fréquence d'echantillonnage en Hz
 
-#define INITIAL_X 90
+#define INITIAL_X 90	//Positions en degrés de la quille au repos
 #define INITIAL_Y 0
 #define INITIAL Z 0
 
+#define ANGLE_FALLEN_X 20	//Positions en degrés à partir desquelles la quille est considérée comme tombée / relevée
+#define ANGLE_FALLEN_Y 70
+#define ANGLE_UP_X 70
+#define ANGLE_UP_Y 20
+
 #define MAX_IDLE_TIME 3600000000 //tps en us avant mise en veille en cas d'immobilité (ici 1h)
 #define MPU_INIT_DELAY 25 //tps nécessaire à l'init du mpu en ms (besoin de le faire régulièrement car mpu défectueux)
-#define NB_CHECK_FALL 1 //nombre de mesures pour confirmer une chute
+#define NB_CHECK_FALL 1 //nombre de mesures pour confirmer une chute, normalement 5 mais on en fait une seule à cause des pbs avec les mpu de nos cartes
 #define MSG_MAX_INTERVAL 600000000 //tps max en us entre 2 messages (ici 10min) -> envoi d'un msg batterie "alive"
-#define NB_MSG_MAX 10
+#define NB_MSG_MAX 10	//nombre de messages esb envoyés à chaque chute
 
 #define POWER_PIN 17
 #define VBAT_EN_PIN 29
 #define MAGNET_PIN 13
 
-#define ANGLE_FALLEN_X 20
-#define ANGLE_FALLEN_Y 70
-#define ANGLE_UP_X 70
-#define ANGLE_UP_Y 20
+
 
 void gpio_init(void);
 uint32_t esb_init(void);
@@ -120,21 +122,10 @@ static uint8_t delay_msg = 0;
 static int32_t angleX = 0;
 static int32_t angleY = 0;
 static int32_t angleZ = 0;
-//static int32_t prev_angleX = 0;
-//static int32_t prev_angleY = 0;
-//static int32_t prev_angleZ = 0;
 
-//static int32_t accX = 0;
-//static int32_t accY = 0;
-//static int32_t accZ = 0;
-//static int32_t prev_accX = 0;
-//static int32_t prev_accY = 0;
-//static int32_t prev_accZ = 0;
 
 static bool_e fallenX = 0;
 static bool_e fallenY = 0;
-//static bool_e upX = 0;
-//static bool_e upY = 0;
 
 
 typedef enum{
@@ -145,17 +136,15 @@ typedef enum{
 	WAIT,
 	CHECK_UP,
 	ERROR,
-	STOP,
-//	SEND_MSG,
 }pin_state_e;
 
 //		Id	|	Type msg	|	BatLvl		|	Accel		|	Angle
 enum{
-	PL_PIN_ID,
-	PL_MSG_TYPE,
-	PL_BATT_LVL,
-	PL_ACCEL,
-	PL_ANGLE,
+	PL_PIN_ID,		//identifiant unique de la quille
+	PL_MSG_TYPE,	//type de message transmis
+	PL_BATT_LVL,	//niveau de batterie
+	PL_ACCEL,		//accélération max mesurée
+	PL_ANGLE,		//angle de chute
 	PL_LENGTH
 };
 
@@ -176,9 +165,7 @@ void molkky_pin_board_state_machine(void){
 #if(ENABLE_LED)
 		nrf_gpio_pin_write(BOARD_LED, 1);
 #endif
-//		time_init_mpu = SYSTICK_get_time_us();
 		molkky_init_mpu();
-//		time_init_mpu = SYSTICK_get_time_us() - time_init_mpu;
 		MEASURE_VBAT_init();
 		nrf_gpio_cfg_output(VBAT_EN_PIN);
 		nrf_gpio_pin_write(VBAT_EN_PIN, 0);
@@ -192,7 +179,7 @@ void molkky_pin_board_state_machine(void){
 
 		Systick_add_callback_function(&process_ms);
 		timer = SYSTICK_get_time_us();
-//		sampling_period = ((1000000/FREQ)-MPU_INIT_DELAY);
+//		sampling_period = ((1000000/FREQ));
 		sampling_period = 200000;
 
 		delay_msg = 100+(50*(PIN_ID%2))+(10*(PIN_ID%10)); //on cherche à avoir un delai différent pour le plus grand nombre de quilles
@@ -207,14 +194,11 @@ void molkky_pin_board_state_machine(void){
 		nrf_gpio_pin_write(BOARD_LED, 0);
 #endif
 		state_pin = IDLE;
-//		state_pin = SEND_MSG;
 		break;
 
 
 	case IDLE:
 		if(SYSTICK_get_time_us() - timer > sampling_period){
-//			molkky_init_mpu();
-//			SYSTICK_delay_ms(MPU_INIT_DELAY);
 			if(check_fallen()){
 				state_pin = CHECK_FALL;
 			}
@@ -237,17 +221,12 @@ void molkky_pin_board_state_machine(void){
 		state_pin = FALLEN;
 		while(check_fall_cpt<NB_CHECK_FALL){
 			SYSTICK_delay_us(sampling_period);
-//			if(SYSTICK_get_time_us() - timer > sampling_period){
 				check_fall_cpt++;
-//				molkky_init_mpu();
-//				SYSTICK_delay_ms(MPU_INIT_DELAY);
 				if(!check_fallen()){
 					state_pin = IDLE;
 					break;
 				}
 
-//				timer = SYSTICK_get_time_us();
-//			}
 		}
 		check_fall_cpt = 0;
 		if(state_pin == FALLEN){
@@ -260,16 +239,7 @@ void molkky_pin_board_state_machine(void){
 	break;
 
 	case FALLEN:
-		/*
-		 * 	PL_PIN_ID = 0,
-			PL_MSG_TYPE,
-			PL_BATT_LVL,
-			PL_ACCEL,
-			PL_ANGLE,
-			PL_LENGTH
-		 */
 		tx_payload.noack = true;
-//		tx_payload.data[1] = 1;
 		tx_payload.data[PL_PIN_ID] = PIN_ID;
 		tx_payload.data[PL_MSG_TYPE] = PIN_FALLEN;
 		tx_payload.data[PL_BATT_LVL] = get_batt_lvl();
@@ -367,8 +337,6 @@ void molkky_pin_board_state_machine(void){
 		nrf_delay_ms(500);
 		break;
 
-	case STOP:
-		break;
 
 	default:
 		break;
@@ -591,6 +559,11 @@ void send_death_signal(){
 }
 #endif
 
+
+
+
+
+//Machine à états de test avec la carte bluefruit
 #if OBJECT_ID == MOLKKY_PIN
 /*
  * Code de test

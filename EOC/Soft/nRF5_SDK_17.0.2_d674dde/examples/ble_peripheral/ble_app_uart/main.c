@@ -523,6 +523,8 @@ void bsp_event_handler(bsp_event_t event)
 static uint8_t tableau[7] = {12,1,10,0,0,42};
 static uint16_t size = (uint16_t)6;
 #endif
+
+
 void uart_event_handle(app_uart_evt_t * p_event)
 {
     static uint8_t data_array[BLE_NUS_MAX_DATA_LEN];
@@ -535,11 +537,6 @@ void uart_event_handle(app_uart_evt_t * p_event)
     {
 #if(!BOUCHON)
         case APP_UART_DATA_READY:
-//        	uint8_t cr = 0;
-//        	uint16_t length = 1;
-//        	app_uart_get(&cr);
-//
-//        	ble_nus_data_send(&m_nus, &cr, &length, m_conn_handle);
             UNUSED_VARIABLE(app_uart_get(&data_array[index]));
             index++;
 
@@ -768,12 +765,7 @@ void gpio_init( void )
 int main(void)
 {
 	gpio_init();
-//	nrf_gpio_cfg_output(17);
-//	nrf_gpio_pin_write(17, 1);
-//	nrf_gpio_cfg_output(17);
-//	nrf_gpio_pin_write(12, 1);
     bool erase_bonds;
-
 	buttons_leds_init(&erase_bonds);
 
 
@@ -793,20 +785,11 @@ int main(void)
     // Start execution.
     printf("\r\nUART started.\r\n");
     NRF_LOG_INFO("Debug logging for UART over RTT started.");
-//    static uint8_t tableau[7] = {0,1,10,0,0,42};
-//    uint16_t size = (uint16_t)6;
     advertising_start();
 
     // Enter main loop.
     for (;;)
     {
-//    	if(0)
-//         idle_state_handle();
-//    	for(uint8_t i=1;i<13;i++){
-//    	tableau[0] = i;
-//    	ble_nus_data_send(&m_nus, tableau, &size, m_conn_handle);
-//    	nrf_delay_ms(1000);
-//    	}
     }
 }
 

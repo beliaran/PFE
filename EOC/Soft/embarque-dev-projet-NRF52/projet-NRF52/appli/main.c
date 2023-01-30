@@ -78,8 +78,8 @@ int main(void)
     GPIO_init();
 
 #if(MOLKKY_PIN_BOARD||MOLKKY)
-	nrf_gpio_cfg_output(17);
-	nrf_gpio_pin_write(17, 1);
+	nrf_gpio_cfg_output(ENABLE_LDO);
+	nrf_gpio_pin_write(ENABLE_LDO, 1);
 #endif
 
     //Initialisation du module LEDS

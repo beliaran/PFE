@@ -9899,7 +9899,7 @@ OUTPUT(_build/nrf52832_xxaa.out elf32-littlearm)
  .comment       0x00000076       0x77 _build/nrf52832_xxaa/nrf_sdh_ble.c.o
  .comment       0x00000076       0x77 _build/nrf52832_xxaa/nrf_sdh_soc.c.o
 
-.debug_line     0x00000000    0x2fcb3
+.debug_line     0x00000000    0x2fcaa
  .debug_line    0x00000000       0x92 _build/nrf52832_xxaa/gcc_startup_nrf52.S.o
  .debug_line    0x00000092      0xc02 _build/nrf52832_xxaa/nrf_log_backend_rtt.c.o
  .debug_line    0x00000c94      0x97b _build/nrf52832_xxaa/nrf_log_backend_serial.c.o
@@ -9938,20 +9938,20 @@ OUTPUT(_build/nrf52832_xxaa.out elf32-littlearm)
  .debug_line    0x0001d6b9     0x1ed0 _build/nrf52832_xxaa/nrfx_uarte.c.o
  .debug_line    0x0001f589     0x12d8 _build/nrf52832_xxaa/bsp.c.o
  .debug_line    0x00020861      0xbe2 _build/nrf52832_xxaa/bsp_btn_ble.c.o
- .debug_line    0x00021443     0x1c6e _build/nrf52832_xxaa/main.c.o
- .debug_line    0x000230b1     0x2b47 _build/nrf52832_xxaa/SEGGER_RTT.c.o
- .debug_line    0x00025bf8     0x1385 _build/nrf52832_xxaa/ble_advdata.c.o
- .debug_line    0x00026f7d     0x11db _build/nrf52832_xxaa/ble_advertising.c.o
- .debug_line    0x00028158      0xf1f _build/nrf52832_xxaa/ble_conn_params.c.o
- .debug_line    0x00029077     0x11d5 _build/nrf52832_xxaa/ble_conn_state.c.o
- .debug_line    0x0002a24c      0x71c _build/nrf52832_xxaa/ble_link_ctx_manager.c.o
- .debug_line    0x0002a968      0xb55 _build/nrf52832_xxaa/ble_srv_common.c.o
- .debug_line    0x0002b4bd      0xd55 _build/nrf52832_xxaa/nrf_ble_gatt.c.o
- .debug_line    0x0002c212      0x88a _build/nrf52832_xxaa/nrf_ble_qwr.c.o
- .debug_line    0x0002ca9c      0xc90 _build/nrf52832_xxaa/ble_nus.c.o
- .debug_line    0x0002d72c     0x109f _build/nrf52832_xxaa/nrf_sdh.c.o
- .debug_line    0x0002e7cb      0xc62 _build/nrf52832_xxaa/nrf_sdh_ble.c.o
- .debug_line    0x0002f42d      0x886 _build/nrf52832_xxaa/nrf_sdh_soc.c.o
+ .debug_line    0x00021443     0x1c65 _build/nrf52832_xxaa/main.c.o
+ .debug_line    0x000230a8     0x2b47 _build/nrf52832_xxaa/SEGGER_RTT.c.o
+ .debug_line    0x00025bef     0x1385 _build/nrf52832_xxaa/ble_advdata.c.o
+ .debug_line    0x00026f74     0x11db _build/nrf52832_xxaa/ble_advertising.c.o
+ .debug_line    0x0002814f      0xf1f _build/nrf52832_xxaa/ble_conn_params.c.o
+ .debug_line    0x0002906e     0x11d5 _build/nrf52832_xxaa/ble_conn_state.c.o
+ .debug_line    0x0002a243      0x71c _build/nrf52832_xxaa/ble_link_ctx_manager.c.o
+ .debug_line    0x0002a95f      0xb55 _build/nrf52832_xxaa/ble_srv_common.c.o
+ .debug_line    0x0002b4b4      0xd55 _build/nrf52832_xxaa/nrf_ble_gatt.c.o
+ .debug_line    0x0002c209      0x88a _build/nrf52832_xxaa/nrf_ble_qwr.c.o
+ .debug_line    0x0002ca93      0xc90 _build/nrf52832_xxaa/ble_nus.c.o
+ .debug_line    0x0002d723     0x109f _build/nrf52832_xxaa/nrf_sdh.c.o
+ .debug_line    0x0002e7c2      0xc62 _build/nrf52832_xxaa/nrf_sdh_ble.c.o
+ .debug_line    0x0002f424      0x886 _build/nrf52832_xxaa/nrf_sdh_soc.c.o
 
 .debug_info     0x00000000    0x66505
  .debug_info    0x00000000       0x26 _build/nrf52832_xxaa/gcc_startup_nrf52.S.o
