@@ -1,0 +1,251 @@
+_build/nrf52832_xxaa/nrf_log_frontend.c.o: \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/src/nrf_log_frontend.c \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/sdk_common.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\lib\gcc\arm-none-eabi\8.3.1\include\stdint.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\stdint.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\machine\_default_types.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\features.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\_newlib_version.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\_intsup.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\_stdint.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\lib\gcc\arm-none-eabi\8.3.1\include\stdbool.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\string.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\_ansi.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\newlib.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\config.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\machine\ieeefp.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\reent.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\_ansi.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\lib\gcc\arm-none-eabi\8.3.1\include\stddef.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\_types.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\machine\_types.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\lock.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\cdefs.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\string.h \
+ ../config/sdk_config.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/nordic_common.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/modules/nrfx/mdk/compiler_abstraction.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/sdk_os.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/sdk_errors.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/softdevice/s132/headers/nrf_error.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/app_util.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/modules/nrfx/mdk/nrf.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/modules/nrfx/mdk/nrf52.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/toolchain/cmsis/include/core_cm4.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/toolchain/cmsis/include/cmsis_version.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/toolchain/cmsis/include/cmsis_compiler.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/toolchain/cmsis/include/cmsis_gcc.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/toolchain/cmsis/include/mpu_armv7.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/modules/nrfx/mdk/system_nrf52.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/modules/nrfx/mdk/nrf52_bitfields.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/modules/nrfx/mdk/nrf51_to_nrf52.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/modules/nrfx/mdk/nrf52_name_change.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/modules/nrfx/mdk/compiler_abstraction.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/softdevice/s132/headers/nrf52/nrf_mbr.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/softdevice/s132/headers/nrf_svc.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/sdk_macros.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/nrf_assert.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/app_util.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/app_util_platform.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/softdevice/s132/headers/nrf_soc.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/softdevice/s132/headers/nrf_svc.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/softdevice/s132/headers/nrf_error.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/softdevice/s132/headers/nrf_error_soc.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/softdevice/s132/headers/nrf_nvic.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/app_error.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\stdio.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\lib\gcc\arm-none-eabi\8.3.1\include\stdarg.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\types.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\_pthreadtypes.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\machine\types.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\stdio.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/app_error_weak.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/nrf_log.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/experimental_section_vars/nrf_section.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/nordic_common.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/strerror/nrf_strerror.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/sdk_errors.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/src/nrf_log_internal.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/nrf_log_instance.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/nrf_log_types.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/nrf_log_types.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/src/nrf_log_internal.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/nrf_log_ctrl.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/src/nrf_log_ctrl_internal.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/nrf_log_backend_interface.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/memobj/nrf_memobj.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\stdlib.h \
+ c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\machine\stdlib.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/balloc/nrf_balloc.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/nrf_log_backend_interface.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/nrf_log_str_formatter.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/external/fprintf/nrf_fprintf.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/nrf_log_ctrl.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/ringbuf/nrf_ringbuf.h \
+ C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/atomic/nrf_atomic.h
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/sdk_common.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\lib\gcc\arm-none-eabi\8.3.1\include\stdint.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\stdint.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\machine\_default_types.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\features.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\_newlib_version.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\_intsup.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\_stdint.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\lib\gcc\arm-none-eabi\8.3.1\include\stdbool.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\string.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\_ansi.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\newlib.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\config.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\machine\ieeefp.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\reent.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\_ansi.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\lib\gcc\arm-none-eabi\8.3.1\include\stddef.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\_types.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\machine\_types.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\lock.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\cdefs.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\string.h:
+
+../config/sdk_config.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/nordic_common.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/modules/nrfx/mdk/compiler_abstraction.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/sdk_os.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/sdk_errors.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/softdevice/s132/headers/nrf_error.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/app_util.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/modules/nrfx/mdk/nrf.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/modules/nrfx/mdk/nrf52.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/toolchain/cmsis/include/core_cm4.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/toolchain/cmsis/include/cmsis_version.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/toolchain/cmsis/include/cmsis_compiler.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/toolchain/cmsis/include/cmsis_gcc.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/toolchain/cmsis/include/mpu_armv7.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/modules/nrfx/mdk/system_nrf52.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/modules/nrfx/mdk/nrf52_bitfields.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/modules/nrfx/mdk/nrf51_to_nrf52.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/modules/nrfx/mdk/nrf52_name_change.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/modules/nrfx/mdk/compiler_abstraction.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/softdevice/s132/headers/nrf52/nrf_mbr.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/softdevice/s132/headers/nrf_svc.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/sdk_macros.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/nrf_assert.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/app_util.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/app_util_platform.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/softdevice/s132/headers/nrf_soc.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/softdevice/s132/headers/nrf_svc.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/softdevice/s132/headers/nrf_error.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/softdevice/s132/headers/nrf_error_soc.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/softdevice/s132/headers/nrf_nvic.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/app_error.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\stdio.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\lib\gcc\arm-none-eabi\8.3.1\include\stdarg.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\types.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\_pthreadtypes.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\machine\types.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\sys\stdio.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/app_error_weak.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/nrf_log.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/experimental_section_vars/nrf_section.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/nordic_common.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/strerror/nrf_strerror.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/util/sdk_errors.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/src/nrf_log_internal.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/nrf_log_instance.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/nrf_log_types.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/nrf_log_types.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/src/nrf_log_internal.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/nrf_log_ctrl.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/src/nrf_log_ctrl_internal.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/nrf_log_backend_interface.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/memobj/nrf_memobj.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\stdlib.h:
+
+c:\st\gnu\ tools\ arm\ embedded\8\ 2019-q3-update\arm-none-eabi\include\machine\stdlib.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/balloc/nrf_balloc.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/nrf_log_backend_interface.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/nrf_log_str_formatter.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/external/fprintf/nrf_fprintf.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/log/nrf_log_ctrl.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/ringbuf/nrf_ringbuf.h:
+
+C:\ST\nRF5_SDK_17.0.2_d674dde/components/libraries/atomic/nrf_atomic.h:

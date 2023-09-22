@@ -1,0 +1,78 @@
+Removed Pin From Net: NetName=EN_Alim_quilles Pin=BOOST-4
+Removed Pin From Net: NetName=VCC Pin=C5-2
+Removed Pin From Net: NetName=VCC Pin=C6-2
+Removed Pin From Net: NetName=VCC Pin=MPU1-8
+Removed Pin From Net: NetName=VCC Pin=MPU1-13
+Change Component Designator: OldDesignator= NewDesignator=R2
+Change Component Designator: OldDesignator= NewDesignator=RX_inv
+Change Component Designator: OldDesignator= NewDesignator=RX_norm
+Change Component Designator: OldDesignator= NewDesignator=TX_inv
+Change Component Designator: OldDesignator= NewDesignator=TX_norm
+Change Component Designator: OldDesignator=Aimant NewDesignator=Switch magnetique1
+Change Component Designator: OldDesignator=Alim Q. NewDesignator=Connecteur_Alim_Quille1
+Change Component Designator: OldDesignator=Bat NewDesignator=Connecteur Bat
+Change Component Designator: OldDesignator=Link NewDesignator=Connecteur link
+Change Component Designator: OldDesignator=P. Switch NewDesignator=Interrupteur glissière?
+Change Component Designator: OldDesignator=Prog NewDesignator=Connecteur prog1
+Change Component Designator: OldDesignator=R. charge NewDesignator=Régulateur de charge
+Change Component Designator: OldDesignator=R SCL NewDesignator=PULLUP SCL1
+Change Component Designator: OldDesignator=R SDA NewDesignator=PULLUP SDA1
+Change Component Designator: OldDesignator=Switch NewDesignator=Interrupteur Power
+Change Component Designator: OldDesignator=Vext NewDesignator=Connecteur Vext
+Change component parameters: Designator = "R5" ("R5"); Footprint = "RESISTANCE_CMS_0805"; UniqueID = "\AOOSTPCN" ("\AOOSTPCN")
+Change component parameters (AddParameter): Name = "Design Item ID"; Value = "RESISTANCE_CMS_0805"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Source"; Value = "composants passifs.SchLib"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Type"; Value = "CMS_0805"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10k"; VariantName = "[No Variations]"
+Added Component: Designator=D?(BAT54C215)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = "BAT54C,215"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/bat54c215/nexperia?region=nac"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://assets.nexperia.com/documents/data-sheet/BAT54_SER.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "1.1mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Nexperia"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "BAT54C,215"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "771-BAT54C-T/R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/Nexperia/BAT54C215?qs=me8TqzrmIYV5SKKt13YKQA%3D%3D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Testing Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Testing Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=S?(0S102011MS2QN1)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = "0S102011MS2QN1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/0s102011ms2qn1/ck?region=nac"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://www.ckswitches.com/media/1428/os.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "8.7mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "C & K COMPONENTS"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "0S102011MS2QN1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "611-0S102011MS2QN1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/CK/0S102011MS2QN1?qs=xWNScUPc28o71osWFQSpZA%3D%3D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Testing Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Testing Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=EN_Alim_quilles Pin=D?-1
+Added Pin To Net: NetName=Vext Pin=D?-2
+Added Pin To Net: NetName=NetBOOST_4 Pin=BOOST-4
+Added Pin To Net: NetName=NetBOOST_4 Pin=D?-3
+Added Net: Name=NetBOOST_4
+Added Pin To Net: NetName=VCC_MPU Pin=C5-2
+Added Pin To Net: NetName=VCC_MPU Pin=C6-2
+Added Pin To Net: NetName=VCC_MPU Pin=MPU1-8
+Added Pin To Net: NetName=VCC_MPU Pin=MPU1-13
+Added Pin To Net: NetName=VCC_MPU Pin=NRF-25
+Added Net: Name=VCC_MPU
+Added Member To Class: ClassName=Fusion Member=Component Connecteur_Alim_Quille1 S2B-PH-K-S
+Added Member To Class: ClassName=Fusion Member=Component Connecteur Bat S2B-PH-K-S
+Added Member To Class: ClassName=Fusion Member=Component Connecteur link BARRETTE_6 CONTACTS_1 RANGEE_MALE_DROITE
+Added Member To Class: ClassName=Fusion Member=Component Connecteur prog1 BARRETTE_5 CONTACTS_1 RANGEE_FEMELLE_DROITE
+Added Member To Class: ClassName=Fusion Member=Component Connecteur Vext S2B-PH-K-S
+Added Member To Class: ClassName=Fusion Member=Component D? BAT54C,215
+Added Member To Class: ClassName=Fusion Member=Component Interrupteur glissière? OS102011MA1QN1
+Added Member To Class: ClassName=Fusion Member=Component Interrupteur Power S2B-PH-K-S
+Added Member To Class: ClassName=Fusion Member=Component PULLUP SCL1 RESISTANCE_CMS_0805
+Added Member To Class: ClassName=Fusion Member=Component PULLUP SDA1 RESISTANCE_CMS_0805
+Added Member To Class: ClassName=Fusion Member=Component R2 Resistor 4k7 +/-1% 0603 100 mW
+Added Member To Class: ClassName=Fusion Member=Component RX_inv Resistor 4k7 +/-1% 0603 100 mW
+Added Member To Class: ClassName=Fusion Member=Component RX_norm Resistor 4k7 +/-1% 0603 100 mW
+Added Member To Class: ClassName=Fusion Member=Component Régulateur de charge MCP73831T-2DCI/OT
+Added Member To Class: ClassName=Fusion Member=Component S? 0S102011MS2QN1
+Added Member To Class: ClassName=Fusion Member=Component Switch magnetique1 JUMPER2
+Added Member To Class: ClassName=Fusion Member=Component TX_inv Resistor 4k7 +/-1% 0603 100 mW
+Added Member To Class: ClassName=Fusion Member=Component TX_norm Resistor 4k7 +/-1% 0603 100 mW
+Added Room: Name=Fusion

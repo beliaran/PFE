@@ -1,0 +1,90 @@
+<resources>
+    <string name="app_name" translatable="false">Mölkky</string>
+    <string name="fragment_main" translatable="false">main</string>
+    <string name="startGame">Start a new game</string>
+    <string name="connectMolkky">Connect to Mölkky</string>
+    <string name="askName">Player %1$s</string>
+    <string name="fragment_add_players">Add Players</string>
+    <string name="validate">Validate</string>
+    <string name="tournament">Tournament</string>
+    <string name="pastis">Pastis</string>
+    <string name="classical">Classic</string>
+    <string name="quickGame">Quick Game</string>
+    <string name="fragment_choose_type">Choose Type Of Game</string>
+    <string name="tournament_rules">3 miss in a row eliminate the player</string>
+    <string name="classical_rules">Classic rules of a Mölkky match</string>
+    <string name="quickGame_rules">Be the first to score 30 points</string>
+    <string name="pastis_rules">Be the first to score 51 points</string>
+    <string name="round">Round</string>
+    <string name="scorePlayer">Score : %1$s/%2$s</string>
+    <string name="winner">End of Game</string>
+    <string name="returnToMenu">Return to Menu</string>
+    <string name="returnToGame">Return to Game</string>
+    <string name="player_name">Player Name</string>
+    <string name="scoreboard">Scoreboard</string>
+    <string name="endOfGame">Game Over</string>
+    <string name="keyMoments">Key Moments</string>
+    <string name="sniper">The Sniper</string>
+    <string name="brute">The Brute</string>
+    <string name="averageScore">Average Score per round</string>
+    <string name="textLeave">Do you really want to leave the game?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="validatePoints">Validate %1$s Points</string>
+    <string name="validate0Point">Validate %1$s Point</string>
+    <string name="disqualifyPlayer">Disqualify %1$s</string>
+    <string name="pin2" translatable="false">2</string>
+    <string name="pin1" translatable="false">1</string>
+    <string name="pin4" translatable="false">4</string>
+    <string name="pin11" translatable="false">11</string>
+    <string name="pin12" translatable="false">12</string>
+    <string name="pin6" translatable="false">6</string>
+    <string name="pin8" translatable="false">8</string>
+    <string name="pin9" translatable="false">9</string>
+    <string name="pin7" translatable="false">7</string>
+    <string name="pin5" translatable="false">5</string>
+    <string name="pin3" translatable="false">3</string>
+    <string name="pin10" translatable="false">10</string>
+    <string name="displayScore" translatable="false">%1$s/%2$s</string>
+    <string name="cross" translatable="false">cross</string>
+    <string name="addButton" translatable="false">addButton</string>
+    <string name="logo" translatable="false">logo</string>
+    <string name="imagePodium" translatable="false">Podium</string>
+    <string name="batteryFull" translatable="false">Battery Full</string>
+    <string name="batteryNumber" translatable="false">Battery Number</string>
+    <string name="batteryDisconnected">Disconnected</string>
+    <string name="batteryLevel" translatable="false">Battery Level</string>
+    <string name="pinName">Pin %1$s</string>
+    <string name="battery" translatable="false">Battery</string>
+    <string name="userConnection">User Connection</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="submit">Sign In</string>
+    <string name="connection">Connection</string>
+    <string name="askSign">Not already registered?</string>
+    <string name="register">Register</string>
+    <string name="connectUser">Sign In</string>
+    <string name="passwordVerification">Verify Password</string>
+    <string name="registerNow">Register Now</string>
+    <string name="userRegister">User Register</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
+    <string name="userName">UserName</string>
+    <string name="save">Save</string>
+    <string name="namePasswordNotNull"><![CDATA[Email & Password should not be empty]]></string>
+    <string name="anyFieldEmpty">All fields must be filled</string>
+    <string name="passwordNotEgal">Both Password must be equal</string>
+    <string name="nextTurn">Next Turn</string>
+    <string name="addPin">Add a Pin</string>
+    <string name="empty" translatable="false">Empty</string>
+    <string name="modifyPin">Modify the Pin %1$s</string>
+    <string name="pinAnalyzedEmpty">No Pin Found</string>
+    <string name="pin0">Pin 0</string>
+    <string name="selectmolkky" translatable="false">selectMolkky</string>
+    <string name="allowBluetooth">Allow Bluetooth</string>
+    <string name="deviceAnalyzedEmpty">No Device Detected</string>
+    <string name="bluetoothNotSupported">Bluetooth is not supported on your smartphone</string>
+    <string name="FindMolkky">Find Molkky</string>
+    <string name="textConnected">Molkky Connected</string>
+    <string name="replay">Replay</string>
+</resources>

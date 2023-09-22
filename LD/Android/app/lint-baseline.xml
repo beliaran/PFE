@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="5" by="lint Dolphin | 2021.3.1">
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is always >= 31">
+        <location
+            file="src\main\AndroidManifest.xml"
+            line="18"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.battery_25` appears to be unused">
+        <location
+            file="src\main\res\drawable-nodpi\battery_25.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.battery_50` appears to be unused">
+        <location
+            file="src\main\res\drawable-nodpi\battery_50.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.battery_75` appears to be unused">
+        <location
+            file="src\main\res\drawable-nodpi\battery_75.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.battery_disconnected` appears to be unused">
+        <location
+            file="src\main\res\drawable-nodpi\battery_disconnected.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.battery_full` appears to be unused">
+        <location
+            file="src\main\res\drawable-nodpi\battery_full.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.battery_low` appears to be unused">
+        <location
+            file="src\main\res\drawable-nodpi\battery_low.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.mipmap.ic_launcher_foreground` appears to be unused">
+        <location
+            file="src\main\res\mipmap-hdpi\ic_launcher_foreground.png"/>
+        <location
+            file="src\main\res\mipmap-mdpi\ic_launcher_foreground.png"/>
+        <location
+            file="src\main\res\mipmap-xhdpi\ic_launcher_foreground.png"/>
+        <location
+            file="src\main\res\mipmap-xxhdpi\ic_launcher_foreground.png"/>
+        <location
+            file="src\main\res\mipmap-xxxhdpi\ic_launcher_foreground.png"/>
+        <location
+            file="src\debug\res\mipmap-hdpi\ic_launcher_foreground.png"/>
+        <location
+            file="src\debug\res\mipmap-mdpi\ic_launcher_foreground.png"/>
+        <location
+            file="src\debug\res\mipmap-xhdpi\ic_launcher_foreground.png"/>
+        <location
+            file="src\debug\res\mipmap-xxhdpi\ic_launcher_foreground.png"/>
+        <location
+            file="src\debug\res\mipmap-xxxhdpi\ic_launcher_foreground.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.logo_square` appears to be unused">
+        <location
+            file="src\main\res\drawable-nodpi\logo_square.jpg"/>
+    </issue>
+
+</issues>

@@ -1,0 +1,43 @@
+Removed Pin From Net: NetName=GND Pin=C3-1
+Removed Pin From Net: NetName=VCC33 Pin=C3-2
+Removed Pin From Net: NetName=Net*_2 Pin=F1-1
+Removed Pin From Net: NetName=SCL Pin=U2-2
+Removed Pin From Net: NetName=SDA Pin=U2-3
+Removed Member From Class: ClassName=Molkky Member=F1
+Change Component Footprint: Designator=U2 Old Footprint=*PQFN50P300X300X86-16N New Footprint=*QFN50P400X400X95-24N
+Change Component Comment : Designator=U2 Old Comment=LSM6DS33TR New Comment=MPU-6050
+Change component parameters: Designator = "C3"; Footprint = "CONDENSATEUR_CMS_0805"; UniqueID = "\KUYMERRF"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Value"; Value = "10 nF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C4"; Footprint = "CONDENSATEUR_CMS_0805"; UniqueID = "\TNACJPEO"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Value"; Value = "0.1 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "U2"; Footprint = "*QFN50P400X400X95-24N"; UniqueID = "\IMLOCDIJ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "MF"; Value = "TDK InvenSense"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "MP"; Value = "MPU-6050"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package"; Value = "QFN-24 InvenSense"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/MPU-6050/TDK%20InvenSense/view-part/?ref=snap"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C8(CONDENSATEUR_CMS_0805)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "0.1 uF"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=Net*_2 Pin=1-4
+Added Pin To Net: NetName=GND Pin=C3-2
+Added Pin To Net: NetName=GND Pin=C8-2
+Added Pin To Net: NetName=GND Pin=U2-1
+Added Pin To Net: NetName=VCC33 Pin=U2-13
+Added Pin To Net: NetName=GND Pin=U2-18
+Added Pin To Net: NetName=GND Pin=U2-20
+Added Pin To Net: NetName=SCL Pin=U2-23
+Added Pin To Net: NetName=SDA Pin=U2-24
+Added Pin To Net: NetName=NetC3_1 Pin=C3-1
+Added Pin To Net: NetName=NetC3_1 Pin=U2-8
+Added Net: Name=NetC3_1
+Added Pin To Net: NetName=NetC8_1 Pin=C8-1
+Added Pin To Net: NetName=NetC8_1 Pin=U2-10
+Added Net: Name=NetC8_1
+Added Member To Class: ClassName=Molkky Member=Component C8 CMS_0805
+Added Room: Name=Molkky

@@ -1,0 +1,28 @@
+PCAD Importer Log
+Project : MPU-6050.LibPkg
+
+Section : Z:\Documents\OC\PFE\Hardware\MPU-6050.lia
+    Section : PCB Library - MPU-6050.PcbLib
+        Section : Load Messages
+            Warning - 1 : Skipping Token MPU-6050 On Line 145
+            Warning - 1 : Skipping Token attachedSymbol On Line 332
+        EndSection
+
+        Section : Import Messages
+        EndSection
+    EndSection
+
+    Section : SCH Library - MPU-6050.SchLib
+        Section : Parsing Messages
+            Warning - 1 : Skipping Token padStyleDef On Line 9
+            Warning - 1 : Skipping Token multiLayer On Line 84
+            Warning - 1 : Skipping Token layerContents On Line 110
+            Warning - 1 : Skipping Token layerContents On Line 121
+            Warning - 1 : Skipping Token layerContents On Line 127
+            Warning - 1 : Skipping Token layerContents On Line 135
+        EndSection
+
+        Section : Generating SCH Library - MPU-6050.SchLib
+        EndSection
+    EndSection
+EndSection

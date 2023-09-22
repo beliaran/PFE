@@ -1,0 +1,120 @@
+Removed Pin From Net: NetName=GND Pin=Batterie1-1
+Removed Pin From Net: NetName=Net1_4 Pin=Batterie1-2
+Removed Pin From Net: NetName=Net1_4 Pin=C2-2
+Removed Pin From Net: NetName=3v3 Pin=C5-1
+Removed Pin From Net: NetName=GND Pin=C5-2
+Removed Pin From Net: NetName=LED Pin=D1-1
+Removed Pin From Net: NetName=GND Pin=Link1-1
+Removed Pin From Net: NetName=SWD Pin=Link1-2
+Removed Pin From Net: NetName=SWCLK Pin=Link1-3
+Removed Pin From Net: NetName=3v3 Pin=Link1-4
+Removed Pin From Net: NetName=VCC Pin=SW1-2
+Removed Member From Class: ClassName=Molkky Member=Batterie1
+Removed Member From Class: ClassName=Molkky Member=Link1
+Change Component Footprint: Designator=C5 Old Footprint=CAPC2013X100N-0805-NoOverlay New Footprint=CONDENSATEUR_CMS_0805
+Change Component Footprint: Designator=D1 Old Footprint=LED_3MM New Footprint=LED_Angle_droit
+Change Component Comment : Designator=C5 Old Comment=100n New Comment=CMS_0805
+Change Component Designator: OldDesignator=U? NewDesignator=U2
+Change component parameters: Designator = "D1"; Footprint = "LED_Angle_droit"; UniqueID = "\QDVPVNWX"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Type"; Value = "LED_Angle_droit"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C5"; Footprint = "CONDENSATEUR_CMS_0805"; UniqueID = "\ADPCVYSV"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Value"; Value = "4.7 uF"; VariantName = "[No Variations]"
+Added Component: Designator=*(BARRETTE 2)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C6(CONDENSATEUR_CMS_0805)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "1 uF"; VariantName = "[No Variations]"
+Added Component: Designator=C7(CAPC2013X100N-0805-NoOverlay)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Assembly"; Value = "SMD"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Barcode"; Value = "0100000001868"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Capacitance"; Value = "100n"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Category"; Value = "Capacitors"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Family"; Value = "CERAMIC CAPACITOR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "id"; Value = "136"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "item_id"; Value = "450"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Yageo"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "CC0805KRX7R9BB104"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Case"; Value = "0805"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Type"; Value = "Capacitors"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Recommended Rating"; Value = "Platinum"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Temperature Coefficient"; Value = "X7R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "10%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rated"; Value = "50"; VariantName = "[No Variations]"
+Added Component: Designator=F1(*FUSM4632X200N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Littelfuse Inc."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "1812L110PR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "1812 Littelfuse"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/1812L110PR/Littelfuse%20Inc./view-part/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=J1(*AMPHENOL_10103592-0001LF_10103592-0001LF(Primary))
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Amphenol ICC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "10103592-0001LF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/10103592-0001LF/Amphenol%20ICC/view-part/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=R4(RESISTANCE_CMS_0805)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Type"; Value = "CMS_0805"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "1"; VariantName = "[No Variations]"
+Added Component: Designator=R5(RESISTANCE_CMS_0805)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Type"; Value = "CMS_0805"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "2.2K"; VariantName = "[No Variations]"
+Added Component: Designator=U1(*SOT95P280X145-5N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Texas Instruments"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "TPS76333DBVT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "SOT-23-5 Texas Instruments"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/TPS76333DBVT/Texas%20Instruments/view-part/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=*-1
+Added Pin To Net: NetName=VCC Pin=C5-1
+Added Pin To Net: NetName=GND Pin=C6-2
+Added Pin To Net: NetName=GND Pin=C7-1
+Added Pin To Net: NetName=3v3 Pin=C7-2
+Added Pin To Net: NetName=Net1_4 Pin=F1-2
+Added Pin To Net: NetName=3v3 Pin=J1-1
+Added Pin To Net: NetName=SWCLK Pin=J1-2
+Added Pin To Net: NetName=SWD Pin=J1-3
+Added Pin To Net: NetName=GND Pin=J1-5
+Added Pin To Net: NetName=GND Pin=R4-1
+Added Pin To Net: NetName=LED Pin=R5-2
+Added Pin To Net: NetName=GND Pin=U1-2
+Added Pin To Net: NetName=VCC Pin=U1-5
+Change Net Name : Old Net Name=VCC New Net Name=VCC33
+Added Pin To Net: NetName=Net*_2 Pin=*-2
+Added Pin To Net: NetName=Net*_2 Pin=C2-2
+Added Pin To Net: NetName=Net*_2 Pin=F1-1
+Added Net: Name=Net*_2
+Added Pin To Net: NetName=NetC5_2 Pin=C5-2
+Added Pin To Net: NetName=NetC5_2 Pin=R4-2
+Added Net: Name=NetC5_2
+Added Pin To Net: NetName=NetD1_1 Pin=D1-1
+Added Pin To Net: NetName=NetD1_1 Pin=D1-1
+Added Pin To Net: NetName=NetD1_1 Pin=R5-1
+Added Net: Name=NetD1_1
+Added Pin To Net: NetName=VCC Pin=C6-1
+Added Pin To Net: NetName=VCC Pin=SW1-2
+Added Pin To Net: NetName=VCC Pin=U1-1
+Added Pin To Net: NetName=VCC Pin=U1-3
+Added Net: Name=VCC
+Added Member To Class: ClassName=Molkky Member=Component * ConnecteurCharge
+Added Member To Class: ClassName=Molkky Member=Component C6 CMS_0805
+Added Member To Class: ClassName=Molkky Member=Component C7 100n
+Added Member To Class: ClassName=Molkky Member=Component F1 1812L110PR
+Added Member To Class: ClassName=Molkky Member=Component J1 10103592-0001LF
+Added Member To Class: ClassName=Molkky Member=Component R4 RESISTANCE_CMS_0805
+Added Member To Class: ClassName=Molkky Member=Component R5 RESISTANCE_CMS_0805
+Added Member To Class: ClassName=Molkky Member=Component U1 TPS76333DBVT
+Added Room: Name=Molkky
