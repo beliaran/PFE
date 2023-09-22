@@ -3,12 +3,17 @@ plugins {
 }
 
 android {
-    namespace 'fr.eseo.molkkyconnect'
+    namespace 'fr.eseo.pfemolkky'
     compileSdk 32
-
+    buildFeatures{
+        viewBinding true
+    }
+    sourceSets {
+        main.res.srcDirs += ['src/main/mollky_disconnected', 'src/main/mollky_connected', 'src/main/mollky_fallen']
+    }
     defaultConfig {
-        applicationId "fr.eseo.molkkyconnect"
-        minSdk 23
+        applicationId "fr.eseo.pfemolkky"
+        minSdk 28
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -23,17 +28,31 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_9
+        targetCompatibility JavaVersion.VERSION_1_9
+    }
+    lint {
+        baseline = file("lint-baseline.xml")
     }
 }
 
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.navigation:navigation-fragment:2.5.3'
+    implementation 'androidx.navigation:navigation-ui:2.5.3'
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.annotation:annotation:1.5.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    implementation 'com.jmedeisis:draglinearlayout:1.1.0'
+    // implementation files("C:/Users/gilli/AppData/Local/Android/Sdk/platforms/android-32/android.jar")
+    // implementation files("C:/Users/Renan/AppData/Local/Android/Sdk/platforms/android-32/android.jar")
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 }

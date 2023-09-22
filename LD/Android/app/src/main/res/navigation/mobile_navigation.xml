@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_main">
+
+    <fragment
+        android:id="@+id/nav_main"
+        android:name="fr.eseo.pfemolkky.ui.main.MainFragment"
+        android:label="@string/fragment_main"
+        tools:layout="@layout/fragment_main" />
+    <fragment
+        android:id="@+id/select_molkky"
+        android:name="fr.eseo.pfemolkky.ui.selectmolkky.SelectMolkky"
+        android:label="@string/selectmolkky"
+        tools:layout="@layout/fragment_select_molkky" />
+    <fragment
+        android:id="@+id/nav_start_game"
+        android:name="fr.eseo.pfemolkky.ui.addplayers.AddPlayersFragment"
+        android:label="@string/fragment_add_players"
+        tools:layout="@layout/fragment_add_players" />
+    <fragment
+        android:id="@+id/nav_choose_type"
+        android:name="fr.eseo.pfemolkky.ui.chooseGame.chooseTypeGame"
+        android:label="@string/fragment_choose_type"
+        tools:layout="@layout/fragment_choose_type_game" />
+    <fragment
+        android:id="@+id/nav_game"
+        android:name="fr.eseo.pfemolkky.ui.main.GameFragment"
+        android:label="@string/round"
+        tools:layout="@layout/fragment_game" />
+    <fragment
+        android:id="@+id/nav_scoreboard"
+        android:name="fr.eseo.pfemolkky.ui.main.ScoreBoard"
+        android:label="@string/scoreboard"
+        tools:layout="@layout/fragment_score_board" />
+    <fragment
+        android:id="@+id/nav_battery"
+        android:name="fr.eseo.pfemolkky.ui.battery.BatteryListFragment"
+        android:label="@string/battery"
+        tools:layout="@layout/fragment_battery_list" />
+    <fragment
+        android:id="@+id/nav_winner"
+        android:name="fr.eseo.pfemolkky.ui.main.Winner"
+        android:label="@string/winner"
+        tools:layout="@layout/fragment_game" />
+    <fragment
+        android:id="@+id/nav_user_connection"
+        android:name="fr.eseo.pfemolkky.ui.user.UserConnectionFragment"
+        android:label="@string/userConnection"
+        tools:layout="@layout/fragment_user_connection" />
+    <fragment
+        android:id="@+id/nav_user_register"
+        android:name="fr.eseo.pfemolkky.ui.user.UserRegisterFragment"
+        android:label="@string/userRegister"
+        tools:layout="@layout/fragment_user_register" />
+    <fragment
+        android:id="@+id/nav_add_pin"
+        android:name="fr.eseo.pfemolkky.ui.addPin.AddPin"
+        android:label="@string/addPin"
+        tools:layout="@layout/fragment_add_pin" />
+</navigation>
