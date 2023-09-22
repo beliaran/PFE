@@ -1,0 +1,38 @@
+Change Component Designator: OldDesignator= NewDesignator=R2
+Change Component Designator: OldDesignator= NewDesignator=RX_inv
+Change Component Designator: OldDesignator= NewDesignator=RX_norm
+Change Component Designator: OldDesignator= NewDesignator=TX_inv
+Change Component Designator: OldDesignator= NewDesignator=TX_norm
+Change Component Designator: OldDesignator=Aimant NewDesignator=Switch magnetique1
+Change Component Designator: OldDesignator=Alim Q. NewDesignator=Connecteur_Alim_Quille1
+Change Component Designator: OldDesignator=Bat NewDesignator=Connecteur Bat
+Change Component Designator: OldDesignator=Link NewDesignator=Connecteur link
+Change Component Designator: OldDesignator=P. Switch NewDesignator=Interrupteur glissière?
+Change Component Designator: OldDesignator=Prog NewDesignator=Connecteur prog1
+Change Component Designator: OldDesignator=R. charge NewDesignator=Régulateur de charge
+Change Component Designator: OldDesignator=R SCL NewDesignator=PULLUP SCL1
+Change Component Designator: OldDesignator=R SDA NewDesignator=PULLUP SDA1
+Change Component Designator: OldDesignator=Switch NewDesignator=Interrupteur Power
+Change Component Designator: OldDesignator=Vext NewDesignator=Connecteur Vext
+Change component parameters: Designator = "R5" ("R5"); Footprint = "RESISTANCE_CMS_0805"; UniqueID = "\AOOSTPCN" ("\AOOSTPCN")
+Change component parameters (AddParameter): Name = "Design Item ID"; Value = "RESISTANCE_CMS_0805"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Source"; Value = "composants passifs.SchLib"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Type"; Value = "CMS_0805"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10k"; VariantName = "[No Variations]"
+Added Member To Class: ClassName=Fusion Member=Component Connecteur_Alim_Quille1 S2B-PH-K-S
+Added Member To Class: ClassName=Fusion Member=Component Connecteur Bat S2B-PH-K-S
+Added Member To Class: ClassName=Fusion Member=Component Connecteur link BARRETTE_6 CONTACTS_1 RANGEE_MALE_DROITE
+Added Member To Class: ClassName=Fusion Member=Component Connecteur prog1 BARRETTE_5 CONTACTS_1 RANGEE_FEMELLE_DROITE
+Added Member To Class: ClassName=Fusion Member=Component Connecteur Vext S2B-PH-K-S
+Added Member To Class: ClassName=Fusion Member=Component Interrupteur glissière? OS102011MA1QN1
+Added Member To Class: ClassName=Fusion Member=Component Interrupteur Power S2B-PH-K-S
+Added Member To Class: ClassName=Fusion Member=Component PULLUP SCL1 RESISTANCE_CMS_0805
+Added Member To Class: ClassName=Fusion Member=Component PULLUP SDA1 RESISTANCE_CMS_0805
+Added Member To Class: ClassName=Fusion Member=Component R2 Resistor 4k7 +/-1% 0603 100 mW
+Added Member To Class: ClassName=Fusion Member=Component RX_inv Resistor 4k7 +/-1% 0603 100 mW
+Added Member To Class: ClassName=Fusion Member=Component RX_norm Resistor 4k7 +/-1% 0603 100 mW
+Added Member To Class: ClassName=Fusion Member=Component Régulateur de charge MCP73831T-2DCI/OT
+Added Member To Class: ClassName=Fusion Member=Component Switch magnetique1 JUMPER2
+Added Member To Class: ClassName=Fusion Member=Component TX_inv Resistor 4k7 +/-1% 0603 100 mW
+Added Member To Class: ClassName=Fusion Member=Component TX_norm Resistor 4k7 +/-1% 0603 100 mW
+Added Room: Name=Fusion

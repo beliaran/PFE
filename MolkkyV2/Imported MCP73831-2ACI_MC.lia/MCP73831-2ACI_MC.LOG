@@ -1,0 +1,30 @@
+PCAD Importer Log
+Project : MCP73831-2ACI_MC.LibPkg
+
+Section : Z:\Documents\OC\PFE\Hardware\MCP73831-2ACI_MC.lia
+    Section : PCB Library - MCP73831-2ACI_MC.PcbLib
+        Section : Load Messages
+            Warning - 1 : Skipping Token MCP73831-2ACI/MC On Line 160
+            Warning - 1 : Skipping Token attachedSymbol On Line 267
+        EndSection
+
+        Section : Import Messages
+        EndSection
+    EndSection
+
+    Section : SCH Library - MCP73831-2ACI_MC.SchLib
+        Section : Parsing Messages
+            Warning - 1 : Skipping Token padStyleDef On Line 9
+            Warning - 1 : Skipping Token padStyleDef On Line 21
+            Warning - 1 : Skipping Token multiLayer On Line 96
+            Warning - 1 : Skipping Token layerContents On Line 107
+            Warning - 1 : Skipping Token layerContents On Line 121
+            Warning - 1 : Skipping Token layerContents On Line 130
+            Warning - 1 : Skipping Token layerContents On Line 139
+            Warning - 1 : Skipping Token layerContents On Line 144
+        EndSection
+
+        Section : Generating SCH Library - MCP73831-2ACI_MC.SchLib
+        EndSection
+    EndSection
+EndSection

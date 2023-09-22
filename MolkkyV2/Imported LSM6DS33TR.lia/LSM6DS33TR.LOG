@@ -1,0 +1,28 @@
+PCAD Importer Log
+Project : LSM6DS33TR.LibPkg
+
+Section : Z:\Documents\OC\PFE\Hardware\LSM6DS33TR.lia
+    Section : PCB Library - LSM6DS33TR.PcbLib
+        Section : Load Messages
+            Warning - 1 : Skipping Token LSM6DS33TR On Line 139
+            Warning - 1 : Skipping Token attachedSymbol On Line 316
+        EndSection
+
+        Section : Import Messages
+        EndSection
+    EndSection
+
+    Section : SCH Library - LSM6DS33TR.SchLib
+        Section : Parsing Messages
+            Warning - 1 : Skipping Token padStyleDef On Line 9
+            Warning - 1 : Skipping Token multiLayer On Line 84
+            Warning - 1 : Skipping Token layerContents On Line 102
+            Warning - 1 : Skipping Token layerContents On Line 111
+            Warning - 1 : Skipping Token layerContents On Line 120
+            Warning - 1 : Skipping Token layerContents On Line 131
+        EndSection
+
+        Section : Generating SCH Library - LSM6DS33TR.SchLib
+        EndSection
+    EndSection
+EndSection

@@ -1,0 +1,69 @@
+Change Component Designator: OldDesignator=C? NewDesignator=C1
+Change Component Designator: OldDesignator=C? NewDesignator=C2
+Change Component Designator: OldDesignator=C? NewDesignator=C3
+Change Component Designator: OldDesignator=C? NewDesignator=C4
+Change Component Designator: OldDesignator=C? NewDesignator=C5
+Change Component Designator: OldDesignator=C? NewDesignator=C6
+Change Component Designator: OldDesignator=C? NewDesignator=C7
+Change Component Designator: OldDesignator=C? NewDesignator=C8
+Change Component Designator: OldDesignator=C? NewDesignator=C9
+Change Component Designator: OldDesignator=C? NewDesignator=C10
+Change Component Designator: OldDesignator=Connecteur_Alim_Quille? NewDesignator=Connecteur_Alim_Quille1
+Change Component Designator: OldDesignator=Connecteur prog? NewDesignator=Connecteur prog1
+Change Component Designator: OldDesignator=D? NewDesignator=D1
+Change Component Designator: OldDesignator=D? NewDesignator=D2
+Change Component Designator: OldDesignator=D? NewDesignator=D3
+Change Component Designator: OldDesignator=D? NewDesignator=D4
+Change Component Designator: OldDesignator=D? NewDesignator=D5
+Change Component Designator: OldDesignator=L? NewDesignator=L1
+Change Component Designator: OldDesignator=LDO? NewDesignator=LDO1
+Change Component Designator: OldDesignator=MPU? NewDesignator=MPU1
+Change Component Designator: OldDesignator=PULLUP SCL? NewDesignator=PULLUP SCL1
+Change Component Designator: OldDesignator=PULLUP SDA? NewDesignator=PULLUP SDA1
+Change Component Designator: OldDesignator=Q? NewDesignator=Q1
+Change Component Designator: OldDesignator=R? NewDesignator=R1
+Change Component Designator: OldDesignator=R? NewDesignator=R2
+Change Component Designator: OldDesignator=R? NewDesignator=R3
+Change Component Designator: OldDesignator=R? NewDesignator=R4
+Change Component Designator: OldDesignator=R? NewDesignator=R5
+Change Component Designator: OldDesignator=R? NewDesignator=R6
+Change Component Designator: OldDesignator=R? NewDesignator=R7
+Change Component Designator: OldDesignator=R? NewDesignator=R8
+Change Component Designator: OldDesignator=R? NewDesignator=R9
+Change Component Designator: OldDesignator=R? NewDesignator=R10
+Change Component Designator: OldDesignator=R? NewDesignator=R11
+Change Component Designator: OldDesignator=Switch magnetique? NewDesignator=Switch magnetique1
+Change Net Name : Old Net Name=NetC?_1 New Net Name=NetC8_1
+Change Net Name : Old Net Name=NetD?_1 New Net Name=NetD5_1
+Change Net Name : Old Net Name=NetD?_2 New Net Name=NetD1_2
+Change Net Name : Old Net Name=NetD?_3 New Net Name=NetD5_3
+Change Net Name : Old Net Name=NetQ?_2 New Net Name=NetQ1_2
+Change Net Name : Old Net Name=NetR?_1 New Net Name=NetR9_2
+Change Net Name : Old Net Name=NetR?_2 New Net Name=NetR5_2
+Added Pin To Net: NetName=NetC2_1 Pin=C2-1
+Added Pin To Net: NetName=NetC2_1 Pin=MPU1-20
+Added Net: Name=NetC2_1
+Added Member To Class: ClassName=Fusion Member=Component C1 CONDENSATEUR_CMS_CER_0805
+Added Member To Class: ClassName=Fusion Member=Component C2 CONDENSATEUR_CMS_CER_0805
+Added Member To Class: ClassName=Fusion Member=Component C3 CONDENSATEUR_CMS_CER_0805
+Added Member To Class: ClassName=Fusion Member=Component C4 CONDENSATEUR_CMS_CER_0805
+Added Member To Class: ClassName=Fusion Member=Component C5 CONDENSATEUR_CMS_CER_0805
+Added Member To Class: ClassName=Fusion Member=Component C6 CONDENSATEUR_CMS_CER_0805
+Added Member To Class: ClassName=Fusion Member=Component C7 CONDENSATEUR_CMS_CER_0805
+Added Member To Class: ClassName=Fusion Member=Component C8 CONDENSATEUR_CMS_CER_0805
+Added Member To Class: ClassName=Fusion Member=Component C9 CONDENSATEUR_CMS_CER_0805
+Added Member To Class: ClassName=Fusion Member=Component D1 LED_CMS_0805
+Added Member To Class: ClassName=Fusion Member=Component D3 ES1D-E3_61T
+Added Member To Class: ClassName=Fusion Member=Component D4 BAT165AX
+Added Member To Class: ClassName=Fusion Member=Component D5 BAT54C,215
+Added Member To Class: ClassName=Fusion Member=Component R1 Resistor 1K +/-5% 0805 125 mW
+Added Member To Class: ClassName=Fusion Member=Component R2 RESISTANCE_CMS_0805
+Added Member To Class: ClassName=Fusion Member=Component R3 Resistor 10k +/-1% 0805 125 mW
+Added Member To Class: ClassName=Fusion Member=Component R4 Resistor 10k +/-1% 0805 125 mW
+Added Member To Class: ClassName=Fusion Member=Component R5 RESISTANCE_CMS_0805
+Added Member To Class: ClassName=Fusion Member=Component R6 RESISTANCE_CMS_0805
+Added Member To Class: ClassName=Fusion Member=Component R7 RESISTANCE_CMS_0805
+Added Member To Class: ClassName=Fusion Member=Component R9 RESISTANCE_CMS_0805
+Added Member To Class: ClassName=Fusion Member=Component R10 RESISTANCE_CMS_0805
+Added Member To Class: ClassName=Fusion Member=Component R11 RESISTANCE_CMS_0805
+Added Room: Name=Fusion
